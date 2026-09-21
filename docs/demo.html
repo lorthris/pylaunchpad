@@ -7,6 +7,37 @@
   <title>Interactive Demo - PyLaunchpad Pro</title>
   <meta name="description" content="Test drive the PyLaunchpad Pro developer dashboard, API key console, and license validation engine in your browser.">
   <link rel="canonical" href="https://lorthris.github.io/pylaunchpad/demo.html">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://lorthris.github.io/pylaunchpad/demo.html">
+  <meta property="og:title" content="Interactive Demo - PyLaunchpad Pro">
+  <meta property="og:description" content="Test drive the PyLaunchpad Pro developer dashboard, API key console, and license validation engine in your browser.">
+  <meta property="og:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Interactive Demo - PyLaunchpad Pro">
+  <meta name="twitter:description" content="Test drive the FastAPI developer dashboard and Polar license key validation live in your browser.">
+  <meta name="twitter:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+
+  <!-- Structured Data: SoftwareApplication -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "PyLaunchpad Interactive Sandbox",
+    "applicationCategory": "DeveloperApplication",
+    "operatingSystem": "Cross-platform",
+    "description": "Interactive browser preview for PyLaunchpad FastAPI micro-SaaS starter kit.",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "USD"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <style>
     .demo-header {
@@ -159,8 +190,9 @@
       </a>
       <nav class="nav-menu">
         <a href="index.html#features" class="nav-item">Features</a>
-        <a href="docs.html" class="nav-item">Documentation</a>
-        <a href="demo.html" class="nav-item active">Live Demo</a>
+        <a href="docs.html" class="nav-item">Docs</a>
+        <a href="demo.html" class="nav-item active">Demo</a>
+        <a href="vs-nextjs.html" class="nav-item">vs Next.js</a>
         <a href="https://github.com/lorthris/pylaunchpad" class="nav-item" target="_blank" rel="noopener">GitHub</a>
         <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="nav-btn-primary" target="_blank" rel="noopener">Buy Licence &rarr;</a>
       </nav>
@@ -300,8 +332,11 @@
       <p>&copy; 2026 PyLaunchpad. Built for Python micro-SaaS and AI developers.</p>
       <div class="footer-links">
         <a href="index.html">Showcase</a>
-        <a href="docs.html">Documentation</a>
-        <a href="demo.html">Interactive Demo</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo.html">Demo</a>
+        <a href="vs-nextjs.html">vs Next.js</a>
+        <a href="fastapi-polar-guide.html">Polar Guide</a>
+        <a href="ai-micro-saas-guide.html">AI SaaS Guide</a>
         <a href="terms.html">Terms & Privacy</a>
         <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener">GitHub</a>
       </div>
@@ -328,7 +363,7 @@
         el.textContent = JSON.stringify({
           status: "healthy",
           timestamp: new Date().toISOString(),
-          version: "1.0.2",
+          version: "1.0.3",
           environment: "production",
           database: { connected: true, driver: "sqlite+aiosqlite" },
           system: { memory_mb: 48.2, uptime_seconds: 142820 }

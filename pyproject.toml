@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "pylaunchpad"
-version = "1.0.2"
+version = "1.0.3"
 description = "Production-grade FastAPI micro-SaaS and AI API starter kit with Polar.sh Merchant of Record billing."
 readme = "README.md"
 requires-python = ">=3.10"

@@ -47,7 +47,7 @@ def init_project(args: argparse.Namespace) -> int:
 ENVIRONMENT=development
 DEBUG=True
 APP_NAME="{app_name}"
-APP_VERSION="1.0.2"
+APP_VERSION="1.0.3"
 HOST="0.0.0.0"
 PORT=8000
 
@@ -132,6 +132,50 @@ def backup_database(args: argparse.Namespace) -> int:
         return 1
 
 
+def audit_seo(args: argparse.Namespace) -> int:
+    """Audit HTML documentation for search engine optimization standards."""
+    from pylaunchpad.marketing import audit_docs_directory
+
+    docs_dir = Path(args.dir)
+    if not docs_dir.exists():
+        print(f"[-] Directory not found: {docs_dir}")
+        return 1
+
+    audits = audit_docs_directory(docs_dir)
+    if not audits:
+        print(f"[!] No HTML files found in {docs_dir}")
+        return 1
+
+    print(f"SEO Audit Results for {docs_dir} ({len(audits)} pages):")
+    print("-" * 75)
+    all_pass = True
+    for a in audits:
+        status = "PASS" if (a["has_title"] and a["has_description"] and a["has_canonical"] and a["has_og"] and a["json_ld_valid"]) else "FAIL"
+        if status == "FAIL":
+            all_pass = False
+        print(f"[{status}] {a['file']:<26} Title: {a['has_title']} | Meta: {a['has_description']} | Canon: {a['has_canonical']} | OG: {a['has_og']} | LD: {a['json_ld_count']}")
+    print("-" * 75)
+    if all_pass:
+        print("[+] All pages pass search engine optimization criteria.")
+        return 0
+    print("[-] Some pages failed search engine optimization criteria.")
+    return 1
+
+
+def generate_utm(args: argparse.Namespace) -> int:
+    """Generate a trackable UTM marketing URL."""
+    from pylaunchpad.marketing import generate_utm_link
+
+    link = generate_utm_link(
+        base_url=args.url,
+        source=args.source,
+        medium=args.medium,
+        campaign=args.campaign,
+    )
+    print(f"Generated trackable URL:\n{link}")
+    return 0
+
+
 def main() -> int:
     """CLI entry point for PyLaunchpad command-line runner."""
     parser = argparse.ArgumentParser(description="PyLaunchpad Starter Kit CLI")
@@ -152,6 +196,17 @@ def main() -> int:
     backup_parser.add_argument("--source", default="pylaunchpad.db", help="Path to source SQLite database")
     backup_parser.add_argument("--dest", default=None, help="Destination backup file path")
 
+    # seo-audit subcommand
+    seo_parser = subparsers.add_parser("seo-audit", help="Audit documentation pages for SEO compliance")
+    seo_parser.add_argument("--dir", default="docs", help="Directory containing HTML files (default: docs)")
+
+    # utm subcommand
+    utm_parser = subparsers.add_parser("utm", help="Generate trackable UTM marketing link")
+    utm_parser.add_argument("--url", default="https://lorthris.github.io/pylaunchpad/", help="Base URL")
+    utm_parser.add_argument("--source", required=True, help="UTM source (e.g. reddit, twitter, hackernews)")
+    utm_parser.add_argument("--medium", required=True, help="UTM medium (e.g. social, post, directory)")
+    utm_parser.add_argument("--campaign", default="launch", help="Campaign name (default: launch)")
+
     args = parser.parse_args()
 
     if args.command == "init":
@@ -160,6 +215,10 @@ def main() -> int:
         return verify_license(args)
     if args.command == "backup":
         return backup_database(args)
+    if args.command == "seo-audit":
+        return audit_seo(args)
+    if args.command == "utm":
+        return generate_utm(args)
 
     parser.print_help()
     return 0
@@ -167,3 +226,4 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+

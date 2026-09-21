@@ -1,12 +1,44 @@
 # PyLaunchpad Organic Launch Kit
 
-Organic developer distribution materials for driving immediate qualified traffic without ad spend.
+A collection of pre-formatted, one-click developer distribution campaigns across major tech channels. Designed to drive organic traffic without ad spend.
 
 ---
 
-## 1. Hacker News (Show HN)
+## 1. Product Hunt Launch Package
 
-👉 **[Click to Post on Hacker News](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F&t=Show%20HN%3A%20PyLaunchpad%20%E2%80%93%20Production%20FastAPI%20micro-SaaS%20starter%20kit%20with%20Polar.sh%20MoR%20billing)**
+👉 **[Submit on Product Hunt](https://www.producthunt.com/posts/new)**
+
+- **Product Name:** PyLaunchpad Pro
+- **Tagline:** Production FastAPI micro-SaaS boilerplate with Polar.sh MoR billing
+- **Topics:** Developer Tools, Python, Artificial Intelligence, SaaS, Open Source
+- **Short Description:** Stop fighting with Next.js toolchains to launch Python AI apps. PyLaunchpad gives you turnkey Polar.sh Merchant of Record billing, dual JWT & API key auth, async SQLAlchemy 2.0, dark-mode dashboard, and automated Docker TLS.
+- **Pricing Type:** Paid ($29 USD one-time with 20% launch promo: `LAUNCH20`)
+- **Website URL:** `https://lorthris.github.io/pylaunchpad/?utm_source=producthunt&utm_medium=launch`
+
+### Maker's First Comment
+```text
+Hey Product Hunt community! 👋
+
+Almost every SaaS boilerplate in 2026 is built for React or Next.js. But if you are building Python AI wrappers, machine learning utilities, or developer APIs, forcing a JavaScript stack creates massive operational friction: cross-process serialization latency, npm build issues, and heavy container sizes.
+
+I built PyLaunchpad to give Python developers a clean, production-ready foundation:
+
+1. Turnkey Polar.sh MoR Billing: Webhooks and checkout pre-wired. Polar acts as the Merchant of Record, automatically handling global VAT, GST, and US sales taxes.
+2. Dual Authentication: Bearer JWT tokens for browser sessions, plus SHA-256 hashed API keys with per-minute rate limiting for external developer access.
+3. Asynchronous SQLAlchemy 2.0: Instant zero-setup SQLite local development, seamless switch to PostgreSQL in production.
+4. Lightweight Background Worker: In-process async task queue for transactional emails and LLM API calls without needing Celery or Redis.
+5. Interactive Sandbox: You can test-drive the API endpoints and dashboard live in your browser: https://lorthris.github.io/pylaunchpad/demo.html
+
+Use promo code LAUNCH20 for 20% off the commercial developer licence.
+
+I'd love to hear your feedback on the architecture!
+```
+
+---
+
+## 2. Hacker News (Show HN)
+
+👉 **[Click to Post on Hacker News](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F%3Futm_source%3Dhackernews%26utm_medium%3Dshow_hn&t=Show%20HN%3A%20PyLaunchpad%20%E2%80%93%20Production%20FastAPI%20boilerplate%20with%20Polar.sh%20MoR%20billing)**
 
 **Title:**
 > Show HN: PyLaunchpad – Production FastAPI boilerplate with Polar.sh MoR billing
@@ -20,13 +52,14 @@ Almost every modern SaaS boilerplate is built for Next.js or React. As someone w
 I built PyLaunchpad as a production-grade, zero-bloat FastAPI starter kit.
 
 Key architecture decisions:
-- Billing: Integrated with Polar.sh as a Merchant of Record. This means global VAT, Australian GST, and US sales tax are handled on the platform side rather than requiring personal international tax registrations.
+- Billing: Integrated with Polar.sh as a Merchant of Record. Global VAT, Australian GST, and US sales tax are handled on the platform side rather than requiring personal international tax registrations.
 - Auth: Both standard Bearer JWT tokens for web dashboards and SHA-256 hashed API keys with rate limiting for programmatic developer APIs.
 - Database: SQLAlchemy 2.0 with zero-setup SQLite for instant local prototyping, configured to swap to PostgreSQL in production via DATABASE_URL.
 - Background Jobs: An in-process async worker queue for email and external API calls without requiring Celery or Redis.
 - Dark-mode dashboard: Sub-50ms render with zero node_modules or Webpack/Vite build steps.
 
-Live showcase & docs: https://lorthris.github.io/pylaunchpad/
+Live showcase & docs: https://lorthris.github.io/pylaunchpad/?utm_source=hackernews
+Interactive demo sandbox: https://lorthris.github.io/pylaunchpad/demo.html
 Repository: https://github.com/lorthris/pylaunchpad
 
 I'd welcome feedback from anyone building Python web apps or AI wrappers.
@@ -34,10 +67,10 @@ I'd welcome feedback from anyone building Python web apps or AI wrappers.
 
 ---
 
-## 2. Reddit (`r/FastAPI`, `r/Python`, `r/SideProject`, `r/indiehackers`)
+## 3. Reddit Developer Communities
 
-👉 **[Click to Submit to r/FastAPI](https://www.reddit.com/r/FastAPI/submit?title=I%20built%20a%20production%20FastAPI%20starter%20kit%20with%20turnkey%20Polar.sh%20MoR%20billing%20and%20dual%20auth&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F)**
-👉 **[Click to Submit to r/SideProject](https://www.reddit.com/r/SideProject/submit?title=PyLaunchpad%20%E2%80%93%20Production%20FastAPI%20starter%20kit%20with%20turnkey%20Polar.sh%20billing&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F)**
+### A. r/FastAPI
+👉 **[Click to Submit to r/FastAPI](https://www.reddit.com/r/FastAPI/submit?title=I%20built%20a%20production%20FastAPI%20starter%20kit%20with%20turnkey%20Polar.sh%20MoR%20billing%20and%20dual%20auth&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F%3Futm_source%3Dreddit%26utm_medium%3Dr_fastapi)**
 
 **Title:**
 > I built a production FastAPI starter kit with turnkey Polar.sh MoR billing and dual auth
@@ -54,16 +87,28 @@ I put together PyLaunchpad to give Python developers a clean, production-ready f
 2. Dual authentication: Bearer tokens for user sessions + hashed API keys for developers calling your API.
 3. Lightweight background task queue: Non-blocking async queue for sending transactional emails or handling AI API calls without needing Redis.
 4. Docker Compose with Caddy: Automatic Let's Encrypt / Cloudflare HTTPS reverse proxy.
-5. Automated test suite: 19 tests covering auth, webhooks, license key validation, and CLI commands with pytest.
+5. Automated test suite: 25 tests covering auth, webhooks, license key validation, SEO auditing, and CLI commands with pytest.
 
-The showcase, docs, and interactive live demo are at https://lorthris.github.io/pylaunchpad/
+The showcase, docs, and interactive live demo are at https://lorthris.github.io/pylaunchpad/?utm_source=reddit_fastapi
 
 Code is available under a commercial developer licence with 20% off for launch using code LAUNCH20 ($23.20 USD).
 ```
 
+### B. r/Python
+👉 **[Click to Submit to r/Python](https://www.reddit.com/r/Python/submit?title=PyLaunchpad%3A%20Production-grade%20FastAPI%20boilerplate%20for%20shipping%20paid%20micro-SaaS%20and%20AI%20APIs&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F%3Futm_source%3Dreddit%26utm_medium%3Dr_python)**
+
+### C. r/SideProject
+👉 **[Click to Submit to r/SideProject](https://www.reddit.com/r/SideProject/submit?title=PyLaunchpad%20%E2%80%93%20Production%20FastAPI%20starter%20kit%20with%20turnkey%20Polar.sh%20billing&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F%3Futm_source%3Dreddit%26utm_medium%3Dr_sideproject)**
+
+### D. r/indiehackers
+👉 **[Click to Submit to r/indiehackers](https://www.reddit.com/r/indiehackers/submit?title=Why%20I%20built%20a%20FastAPI%20micro-SaaS%20boilerplate%20instead%20of%20another%20Next.js%20starter&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F%3Futm_source%3Dreddit%26utm_medium%3Dr_indiehackers)**
+
+### E. r/SaaS
+👉 **[Click to Submit to r/SaaS](https://www.reddit.com/r/SaaS/submit?title=Solving%20the%20international%20sales%20tax%20trap%20for%20Python%20micro-SaaS%20with%20Polar.sh%20MoR&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F%3Futm_source%3Dreddit%26utm_medium%3Dr_saas)**
+
 ---
 
-## 3. Twitter / X Launch Thread
+## 4. Twitter / X Launch Thread
 
 👉 **[Click to Post Announcement Tweet](https://twitter.com/intent/tweet?text=Shipping%20Python%20micro-SaaS%20shouldn%27t%20require%20fighting%20with%20Next.js.%20Introducing%20PyLaunchpad%3A%20production%20FastAPI%20boilerplate%20with%20turnkey%20Polar.sh%20MoR%20billing%20and%20dual%20auth.%20Live%20demo%3A%20https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2Fdemo.html)**
 
@@ -97,3 +142,26 @@ Code is available under a commercial developer licence with 20% off for launch u
 >
 > Instant download & perpetual developer licence:
 > https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk
+
+---
+
+## 5. Indie Hackers Story Post
+
+👉 **[Post on Indie Hackers](https://www.indiehackers.com/new-post)**
+
+**Title:**
+> Why I built a FastAPI micro-SaaS boilerplate instead of another Next.js starter
+
+**Body:**
+```text
+Every week, another Next.js boilerplate launches. But as a Python developer building AI APIs and data utilities, Next.js was the wrong tool for the job.
+
+I needed:
+1. Native access to Python AI libraries without Node wrappers.
+2. Merchant of Record billing so I don't have to deal with European VAT and international tax filings.
+3. Hashed API keys for developers calling my service.
+
+So I built PyLaunchpad. It has been built and tested with 19 automated tests and includes Docker Compose with automatic Caddy TLS.
+
+Check it out and test the live demo: https://lorthris.github.io/pylaunchpad/demo.html
+```

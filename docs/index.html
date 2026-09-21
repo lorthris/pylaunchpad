@@ -21,37 +21,59 @@
   <meta name="twitter:description" content="Turnkey Polar.sh MoR billing, JWT auth, and Docker deployment for Python builders.">
   <meta name="twitter:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
 
-  <!-- Structured Data (JSON-LD) -->
+  <!-- Structured Data: SoftwareApplication, Product & FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Product",
-    "name": "PyLaunchpad Pro",
-    "image": "https://lorthris.github.io/pylaunchpad/preview.png",
-    "description": "Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh Merchant of Record billing, JWT authentication, and Docker deployment.",
-    "brand": {
-      "@type": "Brand",
-      "name": "PyLaunchpad"
-    },
-    "category": "Developer Tools",
-    "offers": [
+    "@graph": [
       {
-        "@type": "Offer",
-        "name": "Developer Licence (USD)",
-        "price": "29.00",
-        "priceCurrency": "USD",
-        "priceValidUntil": "2027-12-31",
-        "availability": "https://schema.org/InStock",
-        "url": "https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+        "@type": "SoftwareApplication",
+        "@id": "https://lorthris.github.io/pylaunchpad/#software",
+        "name": "PyLaunchpad Pro",
+        "applicationCategory": "DeveloperApplication",
+        "operatingSystem": "Cross-platform",
+        "programmingLanguage": "Python",
+        "image": "https://lorthris.github.io/pylaunchpad/preview.png",
+        "description": "Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh Merchant of Record billing, JWT authentication, and Docker deployment.",
+        "offers": {
+          "@type": "Offer",
+          "name": "Developer Licence",
+          "price": "29.00",
+          "priceCurrency": "USD",
+          "priceValidUntil": "2027-12-31",
+          "availability": "https://schema.org/InStock",
+          "url": "https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+        }
       },
       {
-        "@type": "Offer",
-        "name": "Developer Licence (AUD)",
-        "price": "45.00",
-        "priceCurrency": "AUD",
-        "priceValidUntil": "2027-12-31",
-        "availability": "https://schema.org/InStock",
-        "url": "https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+        "@type": "FAQPage",
+        "@id": "https://lorthris.github.io/pylaunchpad/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "Why use FastAPI instead of Next.js for micro-SaaS?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "FastAPI provides direct native access to Python AI and data science libraries without JavaScript bridge latency, while compiling down to a single Docker container with sub-50ms page loads."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What is a Merchant of Record and why Polar.sh?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Polar.sh acts as the Merchant of Record, legally calculating, collecting, and remitting international sales tax, EU VAT, and Australian GST, depositing net AUD funds directly into your bank account."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "How does digital delivery and license key validation work?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Purchases on Polar automatically provision downloadable release archives and issue unique PYLP license keys, verifiable via PyLaunchpad's built-in REST API and CLI tool."
+            }
+          }
+        ]
       }
     ]
   }
@@ -70,8 +92,9 @@
       <nav class="links-group">
         <a href="#features">Features</a>
         <a href="#architecture">Architecture</a>
-        <a href="docs.html">Documentation</a>
-        <a href="demo.html">Live Demo</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo.html">Demo</a>
+        <a href="vs-nextjs.html">vs Next.js</a>
         <a href="#pricing" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem;">Get Starter Kit</a>
       </nav>
     </div>
@@ -192,7 +215,7 @@ $ pytest -v tests/</code></pre>
           <li><span class="check">&check;</span> Responsive dark-mode dashboard and landing views</li>
           <li><span class="check">&check;</span> Production Dockerfile &amp; Caddy automatic HTTPS stack</li>
           <li><span class="check">&check;</span> Polar License Key engine with automated validation API</li>
-          <li><span class="check">&check;</span> 100% automated test suite with pytest (19 tests)</li>
+          <li><span class="check">&check;</span> 100% automated test suite with pytest (25 tests)</li>
           <li><span class="check">&check;</span> Perpetual commercial licence (unlimited projects)</li>
         </ul>
 
@@ -219,10 +242,13 @@ $ pytest -v tests/</code></pre>
   <footer class="page-footer">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
       <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
-      <div style="display: flex; gap: 1.5rem; font-size: 0.9rem;">
+      <div style="display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap;">
         <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
-        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Documentation</a>
-        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Interactive Demo</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Docs</a>
+        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Demo</a>
+        <a href="vs-nextjs.html" style="color: var(--text-dim); text-decoration: none;">vs Next.js</a>
+        <a href="fastapi-polar-guide.html" style="color: var(--text-dim); text-decoration: none;">Polar Guide</a>
+        <a href="ai-micro-saas-guide.html" style="color: var(--text-dim); text-decoration: none;">AI SaaS Guide</a>
         <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms & Privacy</a>
         <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
       </div>

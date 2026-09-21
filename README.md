@@ -5,7 +5,7 @@ Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%2B-red.svg)](https://www.sqlalchemy.org/)
-[![Tests](https://img.shields.io/badge/tests-19%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-25%20passing-brightgreen.svg)](tests/)
 [![Billing](https://img.shields.io/badge/billing-Polar.sh%20MoR-6366f1.svg)](https://polar.sh/)
 [![Live Demo](https://img.shields.io/badge/demo-interactive%20sandbox-blue.svg)](https://lorthris.github.io/pylaunchpad/demo.html)
 [![Licence](https://img.shields.io/badge/licence-Commercial%20Developer-emerald.svg)](distribution/LICENSE)
@@ -48,12 +48,13 @@ pylaunchpad/
 │   ├── schemas/            # Pydantic validation models
 │   ├── auth/               # Security, password hashing, JWT, and dependencies
 │   ├── billing/            # Polar.sh API client and webhook verification
+│   ├── marketing.py        # Marketing UTM tracking and automated SEO audit tooling
 │   ├── tasks/              # In-process asynchronous task worker
 │   ├── api/v1/             # Versioned REST API routes
 │   ├── static/             # Dark-mode stylesheets and client controllers
 │   └── templates/          # Jinja2 dashboard and landing views
 ├── docs/                   # Static showcase and documentation (GitHub Pages)
-├── tests/                  # Automated test suite (19 unit and integration tests)
+├── tests/                  # Automated test suite (25 unit and integration tests)
 ├── distribution/           # Release builder and commercial license
 ├── Dockerfile              # Minimal multi-stage production image
 ├── docker-compose.yml      # Complete stack with Caddy automatic TLS
@@ -119,6 +120,7 @@ Test coverage includes:
 - Order provisioning and subscription lifecycle events.
 - Developer API key creation, hashed validation, and revocation.
 - Polar.sh License Key automated validation and entitlement verification.
+- Search engine optimization compliance auditing and UTM tracking.
 - Asynchronous task worker job execution.
 
 ---

@@ -1,3 +1,3 @@
-"""PyLaunchpad: Production-grade FastAPI micro-SaaS and AI API starter kit."""
+"""PyLaunchpad Pro - Production FastAPI Starter Kit."""
 
-__version__ = "1.0.2"
+__version__ = "1.0.3"

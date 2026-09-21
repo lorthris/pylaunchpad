@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>FastAPI + Polar.sh Integration Guide: Turnkey Merchant of Record Billing</title>
+  <meta name="description" content="Step-by-step engineering guide to integrating Polar.sh Merchant of Record billing into FastAPI. Covers Standard Webhook HMAC-SHA256 signature verification and license keys.">
+  <link rel="canonical" href="https://lorthris.github.io/pylaunchpad/fastapi-polar-guide.html">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lorthris.github.io/pylaunchpad/fastapi-polar-guide.html">
+  <meta property="og:title" content="FastAPI + Polar.sh Integration Guide: Turnkey MoR Billing">
+  <meta property="og:description" content="Learn how to verify Polar.sh webhooks with HMAC-SHA256, handle order fulfillment, and validate software license keys in FastAPI.">
+  <meta property="og:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="FastAPI + Polar.sh MoR Billing Guide">
+  <meta name="twitter:description" content="Turnkey Merchant of Record billing for Python apps: webhooks, checkout sessions, and license keys.">
+  <meta name="twitter:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+
+  <!-- Structured Data: HowTo & TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "HowTo",
+    "name": "How to Integrate Polar.sh Merchant of Record Billing with FastAPI",
+    "description": "Production tutorial demonstrating how to configure Polar.sh webhook signature verification, checkout sessions, and license validation in Python FastAPI.",
+    "step": [
+      {
+        "@type": "HowToStep",
+        "name": "Verify Standard Webhook HMAC-SHA256 Signatures",
+        "text": "Extract webhook-id, webhook-timestamp, and webhook-signature headers, verify the payload against your secret, and enforce a 5-minute replay attack tolerance."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Process Order and Subscription Events",
+        "text": "Parse order.created and subscription.updated event types in FastAPI endpoint handlers to grant entitlements in SQLAlchemy database models."
+      },
+      {
+        "@type": "HowToStep",
+        "name": "Validate Polar License Keys",
+        "text": "Query Polar API endpoint /v1/license-keys/validate to verify user license keys and activate software seats."
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .guide-wrap {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+    .guide-wrap h1 {
+      font-size: 2.35rem;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .guide-wrap .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .guide-wrap h2 {
+      font-size: 1.6rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .guide-wrap h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #93c5fd;
+    }
+    .guide-wrap p, .guide-wrap li {
+      color: var(--text-dim);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+    .guide-wrap ul, .guide-wrap ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .step-badge {
+      display: inline-block;
+      background: #1e3a8a;
+      color: #60a5fa;
+      font-weight: 700;
+      font-size: 0.8rem;
+      padding: 0.2rem 0.6rem;
+      border-radius: 4px;
+      margin-right: 0.5rem;
+      vertical-align: middle;
+    }
+    .callout-box {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-link">
+        <span class="brand-badge">PyLP</span>
+        <span>PyLaunchpad</span>
+      </a>
+      <nav class="links-group">
+        <a href="index.html">Overview</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo.html">Demo</a>
+        <a href="vs-nextjs.html">vs Next.js</a>
+        <a href="fastapi-polar-guide.html" style="color: var(--blue);">Polar Guide</a>
+        <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem;" target="_blank" rel="noopener">Get Pro ($29)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container guide-wrap">
+    <div style="font-size: 0.85rem; color: var(--blue); font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem;">Engineering Tutorial</div>
+    <h1>FastAPI + Polar.sh Integration Guide</h1>
+    <div class="subtitle">
+      A step-by-step production blueprint for integrating Polar.sh Merchant of Record billing, HMAC-SHA256 webhook security, and software license key validation in Python.
+    </div>
+
+    <p>
+      Selling digital software or paid APIs globally requires handling sales tax across international jurisdictions. <a href="https://polar.sh" target="_blank" rel="noopener" style="color: var(--blue);">Polar.sh</a> solves this by operating as a Merchant of Record (MoR), calculating and remitting taxes automatically. This tutorial explains how to securely connect Polar with FastAPI.
+    </p>
+
+    <h2><span class="step-badge">STEP 1</span> Verifying Standard Webhook Signatures</h2>
+    <p>
+      Polar signs webhook requests using the <strong>Standard Webhooks</strong> specification (HMAC-SHA256). Every webhook request includes three required headers:
+    </p>
+    <ul>
+      <li><code>webhook-id</code>: Unique message identifier.</li>
+      <li><code>webhook-timestamp</code>: UNIX epoch timestamp when the message was sent.</li>
+      <li><code>webhook-signature</code>: Base64-encoded HMAC-SHA256 signatures prefixed with <code>v1,</code>.</li>
+    </ul>
+
+    <p>Here is the production implementation from PyLaunchpad:</p>
+    <pre class="code-window"><code>import base64
+import hmac
+import hashlib
+import time
+
+def verify_polar_webhook(payload: bytes, headers: dict, secret: str) -> bool:
+    """Cryptographically verify Polar.sh webhook signature with replay protection."""
+    msg_id = headers.get("webhook-id")
+    msg_timestamp = headers.get("webhook-timestamp")
+    msg_signature = headers.get("webhook-signature")
+
+    if not (msg_id and msg_timestamp and msg_signature):
+        return False
+
+    # 1. Enforce 5-minute replay attack tolerance
+    try:
+        ts = int(msg_timestamp)
+        if abs(time.time() - ts) > 300:
+            return False
+    except ValueError:
+        return False
+
+    # 2. Decode Polar webhook secret
+    raw_secret = secret.replace("whsec_", "")
+    key = base64.b64decode(raw_secret)
+
+    # 3. Compute HMAC-SHA256 over message envelope
+    signed_payload = f"{msg_id}.{msg_timestamp}.".encode("utf-8") + payload
+    expected_hmac = hmac.new(key, signed_payload, hashlib.sha256).digest()
+    expected_sig = base64.b64encode(expected_hmac).decode("utf-8")
+
+    # 4. Timing-safe comparison across signatures
+    signatures = [
+        s.split(",", 1)[1] if "," in s else s
+        for s in msg_signature.split(" ")
+    ]
+    return any(hmac.compare_digest(expected_sig, s) for s in signatures)</code></pre>
+
+    <h2><span class="step-badge">STEP 2</span> FastAPI Webhook Endpoint Router</h2>
+    <p>
+      Next, mount an async endpoint in FastAPI that receives the raw request body and verifies the signature before processing database transactions:
+    </p>
+    <pre class="code-window"><code>from fastapi import APIRouter, Request, HTTPException, status
+import json
+
+router = APIRouter(prefix="/api/v1/billing", tags=["Billing"])
+
+@router.post("/webhook")
+async def handle_polar_webhook(request: Request):
+    payload = await request.body()
+    headers = dict(request.headers)
+
+    if not verify_polar_webhook(payload, headers, settings.POLAR_WEBHOOK_SECRET):
+        raise HTTPException(
+            status_code=status.HTTP_400_BAD_REQUEST,
+            detail="Invalid webhook signature or timestamp expired",
+        )
+
+    event = json.loads(payload.decode("utf-8"))
+    event_type = event.get("type")
+
+    if event_type == "order.created":
+        order_data = event.get("data", {})
+        customer_email = order_data.get("customer", {}).get("email")
+        # Fulfill customer order in SQLAlchemy database
+        await fulfill_order(customer_email, order_data)
+
+    elif event_type == "subscription.updated":
+        # Handle subscription lifecycle
+        await update_subscription(event.get("data", {}))
+
+    return {"status": "received"}</code></pre>
+
+    <h2><span class="step-badge">STEP 3</span> License Key Entitlement Engine</h2>
+    <p>
+      If you sell desktop apps, CLI tools, or on-premise software, Polar offers an automated license key benefit. Upon purchase, customers receive a unique key (e.g. <code>PYLP-XXXX-XXXX-XXXX</code>).
+    </p>
+    <p>Validate license keys on the client or server with Polar's validation endpoint:</p>
+    <pre class="code-window"><code>import httpx
+
+async def validate_polar_license(key: str, org_id: str) -> bool:
+    """Validate customer license key with Polar API."""
+    async with httpx.AsyncClient(timeout=10.0) as client:
+        r = await client.post(
+            "https://api.polar.sh/v1/license-keys/validate",
+            json={"key": key.strip(), "organization_id": org_id},
+        )
+        if r.status_code == 200 and r.json().get("status") == "granted":
+            return True
+        return False</code></pre>
+
+    <div class="callout-box">
+      <h3 style="margin-top: 0;">Get the Production Implementation Pre-Wired</h3>
+      <p style="margin-bottom: 1rem;">
+        Do not spend 30 hours writing webhook validation, replay mitigation, and database models from scratch. <strong>PyLaunchpad Pro</strong> includes all of this pre-built and verified with 19 automated tests.
+      </p>
+      <a
+        href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+        class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
+        style="display: inline-block; padding: 0.65rem 1.5rem; font-size: 0.95rem;"
+      >
+        Get PyLaunchpad Pro ($29 USD) &rarr;
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
+      <div style="display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Docs</a>
+        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Demo</a>
+        <a href="vs-nextjs.html" style="color: var(--text-dim); text-decoration: none;">vs Next.js</a>
+        <a href="fastapi-polar-guide.html" style="color: var(--blue); text-decoration: none;">Polar Guide</a>
+        <a href="ai-micro-saas-guide.html" style="color: var(--text-dim); text-decoration: none;">AI SaaS Guide</a>
+        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms &amp; Privacy</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Polar Embed Script -->
+  <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
+</body>
+</html>

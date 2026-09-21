@@ -12,8 +12,26 @@
   <meta property="og:title" content="Documentation - PyLaunchpad">
   <meta property="og:description" content="Comprehensive developer documentation for PyLaunchpad FastAPI micro-SaaS starter kit.">
   <meta property="og:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+  <!-- Structured Data: TechArticle -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "TechArticle",
+    "headline": "PyLaunchpad Developer Documentation",
+    "description": "Comprehensive engineering documentation for PyLaunchpad FastAPI micro-SaaS starter kit with Polar.sh billing, JWT auth, and Docker deployment.",
+    "image": "https://lorthris.github.io/pylaunchpad/preview.png",
+    "author": {
+      "@type": "Organization",
+      "name": "PyLaunchpad"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "PyLaunchpad",
+      "url": "https://lorthris.github.io/pylaunchpad/"
+    }
+  }
+  </script>
+
   <link rel="stylesheet" href="style.css">
   <style>
     .docs-layout {
@@ -100,6 +118,10 @@
         <li><strong>Deployment</strong></li>
         <li><a href="#docker">Docker &amp; Compose</a></li>
         <li><a href="#production">Production Checklist</a></li>
+        <li><strong>Architecture Guides</strong></li>
+        <li><a href="vs-nextjs.html">FastAPI vs Next.js</a></li>
+        <li><a href="fastapi-polar-guide.html">Polar.sh MoR Guide</a></li>
+        <li><a href="ai-micro-saas-guide.html">AI Micro-SaaS Blueprint</a></li>
       </ul>
     </aside>
 
@@ -242,10 +264,13 @@ docker compose up -d --build</code></pre>
   <footer class="page-footer">
     <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
       <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
-      <div style="display: flex; gap: 1.5rem; font-size: 0.9rem;">
+      <div style="display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap;">
         <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
-        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Documentation</a>
-        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Interactive Demo</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Docs</a>
+        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Demo</a>
+        <a href="vs-nextjs.html" style="color: var(--text-dim); text-decoration: none;">vs Next.js</a>
+        <a href="fastapi-polar-guide.html" style="color: var(--text-dim); text-decoration: none;">Polar Guide</a>
+        <a href="ai-micro-saas-guide.html" style="color: var(--text-dim); text-decoration: none;">AI SaaS Guide</a>
         <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms & Privacy</a>
         <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
       </div>

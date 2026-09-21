@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Building a Production AI Micro-SaaS in Python (2026 Engineering Guide)</title>
+  <meta name="description" content="Complete engineering blueprint for building and monetising an AI micro-SaaS with FastAPI, async workers, SHA-256 API key auth, and Polar.sh MoR billing.">
+  <link rel="canonical" href="https://lorthris.github.io/pylaunchpad/ai-micro-saas-guide.html">
+
+  <!-- OpenGraph -->
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://lorthris.github.io/pylaunchpad/ai-micro-saas-guide.html">
+  <meta property="og:title" content="Building an AI Micro-SaaS in Python: 2026 Guide">
+  <meta property="og:description" content="Learn the core architecture required to build, secure, and sell a Python AI micro-SaaS or API service.">
+  <meta property="og:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building an AI Micro-SaaS in Python: 2026 Blueprint">
+  <meta name="twitter:description" content="Architecture, API keys, async background workers, and global billing for Python AI developers.">
+  <meta name="twitter:image" content="https://lorthris.github.io/pylaunchpad/preview.png">
+
+  <!-- Structured Data: TechArticle & FAQPage -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "TechArticle",
+        "headline": "Building a Production AI Micro-SaaS in Python: Complete 2026 Guide",
+        "description": "Architectural patterns for shipping paid AI APIs and micro-SaaS applications using FastAPI, async task workers, and Polar.sh billing.",
+        "image": "https://lorthris.github.io/pylaunchpad/preview.png",
+        "author": {
+          "@type": "Organization",
+          "name": "PyLaunchpad"
+        },
+        "publisher": {
+          "@type": "Organization",
+          "name": "PyLaunchpad",
+          "url": "https://lorthris.github.io/pylaunchpad/"
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "How do you protect expensive LLM APIs from abuse?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Issue SHA-256 hashed developer API keys with per-minute rate limits and credit balance checks enforced by FastAPI dependency injection middleware."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you need Redis or Celery for long-running AI jobs?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "For micro-SaaS handling under 100,000 requests per day, an in-process asynchronous task worker using asyncio.Queue eliminates the operational overhead of running separate Redis and Celery containers."
+            }
+          }
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .article-wrap {
+      max-width: 840px;
+      margin: 0 auto;
+      padding: 3.5rem 1.5rem 5rem;
+    }
+    .article-wrap h1 {
+      font-size: 2.35rem;
+      line-height: 1.25;
+      margin-bottom: 1rem;
+    }
+    .article-wrap .subtitle {
+      font-size: 1.15rem;
+      color: var(--text-dim);
+      margin-bottom: 2.5rem;
+      line-height: 1.6;
+    }
+    .article-wrap h2 {
+      font-size: 1.6rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .article-wrap h3 {
+      font-size: 1.2rem;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+      color: #93c5fd;
+    }
+    .article-wrap p, .article-wrap li {
+      color: var(--text-dim);
+      font-size: 1rem;
+      line-height: 1.75;
+      margin-bottom: 1.2rem;
+    }
+    .article-wrap ul, .article-wrap ol {
+      margin-left: 1.5rem;
+      margin-bottom: 1.5rem;
+    }
+    .callout-box {
+      background: rgba(59, 130, 246, 0.08);
+      border: 1px solid rgba(59, 130, 246, 0.25);
+      border-radius: 8px;
+      padding: 1.5rem;
+      margin: 2rem 0;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-link">
+        <span class="brand-badge">PyLP</span>
+        <span>PyLaunchpad</span>
+      </a>
+      <nav class="links-group">
+        <a href="index.html">Overview</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo.html">Demo</a>
+        <a href="vs-nextjs.html">vs Next.js</a>
+        <a href="fastapi-polar-guide.html">Polar Guide</a>
+        <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem;" target="_blank" rel="noopener">Get Pro ($29)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container article-wrap">
+    <div style="font-size: 0.85rem; color: var(--blue); font-weight: 600; text-transform: uppercase; margin-bottom: 0.5rem;">Production Playbook</div>
+    <h1>Building a Production AI Micro-SaaS in Python</h1>
+    <div class="subtitle">
+      The complete engineering architecture for shipping profitable AI APIs, data utilities, and developer services with zero infrastructure bloat.
+    </div>
+
+    <p>
+      The barrier to creating useful AI functionality has never been lower. However, turning a Python script or Jupyter notebook into a <strong>production SaaS that charges customers</strong> requires answering four critical engineering questions:
+    </p>
+    <ol>
+      <li>How do you authenticate and rate-limit programmatic API consumers?</li>
+      <li>How do you handle slow LLM generation requests without blocking the web event loop?</li>
+      <li>How do you collect recurring subscription revenue or one-off license fees legally across global tax jurisdictions?</li>
+      <li>How do you package and deploy the entire stack reliably with HTTPS in production?</li>
+    </ol>
+
+    <h2>1. Dual Authentication: Web Sessions vs Developer API Keys</h2>
+    <p>
+      An AI micro-SaaS typically serves two distinct user personas: browser-based dashboard users managing billing, and external developers or automated scripts calling your API endpoints.
+    </p>
+    <p>
+      PyLaunchpad solves this by decoupling human session authentication from machine API access:
+    </p>
+    <ul>
+      <li><strong>Bearer JWT Tokens:</strong> Issued upon email/password login, stored in browser cookies or Authorization headers, with automatic expiration (e.g. 7 days).</li>
+      <li><strong>SHA-256 Hashed API Keys:</strong> Developers generate API keys in their dashboard (prefixed with <code>pylp_live_...</code>). The plaintext key is shown only once; the database stores only the cryptographic SHA-256 hash. Every request verifies the hash in constant time and tracks request timestamps for sliding-window rate limiting.</li>
+    </ul>
+
+    <h2>2. Handling Slow LLM Requests Without Celery or Redis</h2>
+    <p>
+      Large Language Model calls (e.g. OpenAI GPT-4o, Anthropic Claude, image generation models) often take between 3 and 15 seconds to return a response. If executed synchronously inside a standard web handler, these calls block worker threads and quickly cause server connection exhaustion.
+    </p>
+    <p>
+      Traditional advice recommends configuring Celery with a Redis message broker. While effective for massive enterprise scale, running Celery and Redis doubles your container memory footprint and introduces significant DevOps failure points.
+    </p>
+    <p>
+      PyLaunchpad utilizes an <strong>in-process asynchronous worker queue</strong> powered by Python's native <code>asyncio.Queue</code>. Jobs are submitted from HTTP endpoints without blocking, retried automatically with exponential backoff on transient network failures, and executed cleanly within the existing ASGI process.
+    </p>
+
+    <h2>3. Turnkey Monetisation with Polar.sh Merchant of Record</h2>
+    <p>
+      The greatest compliance trap for indie builders is international sales tax. Selling digital software directly via standard Stripe Checkout makes the founder personally liable for collecting and filing tax returns in every customer's jurisdiction.
+    </p>
+    <p>
+      Integrating <strong>Polar.sh as a Merchant of Record (MoR)</strong> eliminates this liability. Polar handles:
+    </p>
+    <ul>
+      <li>Automatic tax rate calculation (EU VAT, Australian GST, US sales taxes).</li>
+      <li>Tax remittance and quarterly filings with international revenue agencies.</li>
+      <li>PCI-compliant Stripe checkout sessions and localized payment methods.</li>
+      <li>Direct automated bank transfers into your bank account.</li>
+    </ul>
+
+    <div class="callout-box">
+      <h3 style="margin-top: 0;">Launch Your AI Micro-SaaS Today</h3>
+      <p style="margin-bottom: 1rem;">
+        PyLaunchpad Pro includes the complete production FastAPI boilerplate, turnkey Polar billing, dual auth, async background worker, and Docker Caddy TLS stack.
+      </p>
+      <a
+        href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+        class="btn btn-primary"
+        target="_blank"
+        rel="noopener"
+        style="display: inline-block; padding: 0.65rem 1.5rem; font-size: 0.95rem;"
+      >
+        Get PyLaunchpad Pro ($29 USD) &rarr;
+      </a>
+    </div>
+  </main>
+
+  <!-- Footer -->
+  <footer class="page-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
+      <div style="display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Docs</a>
+        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Demo</a>
+        <a href="vs-nextjs.html" style="color: var(--text-dim); text-decoration: none;">vs Next.js</a>
+        <a href="fastapi-polar-guide.html" style="color: var(--text-dim); text-decoration: none;">Polar Guide</a>
+        <a href="ai-micro-saas-guide.html" style="color: var(--blue); text-decoration: none;">AI SaaS Guide</a>
+        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms &amp; Privacy</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Polar Embed Script -->
+  <script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
+</body>
+</html>
