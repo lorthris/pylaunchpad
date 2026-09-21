@@ -115,6 +115,6 @@ Test coverage includes:
 
 PyLaunchpad Pro is available for purchase as a commercial developer licence with perpetual rights and free updates.
 
-- **Purchase URL:** [https://sandbox.polar.sh/products/pylaunchpad-pro](https://sandbox.polar.sh/products/pylaunchpad-pro)
+- **Purchase URL:** [https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk](https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk)
 - **Launch Discount Code:** `LAUNCH20` (20% off)
 - **Licence Terms:** See [`distribution/LICENSE`](distribution/LICENSE).

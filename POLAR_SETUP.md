@@ -58,6 +58,20 @@ This document contains the step-by-step human action checklist for James to link
 
 ---
 
+## Production Configuration Details (Live & Active)
+
+| Component | Identifier / Value | Status |
+| :--- | :--- | :--- |
+| **Organization** | `3a277a0f-0b25-43e0-af89-0eb74ccf069d` (`lorthris`) | Connected |
+| **Product** | `1c3ca7da-f28a-4c22-ac64-101de4c90ff0` (`PyLaunchpad Pro - Developer License`) | Published |
+| **AUD Price** | $45.00 AUD (`3c229542-ebc0-427b-b71b-5b8cb9465eb8`) | Active |
+| **USD Price** | $29.00 USD (`6fd15771-cd90-4bf1-b242-d8789a46e395`) | Active |
+| **Delivery Benefit** | `3632e7b9-b522-4366-8694-53ae1fa56ba0` (`pylaunchpad-pro-v1.0.0.zip`) | Linked |
+| **Discount Code** | `LAUNCH20` (20% off, ID `db8a4c67-7416-48d2-8a64-145b1f76b113`) | Active |
+| **Live Checkout Link** | [https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk](https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk) | Verified (HTTP 200) |
+
+---
+
 ## Payout Schedule & Funds Collection
 
 - **Settlement Period:** Polar applies a standard 7-day settlement window for new transactions to cover any potential dispute periods.
