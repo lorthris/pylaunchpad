@@ -78,9 +78,9 @@ def create_app() -> FastAPI:
     @app.get("/", tags=["Web Pages"])
     async def index_page(request: Request):
         return templates.TemplateResponse(
-            "index.html",
-            {
-                "request": request,
+            request=request,
+            name="index.html",
+            context={
                 "app_name": settings.APP_NAME,
                 "version": settings.APP_VERSION,
                 "polar_env": settings.POLAR_ENVIRONMENT,
@@ -90,22 +90,25 @@ def create_app() -> FastAPI:
     @app.get("/login", tags=["Web Pages"])
     async def login_page(request: Request):
         return templates.TemplateResponse(
-            "login.html",
-            {"request": request, "app_name": settings.APP_NAME},
+            request=request,
+            name="login.html",
+            context={"app_name": settings.APP_NAME},
         )
 
     @app.get("/register", tags=["Web Pages"])
     async def register_page(request: Request):
         return templates.TemplateResponse(
-            "register.html",
-            {"request": request, "app_name": settings.APP_NAME},
+            request=request,
+            name="register.html",
+            context={"app_name": settings.APP_NAME},
         )
 
     @app.get("/dashboard", tags=["Web Pages"])
     async def dashboard_page(request: Request):
         return templates.TemplateResponse(
-            "dashboard.html",
-            {"request": request, "app_name": settings.APP_NAME},
+            request=request,
+            name="dashboard.html",
+            context={"app_name": settings.APP_NAME},
         )
 
     return app
