@@ -12,6 +12,8 @@ from pylaunchpad.schemas.billing import (
     CheckoutSessionResponse,
     OrderRead,
     SubscriptionRead,
+    LicenseKeyValidateRequest,
+    LicenseKeyValidateResponse,
 )
 from pylaunchpad.auth.dependencies import get_current_active_user, get_current_user
 from pylaunchpad.billing.polar import polar_client
@@ -82,3 +84,15 @@ def list_user_subscriptions(
 ) -> List[Subscription]:
     """Retrieve active subscriptions for current user."""
     return db.query(Subscription).filter(Subscription.user_id == current_user.id).all()
+
+
+@router.post("/license/validate", response_model=LicenseKeyValidateResponse)
+async def validate_license(payload: LicenseKeyValidateRequest) -> LicenseKeyValidateResponse:
+    """Validate a Polar license key for product entitlement."""
+    result = await polar_client.validate_license_key(payload.key)
+    return LicenseKeyValidateResponse(
+        valid=result["valid"],
+        status=result["status"],
+        message=result.get("message"),
+        data=result.get("data"),
+    )

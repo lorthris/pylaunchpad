@@ -98,5 +98,34 @@ class PolarClient:
 
         return None
 
+    async def validate_license_key(self, key: str) -> Dict[str, Any]:
+        """Validate a Polar license key for product entitlement."""
+        if not self.organization_id:
+            return {"valid": False, "status": "unconfigured", "message": "Polar organization ID not configured"}
+
+        async with httpx.AsyncClient(timeout=10.0) as client:
+            try:
+                response = await client.post(
+                    f"{self.base_url}/license-keys/validate",
+                    json={"key": key.strip(), "organization_id": self.organization_id},
+                    headers=self._headers(),
+                )
+                if response.status_code == 200:
+                    data = response.json()
+                    status_str = data.get("status", "granted")
+                    is_valid = status_str == "granted"
+                    return {
+                        "valid": is_valid,
+                        "status": status_str,
+                        "message": "License key is valid and active" if is_valid else f"License key status: {status_str}",
+                        "data": data,
+                    }
+                if response.status_code == 404:
+                    return {"valid": False, "status": "not_found", "message": "License key was not found"}
+                return {"valid": False, "status": "error", "message": response.text}
+            except Exception as exc:
+                logger.error("Failed to validate license key with Polar API: %s", exc)
+                return {"valid": False, "status": "error", "message": str(exc)}
+
 
 polar_client = PolarClient()

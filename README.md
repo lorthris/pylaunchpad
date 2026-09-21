@@ -5,7 +5,7 @@ Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%2B-red.svg)](https://www.sqlalchemy.org/)
-[![Tests](https://img.shields.io/badge/tests-13%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-14%20passing-brightgreen.svg)](tests/)
 [![Billing](https://img.shields.io/badge/billing-Polar.sh%20MoR-6366f1.svg)](https://polar.sh/)
 [![Licence](https://img.shields.io/badge/licence-Commercial%20Developer-emerald.svg)](distribution/LICENSE)
 
@@ -113,6 +113,7 @@ Test coverage includes:
 - Webhook replay attack prevention (timestamp drift verification).
 - Order provisioning and subscription lifecycle events.
 - Developer API key creation, hashed validation, and revocation.
+- Polar.sh License Key automated validation and entitlement verification.
 - Asynchronous task worker job execution.
 
 ---

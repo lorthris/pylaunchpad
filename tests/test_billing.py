@@ -147,3 +147,40 @@ def test_subscription_lifecycle_webhook(client, db_session):
 
     db_session.refresh(sub)
     assert sub.status == "canceled"
+
+
+def test_validate_license_endpoint(client, monkeypatch):
+    """Verify license key validation API endpoint."""
+    async def mock_validate_success(key: str):
+        return {
+            "valid": True,
+            "status": "granted",
+            "message": "License key is valid and active",
+            "data": {"id": "lic_123", "status": "granted"},
+        }
+
+    async def mock_validate_invalid(key: str):
+        return {
+            "valid": False,
+            "status": "not_found",
+            "message": "License key was not found",
+            "data": None,
+        }
+
+    from pylaunchpad.api.v1.billing import polar_client
+
+    # Test valid key
+    monkeypatch.setattr(polar_client, "validate_license_key", mock_validate_success)
+    res = client.post("/api/v1/billing/license/validate", json={"key": "PYLP-VALID-KEY"})
+    assert res.status_code == 200
+    data = res.json()
+    assert data["valid"] is True
+    assert data["status"] == "granted"
+
+    # Test invalid key
+    monkeypatch.setattr(polar_client, "validate_license_key", mock_validate_invalid)
+    res_invalid = client.post("/api/v1/billing/license/validate", json={"key": "PYLP-INVALID-KEY"})
+    assert res_invalid.status_code == 200
+    data_invalid = res_invalid.json()
+    assert data_invalid["valid"] is False
+    assert data_invalid["status"] == "not_found"

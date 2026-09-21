@@ -167,6 +167,22 @@ POLAR_ENVIRONMENT=sandbox
         <p>
           When an <code>order.created</code> event arrives, PyLaunchpad automatically retrieves or provisions the user account and stores the purchase record in the database.
         </p>
+        <h3>3. License Key Engine &amp; Validation</h3>
+        <p>
+          PyLaunchpad includes turnkey Polar License Key validation out of the box. Validate customer license keys programmatically or via REST:
+        </p>
+        <div class="code-window">
+<span style="color: #7ee787;"># Direct Python validation</span>
+from pylaunchpad.billing.polar import polar_client
+
+result = await polar_client.validate_license_key("PYLP-XXXX-XXXX-XXXX")
+if result["valid"]:
+    print("Entitlement active! Status:", result["status"])
+
+<span style="color: #7ee787;"># Or via REST API: POST /api/v1/billing/license/validate</span>
+# Request: {"key": "PYLP-XXXX-XXXX-XXXX"}
+# Response: {"valid": true, "status": "granted", "message": "License key is valid and active"}
+        </div>
       </section>
 
       <section id="auth">

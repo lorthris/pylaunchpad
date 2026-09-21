@@ -49,7 +49,7 @@ I put together PyLaunchpad to give Python developers a clean, production-ready f
 2. Dual authentication: Bearer tokens for user sessions + hashed API keys for developers calling your API.
 3. Lightweight background task queue: Non-blocking async queue for sending transactional emails or handling AI API calls without needing Redis.
 4. Docker Compose with Caddy: Automatic Let's Encrypt / Cloudflare HTTPS reverse proxy.
-5. Automated test suite: 13 tests covering auth, webhooks, and API key lifecycles with pytest.
+5. Automated test suite: 14 tests covering auth, webhooks, license key validation, and API key lifecycles with pytest.
 
 The showcase and docs are live at https://lorthris.github.io/pylaunchpad/
 
@@ -78,8 +78,15 @@ Code is available under a commercial developer licence with 20% off for launch u
 > What's inside:
 > ⚡ FastAPI 0.110+ & SQLAlchemy 2.0
 > 💳 Polar.sh checkout & webhook verification
+> 🔑 Automated Polar license key engine
 > 🔐 JWT tokens & hashed developer API keys
 > 🗄️ SQLite local / PostgreSQL production
 > 🐳 Docker Compose & Caddy automated TLS
 >
 > Live showcase: https://lorthris.github.io/pylaunchpad/
+
+**Tweet 4:**
+> Launch special: Get 20% off with promo code LAUNCH20 ($23.20 USD)
+>
+> Instant download & perpetual developer licence:
+> https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk

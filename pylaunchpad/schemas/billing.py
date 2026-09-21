@@ -48,3 +48,16 @@ class PolarWebhookPayload(BaseModel):
     """Incoming Polar.sh webhook event envelope."""
     type: str
     data: Dict[str, Any]
+
+
+class LicenseKeyValidateRequest(BaseModel):
+    """Request payload for validating a Polar license key."""
+    key: str
+
+
+class LicenseKeyValidateResponse(BaseModel):
+    """Response returned when validating a Polar license key."""
+    valid: bool
+    status: str
+    message: Optional[str] = None
+    data: Optional[Dict[str, Any]] = None
