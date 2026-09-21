@@ -92,7 +92,7 @@ def build_release_package() -> Path:
     manifest_path = DIST_DIR / f"{PACKAGE_NAME}-manifest.json"
     manifest_path.write_text(json.dumps(manifest, indent=2), encoding="utf-8")
 
-    print(f"Build complete:")
+    print("Build complete:")
     print(f"  Archive:  {zip_path} ({manifest['compressed_bytes']:,} bytes)")
     print(f"  Files:    {file_count} files included")
     print(f"  SHA-256:  {digest}")

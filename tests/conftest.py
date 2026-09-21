@@ -14,8 +14,8 @@ settings.ENVIRONMENT = "testing"
 settings.SECRET_KEY = "test_secret_key_for_deterministic_testing_purposes"
 settings.POLAR_WEBHOOK_SECRET = "whsec_testsecret1234567890abcdefghijklmnopqrstuvwxyz"
 
-from pylaunchpad.database import Base, get_db
-from pylaunchpad.app import app
+from pylaunchpad.database import Base, get_db  # noqa: E402
+from pylaunchpad.app import app  # noqa: E402
 
 # In-memory SQLite engine using StaticPool to share connection across threads
 test_engine = create_engine(
