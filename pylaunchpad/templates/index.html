@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="container">
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-pill">⚡ Production Ready &bull; Python 3.10+ &bull; Polar.sh MoR Billing</div>
+    <h1>Ship Your Python Micro-SaaS <span>in Hours, Not Weeks.</span></h1>
+    <p>
+      The complete, production-grade FastAPI starter kit designed for Python developers, data scientists, and AI builders. Turnkey Merchant of Record billing, authentication, database migrations, and Docker deployment.
+    </p>
+    <div class="hero-actions">
+      <a href="#pricing" class="btn btn-primary">Get PyLaunchpad Pro &mdash; $29 USD</a>
+      <a href="/api/docs" target="_blank" rel="noopener" class="btn btn-secondary">Interactive Swagger Docs</a>
+    </div>
+  </section>
+
+  <!-- Key Pillars Grid -->
+  <section id="features">
+    <div class="grid-3">
+      <div class="card">
+        <div class="card-icon" style="color: #38bdf8;">💳</div>
+        <h3>Turnkey Polar.sh MoR Billing</h3>
+        <p>
+          Outsource global sales tax, EU VAT, and Australian GST completely. Includes pre-configured webhook verification, one-time checkouts, subscriptions, and customer portals.
+        </p>
+        <a href="#pricing" class="whole-card-link">View Billing Features</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="color: #a78bfa;">🔐</div>
+        <h3>Authentication &amp; API Keys</h3>
+        <p>
+          JWT session tokens, PBKDF2 password hashing, and developer API key management with built-in rate limiting and usage timestamp tracking.
+        </p>
+        <a href="/login" class="whole-card-link">Explore Auth</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="color: #34d399;">🗄️</div>
+        <h3>Async SQLAlchemy 2.0</h3>
+        <p>
+          Declarative models, relationship mapping, and migrations. Runs instantly with zero-setup SQLite locally and scales seamlessly to PostgreSQL in production.
+        </p>
+        <a href="#architecture" class="whole-card-link">View Database Architecture</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="color: #fbbf24;">⚡</div>
+        <h3>Async Background Worker</h3>
+        <p>
+          Lightweight, non-blocking in-process job queue for handling emails, webhook notifications, and long-running AI API calls without external Celery or Redis bloat.
+        </p>
+        <a href="#architecture" class="whole-card-link">View Worker Architecture</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="color: #f43f5e;">🎨</div>
+        <h3>Dark Mode Dashboard</h3>
+        <p>
+          Pre-built customer dashboard, login, and registration pages. Loads in under 30 milliseconds with zero Node.js compilation or npm dependency chains.
+        </p>
+        <a href="/dashboard" class="whole-card-link">Open Dashboard</a>
+      </div>
+
+      <div class="card">
+        <div class="card-icon" style="color: #60a5fa;">🐳</div>
+        <h3>Production Docker &amp; Caddy</h3>
+        <p>
+          Hardened, minimal multi-stage Dockerfile and docker-compose configuration with Caddy reverse proxy for automated Cloudflare and Let's Encrypt TLS certificates.
+        </p>
+        <a href="#architecture" class="whole-card-link">View Docker Configuration</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- Architecture Overview -->
+  <section id="architecture" style="padding: 3rem 0;">
+    <h2 style="font-size: 2rem; margin-bottom: 1rem; text-align: center;">Clean, Modular Architecture</h2>
+    <p style="text-align: center; color: var(--text-secondary); max-width: 650px; margin: 0 auto 2rem;">
+      No convoluted abstractions or over-engineered design patterns. Pure standard library and modern FastAPI.
+    </p>
+
+    <div class="code-box">
+<span style="color: #7ee787;"># Quickstart: clone and run in under 60 seconds</span>
+$ git clone https://github.com/lorthris/pylaunchpad.git
+$ cd pylaunchpad
+$ python -m venv venv &amp;&amp; source venv/bin/activate
+$ pip install -e .
+$ uvicorn pylaunchpad.app:app --reload
+
+<span style="color: #7ee787;"># Run automated tests</span>
+$ pytest -v tests/
+    </div>
+  </section>
+
+  <!-- Pricing Section -->
+  <section id="pricing" class="pricing-section">
+    <div class="pricing-card">
+      <div class="pricing-badge">Perpetual Licence</div>
+      <h3 style="font-size: 1.5rem;">PyLaunchpad Pro</h3>
+      <p style="color: var(--text-secondary); margin-top: 0.5rem;">
+        Everything you need to build and launch production Python web apps and paid AI APIs.
+      </p>
+
+      <div class="price-display">
+        <span class="price-amount">$29</span>
+        <span class="price-currency">USD / one-time</span>
+      </div>
+
+      <p style="font-size: 0.85rem; color: #93c5fd; margin-bottom: 1.5rem;">
+        🎉 Launch Promo: Use code <strong>LAUNCH20</strong> at checkout for 20% off ($23.20 USD).
+      </p>
+
+      <ul class="feature-list">
+        <li><span class="check">&check;</span> Full production FastAPI application source code</li>
+        <li><span class="check">&check;</span> Turnkey Polar.sh MoR billing &amp; webhook verification</li>
+        <li><span class="check">&check;</span> JWT token authentication &amp; developer API key management</li>
+        <li><span class="check">&check;</span> Async SQLAlchemy 2.0 ORM with SQLite &amp; PostgreSQL support</li>
+        <li><span class="check">&check;</span> In-process async background task worker</li>
+        <li><span class="check">&check;</span> Responsive dark-mode dashboard and landing views</li>
+        <li><span class="check">&check;</span> Production Dockerfile &amp; Caddy automatic HTTPS stack</li>
+        <li><span class="check">&check;</span> 100% automated test suite with pytest</li>
+        <li><span class="check">&check;</span> Perpetual commercial licence (unlimited projects)</li>
+      </ul>
+
+      <!-- Polar.sh Checkout Integration -->
+      <a
+        href="https://sandbox.polar.sh/products/pylaunchpad-pro"
+        data-polar-checkout
+        data-polar-checkout-theme="dark"
+        class="btn btn-primary"
+        style="width: 100%; font-size: 1.05rem; padding: 0.85rem;"
+      >
+        Purchase PyLaunchpad Pro &rarr;
+      </a>
+      <p style="text-align: center; font-size: 0.75rem; color: var(--text-muted); margin-top: 0.75rem;">
+        Instant download via Polar.sh &bull; Global VAT &amp; GST handled &bull; Direct AUD bank payouts
+      </p>
+    </div>
+  </section>
+</div>
+
+<!-- Polar Embed Script -->
+<script defer data-auto-init src="https://cdn.jsdelivr.net/npm/@polar-sh/checkout@latest/dist/embed.global.js"></script>
+{% endblock %}

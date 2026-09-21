@@ -1,0 +1,76 @@
+{% extends "base.html" %}
+
+{% block title %}Developer Dashboard - PyLaunchpad{% endblock %}
+
+{% block content %}
+<div class="container" style="padding-top: 3rem; padding-bottom: 5rem;">
+  <div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 2rem; border-bottom: 1px solid var(--border-color); padding-bottom: 1.5rem;">
+    <div>
+      <h1 style="font-size: 1.85rem;">Developer Dashboard</h1>
+      <p style="color: var(--text-secondary); font-size: 0.95rem;">Logged in as: <span id="user-name" style="color: var(--text-primary); font-weight: 600;">Loading...</span></p>
+    </div>
+    <button onclick="PyLaunchpad.logout()" class="btn btn-secondary btn-sm">Sign Out</button>
+  </div>
+
+  <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 2rem;">
+    <!-- API Keys Panel -->
+    <div class="card" style="padding: 1.5rem;">
+      <h3 style="margin-bottom: 0.5rem;">API Keys</h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">
+        Generate and manage secret keys for authenticating programmatic API requests.
+      </p>
+
+      <form onsubmit="PyLaunchpad.createApiKey(event)" style="display: flex; gap: 0.75rem; margin-bottom: 1.5rem;">
+        <input type="text" id="key-name" class="form-control" placeholder="Key name (e.g. Production CLI)" required style="flex: 1;">
+        <button type="submit" class="btn btn-primary btn-sm">Create Key</button>
+      </form>
+
+      <div id="api-keys-list" style="margin-top: 1rem;">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Loading API keys...</p>
+      </div>
+    </div>
+
+    <!-- Purchases and Subscriptions Panel -->
+    <div class="card" style="padding: 1.5rem;">
+      <h3 style="margin-bottom: 0.5rem;">Billing &amp; Entitlements</h3>
+      <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1.5rem;">
+        Synchronised directly with Polar.sh Merchant of Record.
+      </p>
+
+      <div id="orders-list">
+        <p style="color: var(--text-muted); font-size: 0.9rem;">Loading billing records...</p>
+      </div>
+
+      <div style="margin-top: 2rem; padding-top: 1rem; border-top: 1px solid var(--border-color);">
+        <a href="/#pricing" class="btn btn-primary btn-sm" style="width: 100%;">Upgrade / Purchase Licence</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- API Quickstart & Test Console -->
+  <div class="card" style="margin-top: 2rem; padding: 1.5rem;">
+    <h3 style="margin-bottom: 0.5rem;">API Integration &amp; Test Console</h3>
+    <p style="color: var(--text-secondary); font-size: 0.85rem; margin-bottom: 1rem;">
+      Test calling your PyLaunchpad API endpoints using curl or Python:
+    </p>
+
+    <div class="code-box">
+<span style="color: #7ee787;"># Example authenticated API request</span>
+$ curl -X GET "http://localhost:8000/api/v1/auth/me" \
+    -H "Authorization: Bearer <span style="color: #60a5fa;">YOUR_JWT_TOKEN</span>"
+
+<span style="color: #7ee787;"># Example request with developer API key</span>
+$ curl -X GET "http://localhost:8000/api/v1/health" \
+    -H "X-API-Key: <span style="color: #60a5fa;">pylp_live_...</span>"
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+  document.addEventListener("DOMContentLoaded", () => {
+    PyLaunchpad.loadDashboard();
+  });
+</script>
+{% endblock %}

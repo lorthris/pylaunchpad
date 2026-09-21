@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Documentation - PyLaunchpad</title>
+  <meta name="description" content="Comprehensive developer documentation for PyLaunchpad FastAPI micro-SaaS starter kit.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .docs-layout {
+      display: grid;
+      grid-template-columns: 240px 1fr;
+      gap: 3rem;
+      padding: 3rem 0 5rem;
+    }
+    aside.sidebar {
+      position: sticky;
+      top: 6rem;
+      height: fit-content;
+    }
+    aside.sidebar ul {
+      list-style: none;
+    }
+    aside.sidebar li {
+      margin-bottom: 0.75rem;
+    }
+    aside.sidebar a {
+      color: var(--text-dim);
+      text-decoration: none;
+      font-size: 0.95rem;
+      display: block;
+      padding: 0.25rem 0;
+      transition: color 0.15s ease;
+    }
+    aside.sidebar a:hover {
+      color: var(--blue);
+    }
+    .docs-content h2 {
+      font-size: 1.75rem;
+      margin-top: 2.5rem;
+      margin-bottom: 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .docs-content h3 {
+      font-size: 1.25rem;
+      margin-top: 1.75rem;
+      margin-bottom: 0.75rem;
+    }
+    .docs-content p, .docs-content ul {
+      margin-bottom: 1.25rem;
+      color: var(--text-dim);
+    }
+    .docs-content ul {
+      padding-left: 1.5rem;
+    }
+    .docs-content li {
+      margin-bottom: 0.5rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Navigation -->
+  <header class="top-nav">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-link">
+        <span class="brand-badge">PyLP</span>
+        <span>PyLaunchpad</span>
+      </a>
+      <nav class="links-group">
+        <a href="index.html">Overview</a>
+        <a href="docs.html" style="color: var(--text-main);">Documentation</a>
+        <a href="index.html#pricing" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem;">Get Starter Kit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container docs-layout">
+    <aside class="sidebar">
+      <ul>
+        <li><strong>Getting Started</strong></li>
+        <li><a href="#quickstart">Quickstart</a></li>
+        <li><a href="#configuration">Configuration (.env)</a></li>
+        <li><strong>Core Modules</strong></li>
+        <li><a href="#polar">Polar.sh MoR Billing</a></li>
+        <li><a href="#auth">Authentication &amp; API Keys</a></li>
+        <li><a href="#database">Database (SQLAlchemy)</a></li>
+        <li><a href="#worker">Background Worker</a></li>
+        <li><strong>Deployment</strong></li>
+        <li><a href="#docker">Docker &amp; Compose</a></li>
+        <li><a href="#production">Production Checklist</a></li>
+      </ul>
+    </aside>
+
+    <article class="docs-content">
+      <h1 style="font-size: 2.5rem; margin-bottom: 0.5rem;">PyLaunchpad Developer Guide</h1>
+      <p style="font-size: 1.15rem; color: var(--text-dim); margin-bottom: 2rem;">
+        Everything you need to build, test, and deploy production micro-SaaS and paid AI APIs with Python.
+      </p>
+
+      <section id="quickstart">
+        <h2>Quickstart</h2>
+        <p>PyLaunchpad requires Python 3.10 or higher. Set up your environment in four commands:</p>
+        <div class="code-window">
+# 1. Clone repository
+git clone https://github.com/lorthris/pylaunchpad.git
+cd pylaunchpad
+
+# 2. Create virtual environment
+python -m venv venv
+# On Windows:
+.\venv\Scripts\Activate.ps1
+# On Linux/macOS:
+source venv/bin/activate
+
+# 3. Install dependencies
+pip install -e .
+
+# 4. Start local development server
+uvicorn pylaunchpad.app:app --reload --port 8000
+        </div>
+        <p>Open <a href="http://localhost:8000" target="_blank" style="color: var(--blue);">http://localhost:8000</a> to view the landing page and <a href="http://localhost:8000/api/docs" target="_blank" style="color: var(--blue);">http://localhost:8000/api/docs</a> for the Swagger API documentation.</p>
+      </section>
+
+      <section id="configuration">
+        <h2>Configuration (.env)</h2>
+        <p>All settings use Pydantic v2 Settings. Copy <code>.env.example</code> to <code>.env</code>:</p>
+        <div class="code-window">
+APP_NAME=PyLaunchpad
+ENVIRONMENT=development
+DEBUG=true
+PORT=8000
+
+# Security (generate a 64-character hex key in production)
+SECRET_KEY=generate_a_secure_production_secret_key_here
+
+# Database (SQLite default; PostgreSQL ready)
+DATABASE_URL=sqlite:///./pylaunchpad.db
+
+# Polar.sh Merchant of Record
+POLAR_ACCESS_TOKEN=polar_at_...
+POLAR_ORGANIZATION_ID=org_...
+POLAR_WEBHOOK_SECRET=whsec_...
+POLAR_ENVIRONMENT=sandbox
+        </div>
+      </section>
+
+      <section id="polar">
+        <h2>Polar.sh MoR Billing Integration</h2>
+        <p>
+          Polar.sh acts as your Merchant of Record, meaning they calculate, collect, and remit global sales tax, EU VAT, and Australian GST on your behalf.
+        </p>
+        <h3>1. Webhook Verification</h3>
+        <p>
+          Incoming webhooks to <code>/api/v1/webhooks/polar</code> verify Standard Webhook / Svix HMAC-SHA256 signatures with 5-minute replay attack tolerance.
+        </p>
+        <h3>2. Handling Orders</h3>
+        <p>
+          When an <code>order.created</code> event arrives, PyLaunchpad automatically retrieves or provisions the user account and stores the purchase record in the database.
+        </p>
+      </section>
+
+      <section id="auth">
+        <h2>Authentication &amp; API Keys</h2>
+        <p>PyLaunchpad provides dual authentication:</p>
+        <ul>
+          <li><strong>Bearer JWT:</strong> Signed HMAC-SHA256 tokens for browser sessions and dashboards.</li>
+          <li><strong>X-API-Key:</strong> High-performance developer API keys formatted as <code>pylp_live_...</code>. Only the SHA-256 hash is stored in the database.</li>
+        </ul>
+      </section>
+
+      <section id="database">
+        <h2>Database Architecture</h2>
+        <p>
+          Powered by SQLAlchemy 2.0. By default, PyLaunchpad runs on local SQLite with zero setup. To switch to PostgreSQL in production, update your connection string:
+        </p>
+        <div class="code-window">
+DATABASE_URL=postgresql://postgres:password@localhost:5432/pylaunchpad
+        </div>
+      </section>
+
+      <section id="worker">
+        <h2>Async Background Task Worker</h2>
+        <p>
+          Avoid heavy infrastructure like Celery or Redis for simple micro-SaaS workloads. PyLaunchpad includes an in-process async worker queue:
+        </p>
+        <div class="code-window">
+from pylaunchpad.tasks.worker import task_worker
+
+async def send_welcome_email(email: str):
+    # Asynchronous email or AI job logic
+    pass
+
+# Enqueue without blocking the HTTP request
+await task_worker.enqueue(send_welcome_email, user.email)
+        </div>
+      </section>
+
+      <section id="docker">
+        <h2>Docker &amp; Caddy HTTPS Deployment</h2>
+        <p>PyLaunchpad includes a hardened multi-stage Dockerfile and turnkey Compose configuration with Caddy:</p>
+        <div class="code-window">
+# Start application and Caddy with automatic TLS
+docker compose up -d --build
+        </div>
+      </section>
+    </article>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container">
+      <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
+    </div>
+  </footer>
+</body>
+</html>

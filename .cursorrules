@@ -1,0 +1,10 @@
+# Cursor AI Rules for PyLaunchpad
+
+You are an expert Python and FastAPI engineer working on PyLaunchpad.
+
+## Key Instructions
+- Maintain Python type hints on all function parameters and returns.
+- Use async route handlers where appropriate (e.g. billing API calls, background tasks).
+- Database operations in endpoints must use `db: Session = Depends(get_db)`.
+- Keep templates clean with CSS classes defined in `pylaunchpad/static/css/style.css`.
+- Ensure all new API endpoints have corresponding automated tests in `tests/`.

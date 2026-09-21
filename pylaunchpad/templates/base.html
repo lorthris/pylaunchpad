@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>{% block title %}PyLaunchpad - Production FastAPI SaaS Boilerplate{% endblock %}</title>
+  <meta name="description" content="Production-grade FastAPI micro-SaaS and AI API starter kit with Polar.sh Merchant of Record billing, authentication, and Docker deployment.">
+  <link rel="stylesheet" href="/static/css/style.css">
+  {% block head %}{% endblock %}
+</head>
+<body>
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="/" class="logo-group">
+        <span class="logo-badge">PyLP</span>
+        <span>PyLaunchpad</span>
+      </a>
+      <nav class="nav-links">
+        <a href="/#features">Features</a>
+        <a href="/#architecture">Architecture</a>
+        <a href="/#pricing">Pricing</a>
+        <a href="/api/docs" target="_blank" rel="noopener">API Docs</a>
+        <a href="/login" class="btn btn-secondary btn-sm">Sign In</a>
+        <a href="/#pricing" class="btn btn-primary btn-sm">Get Starter Kit</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    {% block content %}{% endblock %}
+  </main>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 PyLaunchpad Core. Commercial production licence. Built with Python &amp; FastAPI.</p>
+    </div>
+  </footer>
+
+  <script src="/static/js/app.js"></script>
+  {% block scripts %}{% endblock %}
+</body>
+</html>
