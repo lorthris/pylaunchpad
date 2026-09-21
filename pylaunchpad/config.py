@@ -10,7 +10,7 @@ class Settings(BaseSettings):
 
     # Application settings
     APP_NAME: str = "PyLaunchpad"
-    APP_VERSION: str = "1.0.0"
+    APP_VERSION: str = "1.0.1"
     ENVIRONMENT: str = "development"
     DEBUG: bool = True
     HOST: str = "0.0.0.0"
