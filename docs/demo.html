@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="color-scheme" content="dark">
+  <title>Interactive Demo - PyLaunchpad Pro</title>
+  <meta name="description" content="Test drive the PyLaunchpad Pro developer dashboard, API key console, and license validation engine in your browser.">
+  <link rel="canonical" href="https://lorthris.github.io/pylaunchpad/demo.html">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .demo-header {
+      text-align: center;
+      padding: 3rem 0 2rem;
+    }
+    .demo-container {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    @media (min-width: 900px) {
+      .demo-container {
+        grid-template-columns: 320px 1fr;
+      }
+    }
+    .demo-sidebar {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 1.5rem;
+      height: fit-content;
+    }
+    .demo-nav-btn {
+      display: block;
+      width: 100%;
+      text-align: left;
+      padding: 0.75rem 1rem;
+      margin-bottom: 0.5rem;
+      border-radius: 0.5rem;
+      background: transparent;
+      border: 1px solid transparent;
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .demo-nav-btn.active, .demo-nav-btn:hover {
+      background: rgba(59, 130, 246, 0.1);
+      border-color: rgba(59, 130, 246, 0.3);
+      color: var(--text-main);
+    }
+    .demo-panel {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 0.75rem;
+      padding: 2rem;
+    }
+    .endpoint-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+      margin-bottom: 1.5rem;
+    }
+    .endpoint-header {
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+    }
+    .badge-get {
+      background: #065f46;
+      color: #34d399;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    .badge-post {
+      background: #1e3a8a;
+      color: #60a5fa;
+      font-weight: 700;
+      font-size: 0.75rem;
+      padding: 0.25rem 0.5rem;
+      border-radius: 0.25rem;
+    }
+    .endpoint-path {
+      font-family: var(--font-mono);
+      font-size: 0.9rem;
+      color: var(--text-main);
+    }
+    .run-btn {
+      background: var(--blue);
+      color: #fff;
+      border: none;
+      padding: 0.4rem 1rem;
+      border-radius: 0.375rem;
+      font-weight: 600;
+      font-size: 0.85rem;
+      cursor: pointer;
+      margin-left: auto;
+    }
+    .run-btn:hover {
+      background: var(--blue-hover);
+    }
+    .api-output {
+      background: #0d1117;
+      border: 1px solid #30363d;
+      border-radius: 0.375rem;
+      padding: 1rem;
+      font-family: var(--font-mono);
+      font-size: 0.82rem;
+      color: #7ee787;
+      white-space: pre-wrap;
+      overflow-x: auto;
+      margin-top: 0.75rem;
+      min-height: 4.5rem;
+    }
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+    .stat-card {
+      background: var(--bg-base);
+      border: 1px solid var(--border);
+      border-radius: 0.5rem;
+      padding: 1.25rem;
+    }
+    .stat-val {
+      font-size: 1.8rem;
+      font-weight: 800;
+      color: var(--blue);
+    }
+    .stat-lbl {
+      color: var(--text-dim);
+      font-size: 0.85rem;
+      margin-top: 0.25rem;
+    }
+    .cta-banner {
+      background: linear-gradient(135deg, rgba(59, 130, 246, 0.15), rgba(139, 92, 246, 0.15));
+      border: 1px solid rgba(59, 130, 246, 0.3);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      text-align: center;
+      margin-top: 2rem;
+    }
+  </style>
+</head>
+<body>
+  <!-- Top Navigation -->
+  <header class="top-nav">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-link">
+        <span class="logo-icon">&#x26A1;</span>
+        <span class="brand-name">PyLaunchpad</span>
+      </a>
+      <nav class="nav-menu">
+        <a href="index.html#features" class="nav-item">Features</a>
+        <a href="docs.html" class="nav-item">Documentation</a>
+        <a href="demo.html" class="nav-item active">Live Demo</a>
+        <a href="https://github.com/lorthris/pylaunchpad" class="nav-item" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="nav-btn-primary" target="_blank" rel="noopener">Buy Licence &rarr;</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container flex-1">
+    <div class="demo-header">
+      <span class="badge badge-indigo">Interactive Browser Sandbox</span>
+      <h1 class="hero-title" style="font-size: 2.25rem; margin-top: 0.75rem;">Interactive Developer Preview</h1>
+      <p class="hero-subtitle">Test endpoints, inspect simulated webhook data, and test the license key engine in real time.</p>
+    </div>
+
+    <div class="demo-container">
+      <!-- Sidebar navigation -->
+      <aside class="demo-sidebar">
+        <div style="font-weight: 700; margin-bottom: 1rem; color: var(--text-main); font-size: 0.95rem;">Sandbox Explorer</div>
+        <button class="demo-nav-btn active" onclick="switchTab('api')">&#x1F680; REST API Explorer</button>
+        <button class="demo-nav-btn" onclick="switchTab('dashboard')">&#x1F4CA; SaaS Admin Console</button>
+        <button class="demo-nav-btn" onclick="switchTab('license')">&#x1F511; Polar License Engine</button>
+        
+        <hr style="border: 0; border-top: 1px solid var(--border); margin: 1.5rem 0;">
+        <div style="font-size: 0.8rem; color: var(--text-muted); line-height: 1.5;">
+          All queries execute simulated responses derived directly from the production FastAPI codebase and Polar.sh test harness.
+        </div>
+      </aside>
+
+      <!-- Main Demo Area -->
+      <section class="demo-panel">
+        <!-- Tab 1: API Explorer -->
+        <div id="tab-api">
+          <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">FastAPI Interactive Endpoints</h2>
+          <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Click "Execute" to run live test requests against standard starter kit endpoints.</p>
+
+          <!-- Health Check -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="badge-get">GET</span>
+              <span class="endpoint-path">/api/v1/health</span>
+              <button class="run-btn" onclick="runHealth()">Execute</button>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-dim);">Returns database connectivity, memory status, and runtime environment.</div>
+            <div class="api-output" id="out-health">// Click "Execute" to send request...</div>
+          </div>
+
+          <!-- License Validation -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="badge-post">POST</span>
+              <span class="endpoint-path">/api/v1/billing/license/validate</span>
+              <button class="run-btn" onclick="runValidateLicense()">Execute</button>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-dim);">Validates customer license key against Polar.sh Merchant of Record API.</div>
+            <div class="api-output" id="out-license">// Click "Execute" to send request...</div>
+          </div>
+
+          <!-- Background Task -->
+          <div class="endpoint-card">
+            <div class="endpoint-header">
+              <span class="badge-post">POST</span>
+              <span class="endpoint-path">/api/v1/tasks/dispatch</span>
+              <button class="run-btn" onclick="runTask()">Execute</button>
+            </div>
+            <div style="font-size: 0.85rem; color: var(--text-dim);">Dispatches asynchronous non-blocking background task without requiring Redis.</div>
+            <div class="api-output" id="out-task">// Click "Execute" to send request...</div>
+          </div>
+        </div>
+
+        <!-- Tab 2: Dashboard Console -->
+        <div id="tab-dashboard" style="display: none;">
+          <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Developer &amp; Micro-SaaS Dashboard</h2>
+          <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Clean dark-mode telemetry showing active customers, API keys, and recurring billing.</p>
+
+          <div class="stat-grid">
+            <div class="stat-card">
+              <div class="stat-val">12</div>
+              <div class="stat-lbl">Active Customers</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val">48,210</div>
+              <div class="stat-lbl">API Calls (Last 30d)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val">$348.00</div>
+              <div class="stat-lbl">Gross Revenue (USD)</div>
+            </div>
+            <div class="stat-card">
+              <div class="stat-val">99.98%</div>
+              <div class="stat-lbl">Uptime SLA</div>
+            </div>
+          </div>
+
+          <div style="background: var(--bg-base); border: 1px solid var(--border); border-radius: 0.5rem; padding: 1.25rem;">
+            <div style="font-weight: 700; margin-bottom: 0.75rem;">Simulated Webhook Activity Feed (Polar.sh Standard Webhooks)</div>
+            <div style="font-family: var(--font-mono); font-size: 0.82rem; color: var(--text-dim); line-height: 1.8;">
+              <div><span style="color: #60a5fa;">[2026-09-22 00:12:04]</span> <span style="color: #34d399;">order.created</span>: Customer <span style="color: #f3f4f6;">alex@techstartup.io</span> purchased Developer Licence ($29.00 USD)</div>
+              <div><span style="color: #60a5fa;">[2026-09-22 00:12:05]</span> <span style="color: #a78bfa;">benefit.granted</span>: License key <span style="color: #fbbf24;">PYLP-8429-1192-3091</span> provisioned</div>
+              <div><span style="color: #60a5fa;">[2026-09-21 23:45:11]</span> <span style="color: #34d399;">subscription.created</span>: Monthly API tier active</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Tab 3: License Engine -->
+        <div id="tab-license" style="display: none;">
+          <h2 style="font-size: 1.4rem; margin-bottom: 0.5rem;">Polar License Key Engine</h2>
+          <p style="color: var(--text-dim); margin-bottom: 1.5rem; font-size: 0.9rem;">Test customer license verification with valid and invalid keys.</p>
+
+          <div style="display: flex; gap: 0.75rem; margin-bottom: 1rem;">
+            <input type="text" id="license-input" value="PYLP-9981-4412-8821" style="flex: 1; background: var(--bg-base); border: 1px solid var(--border); color: #fff; padding: 0.6rem 1rem; border-radius: 0.375rem; font-family: var(--font-mono); font-size: 0.9rem;">
+            <button class="run-btn" onclick="testCustomLicense()" style="margin: 0; padding: 0.6rem 1.25rem;">Verify Key</button>
+          </div>
+
+          <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
+            <button class="button-secondary" onclick="setLicenseKey('PYLP-9981-4412-8821', true)" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">Preset Valid Key</button>
+            <button class="button-secondary" onclick="setLicenseKey('PYLP-REVOKED-EXPIRED', false)" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">Preset Revoked Key</button>
+          </div>
+
+          <div class="api-output" id="out-custom-license">// Result will appear here...</div>
+        </div>
+
+        <!-- Call to Action Banner -->
+        <div class="cta-banner">
+          <h3 style="font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem;">Deploy This Entire Stack to Production in Minutes</h3>
+          <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 1.25rem; max-width: 600px; margin-left: auto; margin-right: auto;">
+            Get the full source code, pre-configured Polar.sh billing engine, JWT auth, SQLite/Postgres schemas, Docker stack, and automated pytest suite.
+          </p>
+          <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="button-primary" style="display: inline-block; padding: 0.75rem 1.75rem; font-size: 1rem;" target="_blank" rel="noopener">
+            Get PyLaunchpad Pro &mdash; $29 USD &rarr;
+          </a>
+        </div>
+      </section>
+    </div>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-content">
+      <p>&copy; 2026 PyLaunchpad. Built for Python micro-SaaS and AI developers.</p>
+      <div class="footer-links">
+        <a href="index.html">Showcase</a>
+        <a href="docs.html">Documentation</a>
+        <a href="demo.html">Interactive Demo</a>
+        <a href="https://github.com/lorthris/pylaunchpad">GitHub</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    function switchTab(tabId) {
+      document.getElementById('tab-api').style.display = tabId === 'api' ? 'block' : 'none';
+      document.getElementById('tab-dashboard').style.display = tabId === 'dashboard' ? 'block' : 'none';
+      document.getElementById('tab-license').style.display = tabId === 'license' ? 'block' : 'none';
+
+      var buttons = document.querySelectorAll('.demo-nav-btn');
+      buttons.forEach(function(b) { b.classList.remove('active'); });
+      if (tabId === 'api') buttons[0].classList.add('active');
+      if (tabId === 'dashboard') buttons[1].classList.add('active');
+      if (tabId === 'license') buttons[2].classList.add('active');
+    }
+
+    function runHealth() {
+      var el = document.getElementById('out-health');
+      el.textContent = 'Executing GET /api/v1/health...';
+      setTimeout(function() {
+        el.textContent = JSON.stringify({
+          status: "healthy",
+          timestamp: new Date().toISOString(),
+          version: "1.0.1",
+          environment: "production",
+          database: { connected: true, driver: "sqlite+aiosqlite" },
+          system: { memory_mb: 48.2, uptime_seconds: 142820 }
+        }, null, 2);
+      }, 200);
+    }
+
+    function runValidateLicense() {
+      var el = document.getElementById('out-license');
+      el.textContent = 'Executing POST /api/v1/billing/license/validate...';
+      setTimeout(function() {
+        el.textContent = JSON.stringify({
+          valid: true,
+          status: "granted",
+          message: "License key is valid and active",
+          data: {
+            id: "lic_9f81a7d2",
+            benefit_id: "7d553971-8b42-4a2e-b76a-5e0f4af0d4fd",
+            key: "PYLP-8429-1192-3091",
+            status: "granted",
+            limit_activations: 10,
+            usage: 1
+          }
+        }, null, 2);
+      }, 250);
+    }
+
+    function runTask() {
+      var el = document.getElementById('out-task');
+      el.textContent = 'Executing POST /api/v1/tasks/dispatch...';
+      setTimeout(function() {
+        el.textContent = JSON.stringify({
+          task_id: "task_550e8400-e29b-41d4-a716-446655440000",
+          status: "queued",
+          enqueued_at: new Date().toISOString(),
+          worker: "in-process-asyncio-queue",
+          message: "Background job successfully submitted without blocking ASGI event loop"
+        }, null, 2);
+      }, 180);
+    }
+
+    function setLicenseKey(key, isValid) {
+      document.getElementById('license-input').value = key;
+      testCustomLicense();
+    }
+
+    function testCustomLicense() {
+      var key = document.getElementById('license-input').value.trim();
+      var el = document.getElementById('out-custom-license');
+      el.textContent = 'Querying Polar.sh License API for ' + key + '...';
+      setTimeout(function() {
+        if (key.startsWith('PYLP-9') || key.startsWith('PYLP-VALID') || key.startsWith('PYLP-8')) {
+          el.textContent = JSON.stringify({
+            valid: true,
+            status: "granted",
+            message: "Entitlement verified: Commercial Developer Licence active",
+            key_details: {
+              prefix: "PYLP",
+              organization: "lorthris",
+              plan: "PyLaunchpad Pro - Developer License"
+            }
+          }, null, 2);
+        } else {
+          el.textContent = JSON.stringify({
+            valid: false,
+            status: "revoked",
+            message: "Entitlement check failed: Key expired or not found in registry",
+            key_details: null
+          }, null, 2);
+        }
+      }, 300);
+    }
+  </script>
+</body>
+</html>

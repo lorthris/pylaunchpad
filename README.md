@@ -5,8 +5,9 @@ Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%2B-red.svg)](https://www.sqlalchemy.org/)
-[![Tests](https://img.shields.io/badge/tests-14%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-17%20passing-brightgreen.svg)](tests/)
 [![Billing](https://img.shields.io/badge/billing-Polar.sh%20MoR-6366f1.svg)](https://polar.sh/)
+[![Live Demo](https://img.shields.io/badge/demo-interactive%20sandbox-blue.svg)](https://lorthris.github.io/pylaunchpad/demo.html)
 [![Licence](https://img.shields.io/badge/licence-Commercial%20Developer-emerald.svg)](distribution/LICENSE)
 
 <br/>
@@ -78,11 +79,15 @@ source venv/bin/activate  # On Windows: .\venv\Scripts\Activate.ps1
 pip install -e .
 ```
 
-### 2. Configuration
+### 2. Configuration & Initialization
 
-Copy `.env.example` to `.env` and set your secrets:
+Initialize your environment with a single command:
 
 ```bash
+# Automated setup (generates cryptographic secrets & defaults)
+python -m pylaunchpad.cli init --name "MyMicroSaaS"
+
+# Or manually copy template
 cp .env.example .env
 ```
 

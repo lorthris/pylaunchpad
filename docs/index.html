@@ -25,16 +25,35 @@
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "SoftwareApplication",
-    "name": "PyLaunchpad",
-    "operatingSystem": "Windows, macOS, Linux, Docker",
-    "applicationCategory": "DeveloperApplication",
-    "offers": {
-      "@type": "Offer",
-      "price": "29.00",
-      "priceCurrency": "USD"
+    "@type": "Product",
+    "name": "PyLaunchpad Pro",
+    "image": "https://lorthris.github.io/pylaunchpad/preview.png",
+    "description": "Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh Merchant of Record billing, JWT authentication, and Docker deployment.",
+    "brand": {
+      "@type": "Brand",
+      "name": "PyLaunchpad"
     },
-    "description": "Production-grade FastAPI micro-SaaS and AI API starter kit with Polar.sh Merchant of Record billing."
+    "category": "Developer Tools",
+    "offers": [
+      {
+        "@type": "Offer",
+        "name": "Developer Licence (USD)",
+        "price": "29.00",
+        "priceCurrency": "USD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+      },
+      {
+        "@type": "Offer",
+        "name": "Developer Licence (AUD)",
+        "price": "45.00",
+        "priceCurrency": "AUD",
+        "priceValidUntil": "2027-12-31",
+        "availability": "https://schema.org/InStock",
+        "url": "https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+      }
+    ]
   }
   </script>
 
@@ -52,6 +71,7 @@
         <a href="#features">Features</a>
         <a href="#architecture">Architecture</a>
         <a href="docs.html">Documentation</a>
+        <a href="demo.html">Live Demo</a>
         <a href="#pricing" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem;">Get Starter Kit</a>
       </nav>
     </div>
@@ -67,6 +87,7 @@
       </p>
       <div style="display: flex; gap: 1rem; justify-content: center; flex-wrap: wrap;">
         <a href="#pricing" class="btn btn-primary">Get PyLaunchpad Pro &mdash; $29 USD</a>
+        <a href="demo.html" class="btn btn-secondary">⚡ Explore Live Sandbox</a>
         <a href="docs.html" class="btn btn-secondary">Read Documentation</a>
       </div>
     </section>

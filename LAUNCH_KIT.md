@@ -6,6 +6,8 @@ Organic developer distribution materials for driving immediate qualified traffic
 
 ## 1. Hacker News (Show HN)
 
+👉 **[Click to Post on Hacker News](https://news.ycombinator.com/submitlink?u=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F&t=Show%20HN%3A%20PyLaunchpad%20%E2%80%93%20Production%20FastAPI%20micro-SaaS%20starter%20kit%20with%20Polar.sh%20MoR%20billing)**
+
 **Title:**
 > Show HN: PyLaunchpad – Production FastAPI boilerplate with Polar.sh MoR billing
 
@@ -32,7 +34,10 @@ I'd welcome feedback from anyone building Python web apps or AI wrappers.
 
 ---
 
-## 2. Reddit (`r/FastAPI`, `r/Python`, `r/indiehackers`)
+## 2. Reddit (`r/FastAPI`, `r/Python`, `r/SideProject`, `r/indiehackers`)
+
+👉 **[Click to Submit to r/FastAPI](https://www.reddit.com/r/FastAPI/submit?title=I%20built%20a%20production%20FastAPI%20starter%20kit%20with%20turnkey%20Polar.sh%20MoR%20billing%20and%20dual%20auth&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F)**
+👉 **[Click to Submit to r/SideProject](https://www.reddit.com/r/SideProject/submit?title=PyLaunchpad%20%E2%80%93%20Production%20FastAPI%20starter%20kit%20with%20turnkey%20Polar.sh%20billing&url=https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2F)**
 
 **Title:**
 > I built a production FastAPI starter kit with turnkey Polar.sh MoR billing and dual auth
@@ -49,16 +54,18 @@ I put together PyLaunchpad to give Python developers a clean, production-ready f
 2. Dual authentication: Bearer tokens for user sessions + hashed API keys for developers calling your API.
 3. Lightweight background task queue: Non-blocking async queue for sending transactional emails or handling AI API calls without needing Redis.
 4. Docker Compose with Caddy: Automatic Let's Encrypt / Cloudflare HTTPS reverse proxy.
-5. Automated test suite: 14 tests covering auth, webhooks, license key validation, and API key lifecycles with pytest.
+5. Automated test suite: 17 tests covering auth, webhooks, license key validation, and CLI commands with pytest.
 
-The showcase and docs are live at https://lorthris.github.io/pylaunchpad/
+The showcase, docs, and interactive live demo are at https://lorthris.github.io/pylaunchpad/
 
-Code is available under a commercial developer licence with 20% off for launch using code LAUNCH20.
+Code is available under a commercial developer licence with 20% off for launch using code LAUNCH20 ($23.20 USD).
 ```
 
 ---
 
 ## 3. Twitter / X Launch Thread
+
+👉 **[Click to Post Announcement Tweet](https://twitter.com/intent/tweet?text=Shipping%20Python%20micro-SaaS%20shouldn%27t%20require%20fighting%20with%20Next.js.%20Introducing%20PyLaunchpad%3A%20production%20FastAPI%20boilerplate%20with%20turnkey%20Polar.sh%20MoR%20billing%20and%20dual%20auth.%20Live%20demo%3A%20https%3A%2F%2Florthris.github.io%2Fpylaunchpad%2Fdemo.html)**
 
 **Tweet 1:**
 > Shipping Python micro-SaaS shouldn't require fighting with Next.js or spending 40 hours configuring Stripe webhooks.
