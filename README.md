@@ -5,7 +5,7 @@ Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh
 [![Python](https://img.shields.io/badge/python-3.10%2B-blue.svg)](https://www.python.org/)
 [![FastAPI](https://img.shields.io/badge/FastAPI-0.110%2B-009688.svg)](https://fastapi.tiangolo.com/)
 [![SQLAlchemy](https://img.shields.io/badge/SQLAlchemy-2.0%2B-red.svg)](https://www.sqlalchemy.org/)
-[![Tests](https://img.shields.io/badge/tests-17%20passing-brightgreen.svg)](tests/)
+[![Tests](https://img.shields.io/badge/tests-19%20passing-brightgreen.svg)](tests/)
 [![Billing](https://img.shields.io/badge/billing-Polar.sh%20MoR-6366f1.svg)](https://polar.sh/)
 [![Live Demo](https://img.shields.io/badge/demo-interactive%20sandbox-blue.svg)](https://lorthris.github.io/pylaunchpad/demo.html)
 [![Licence](https://img.shields.io/badge/licence-Commercial%20Developer-emerald.svg)](distribution/LICENSE)
@@ -53,7 +53,7 @@ pylaunchpad/
 │   ├── static/             # Dark-mode stylesheets and client controllers
 │   └── templates/          # Jinja2 dashboard and landing views
 ├── docs/                   # Static showcase and documentation (GitHub Pages)
-├── tests/                  # Automated test suite (17 unit and integration tests)
+├── tests/                  # Automated test suite (19 unit and integration tests)
 ├── distribution/           # Release builder and commercial license
 ├── Dockerfile              # Minimal multi-stage production image
 ├── docker-compose.yml      # Complete stack with Caddy automatic TLS

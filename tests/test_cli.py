@@ -1,7 +1,8 @@
 """Automated tests for PyLaunchpad CLI commands."""
 
 import argparse
-from pylaunchpad.cli import generate_secret_key, init_project, verify_license
+import sqlite3
+from pylaunchpad.cli import backup_database, generate_secret_key, init_project, verify_license
 
 
 def test_cli_generate_secret_key():
@@ -37,3 +38,40 @@ def test_cli_verify_license_invalid():
     args = argparse.Namespace(key="INVALID-KEY")
     exit_code = verify_license(args)
     assert exit_code in [0, 1]  # Either returns 1 or handled error
+
+
+def test_cli_backup_database_success(tmp_path):
+    """Test atomic SQLite database backup creation."""
+    src_db = tmp_path / "test.db"
+    dest_db = tmp_path / "test_backup.db"
+
+    # Create dummy sqlite database with a table
+    with sqlite3.connect(src_db) as conn:
+        conn.execute("CREATE TABLE users (id INTEGER PRIMARY KEY, email TEXT)")
+        conn.execute("INSERT INTO users (email) VALUES ('user@example.com')")
+        conn.commit()
+
+    args = argparse.Namespace(source=str(src_db), dest=str(dest_db))
+    exit_code = backup_database(args)
+    assert exit_code == 0
+    assert dest_db.exists()
+
+    # Verify backed up data is intact
+    with sqlite3.connect(dest_db) as conn:
+        cursor = conn.cursor()
+        cursor.execute("SELECT email FROM users WHERE id = 1")
+        row = cursor.fetchone()
+        assert row is not None
+        assert row[0] == "user@example.com"
+
+
+def test_cli_backup_database_missing_source(tmp_path):
+    """Negative control: verify backup fails cleanly when source DB does not exist."""
+    missing_db = tmp_path / "nonexistent.db"
+    dest_db = tmp_path / "dest.db"
+
+    args = argparse.Namespace(source=str(missing_db), dest=str(dest_db))
+    exit_code = backup_database(args)
+    assert exit_code == 1
+    assert not dest_db.exists()
+

@@ -162,7 +162,7 @@ $ pip install -e .
 <span style="color: #7ee787;"># 3. Start development server</span>
 $ uvicorn pylaunchpad.app:app --reload
 
-<span style="color: #7ee787;"># 4. Verify automated test suite (17 passing tests)</span>
+<span style="color: #7ee787;"># 4. Verify automated test suite (19 passing tests)</span>
 $ pytest -v tests/</code></pre>
     </section>
 
@@ -192,7 +192,7 @@ $ pytest -v tests/</code></pre>
           <li><span class="check">&check;</span> Responsive dark-mode dashboard and landing views</li>
           <li><span class="check">&check;</span> Production Dockerfile &amp; Caddy automatic HTTPS stack</li>
           <li><span class="check">&check;</span> Polar License Key engine with automated validation API</li>
-          <li><span class="check">&check;</span> 100% automated test suite with pytest (17 tests)</li>
+          <li><span class="check">&check;</span> 100% automated test suite with pytest (19 tests)</li>
           <li><span class="check">&check;</span> Perpetual commercial licence (unlimited projects)</li>
         </ul>
 
@@ -217,8 +217,15 @@ $ pytest -v tests/</code></pre>
   </main>
 
   <footer class="page-footer">
-    <div class="container">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
       <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.9rem;">
+        <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Documentation</a>
+        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Interactive Demo</a>
+        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms & Privacy</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
+      </div>
     </div>
   </footer>
 

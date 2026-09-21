@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Terms & Privacy – PyLaunchpad</title>
+  <meta name="description" content="Terms of Service, Commercial Developer Licence, Privacy Policy, and Merchant of Record Disclosures for PyLaunchpad.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .legal-content {
+      padding: 4rem 0;
+      max-width: 820px;
+      margin: 0 auto;
+    }
+    .legal-content h1 {
+      font-size: 2.25rem;
+      margin-bottom: 0.75rem;
+    }
+    .legal-content .meta {
+      color: var(--text-dim);
+      font-size: 0.9rem;
+      margin-bottom: 2.5rem;
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 1rem;
+    }
+    .legal-section {
+      margin-bottom: 2.5rem;
+    }
+    .legal-section h2 {
+      font-size: 1.4rem;
+      margin-bottom: 1rem;
+      color: var(--blue);
+      border-bottom: 1px solid var(--border);
+      padding-bottom: 0.4rem;
+    }
+    .legal-section h3 {
+      font-size: 1.1rem;
+      margin: 1rem 0 0.5rem 0;
+      color: var(--text-main);
+    }
+    .legal-section p, .legal-section li {
+      color: var(--text-dim);
+      font-size: 0.95rem;
+      line-height: 1.7;
+      margin-bottom: 0.75rem;
+    }
+    .legal-section ul {
+      margin-left: 1.5rem;
+      margin-bottom: 1rem;
+    }
+    .legal-box {
+      background: var(--bg-card);
+      border: 1px solid var(--border);
+      border-radius: 8px;
+      padding: 1.25rem;
+      margin: 1.5rem 0;
+    }
+  </style>
+</head>
+<body>
+  <header class="top-nav">
+    <div class="container nav-wrapper">
+      <a href="index.html" class="brand-link">
+        <span class="brand-badge">PRO</span>
+        <span>PyLaunchpad</span>
+      </a>
+      <nav class="nav-links">
+        <a href="index.html">Showcase</a>
+        <a href="docs.html">Documentation</a>
+        <a href="demo.html">Interactive Demo</a>
+        <a href="terms.html" style="color: var(--blue);">Terms & Privacy</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="btn btn-sm btn-primary" target="_blank" rel="noopener">Buy Pro ($29)</a>
+      </nav>
+    </div>
+  </header>
+
+  <main class="container legal-content">
+    <h1>Terms of Service & Legal Disclosures</h1>
+    <div class="meta">Last updated: 22 September 2026 &bull; Operates under Australian Consumer Law</div>
+
+    <section class="legal-section">
+      <h2>1. Merchant of Record Disclosure</h2>
+      <div class="legal-box">
+        <p><strong>Merchant of Record:</strong> Order fulfillment and payment processing for PyLaunchpad Pro are handled by <strong>Polar Inc. ("Polar.sh")</strong>, acting as the Merchant of Record (MoR).</p>
+      </div>
+      <p>When purchasing PyLaunchpad Pro, your transaction is processed by Polar.sh. Polar is responsible for calculating, collecting, and remitting all applicable sales tax, Goods and Services Tax (GST), Value Added Tax (VAT), and digital service taxes across international jurisdictions. Polar provides purchase receipts, handles chargebacks, and issues license credentials upon successful checkout.</p>
+    </section>
+
+    <section class="legal-section">
+      <h2>2. Commercial Developer Licence Agreement</h2>
+      <p>The open-source community repository of PyLaunchpad is distributed under the standard MIT License. Upon purchase of <strong>PyLaunchpad Pro</strong>, you are granted a perpetual, non-exclusive commercial developer license with the following terms:</p>
+      <h3>Permitted Uses:</h3>
+      <ul>
+        <li>You may use PyLaunchpad Pro to build and deploy an unlimited number of commercial products, SaaS platforms, AI micro-tools, internal utilities, and client deliverables.</li>
+        <li>You may modify, adapt, refactor, and integrate the code with third-party software, libraries, and proprietary algorithms.</li>
+        <li>You may host and distribute compiled or deployed versions of the applications you create without payment of ongoing royalties.</li>
+      </ul>
+      <h3>Restrictions:</h3>
+      <ul>
+        <li>You may <strong>not</strong> redistribute, sublicence, re-package, or publish the source code as a competing boilerplate, starter kit, template, or digital code distribution product.</li>
+        <li>You may not share or publicly expose your commercial license key (<code>PYLP-...</code>) or Polar download links.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>3. Privacy Policy</h2>
+      <p>We respect your privacy and adhere to the Australian Privacy Principles (APPs) and General Data Protection Regulation (GDPR) standards:</p>
+      <ul>
+        <li><strong>No Ad Trackers:</strong> This showcase and documentation website contains no third-party tracking scripts, advertising beacons, or spyware.</li>
+        <li><strong>Payment Data:</strong> We do not collect, process, or store payment card details, bank information, or billing addresses on our servers. All payment processing is securely managed by Polar.sh and Stripe.</li>
+        <li><strong>Customer Account & License Data:</strong> Polar collects your email address during checkout solely to send order confirmation receipts, software download links, and license validation keys.</li>
+        <li><strong>License Validation:</strong> When running <code>pylaunchpad verify-license &lt;KEY&gt;</code>, your license key is transmitted via HTTPS to the Polar.sh validation endpoint (<code>https://api.polar.sh/v1/license-keys/validate</code>) to verify entitlement. No device fingerprinting or user telemetry is collected.</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>4. Refund Policy & Consumer Rights</h2>
+      <p>PyLaunchpad offers a <strong>14-day money-back guarantee</strong>. If you purchase PyLaunchpad Pro and encounter an unresolved technical defect within the provided codebase that prevents normal operation as specified in our documentation, you are entitled to a full refund.</p>
+      <ul>
+        <li>To request assistance or a refund, submit an inquiry to our support email within 14 days of purchase.</li>
+        <li>Our team will work to resolve the defect or issue a patch within 5 business days. If the defect cannot be resolved, a complete refund will be processed back to your original payment method via Polar.sh.</li>
+        <li>Nothing in these terms limits your statutory rights under the <em>Competition and Consumer Act 2010</em> (Cth) (Australian Consumer Law).</li>
+      </ul>
+    </section>
+
+    <section class="legal-section">
+      <h2>5. Customer Support & Contact</h2>
+      <p>For technical inquiries, licensing assistance, or bug reports:</p>
+      <ul>
+        <li><strong>Email:</strong> <a href="mailto:lorthris@gmail.com" style="color: var(--blue);">lorthris@gmail.com</a> (typical response within 24 business hours)</li>
+        <li><strong>GitHub Tracker:</strong> <a href="https://github.com/lorthris/pylaunchpad/issues" target="_blank" rel="noopener" style="color: var(--blue);">github.com/lorthris/pylaunchpad/issues</a></li>
+        <li><strong>Order Management:</strong> Manage your active purchases, download links, and license keys via your <a href="https://polar.sh" target="_blank" rel="noopener" style="color: var(--blue);">Polar.sh Customer Portal</a>.</li>
+      </ul>
+    </section>
+  </main>
+
+  <footer class="page-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer license.</p>
+      <div style="display: flex; gap: 1.5rem; font-size: 0.9rem;">
+        <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Documentation</a>
+        <a href="demo.html" style="color: var(--text-dim); text-decoration: none;">Interactive Demo</a>
+        <a href="terms.html" style="color: var(--blue); text-decoration: none;">Terms & Privacy</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

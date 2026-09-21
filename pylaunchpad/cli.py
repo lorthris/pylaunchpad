@@ -47,7 +47,7 @@ def init_project(args: argparse.Namespace) -> int:
 ENVIRONMENT=development
 DEBUG=True
 APP_NAME="{app_name}"
-APP_VERSION="1.0.1"
+APP_VERSION="1.0.2"
 HOST="0.0.0.0"
 PORT=8000
 
@@ -112,6 +112,26 @@ def verify_license(args: argparse.Namespace) -> int:
         return 1
 
 
+def backup_database(args: argparse.Namespace) -> int:
+    """Create an atomic backup of the local SQLite database file."""
+    src = Path(args.source or "pylaunchpad.db")
+    if not src.exists():
+        print(f"[-] Source database file not found: {src}")
+        return 1
+
+    dest = Path(args.dest or f"backup_{src.stem}_{secrets.token_hex(4)}.db")
+    import sqlite3
+
+    try:
+        with sqlite3.connect(src) as src_conn, sqlite3.connect(dest) as dest_conn:
+            src_conn.backup(dest_conn)
+        print(f"[+] Atomic database backup created: {dest}")
+        return 0
+    except Exception as exc:
+        print(f"[-] Backup failed: {exc}")
+        return 1
+
+
 def main() -> int:
     """CLI entry point for PyLaunchpad command-line runner."""
     parser = argparse.ArgumentParser(description="PyLaunchpad Starter Kit CLI")
@@ -127,12 +147,19 @@ def main() -> int:
     license_parser = subparsers.add_parser("verify-license", help="Verify a Polar.sh license key")
     license_parser.add_argument("key", help="Customer license key (e.g. PYLP-XXXX-XXXX-XXXX)")
 
+    # backup subcommand
+    backup_parser = subparsers.add_parser("backup", help="Create an atomic backup of SQLite database")
+    backup_parser.add_argument("--source", default="pylaunchpad.db", help="Path to source SQLite database")
+    backup_parser.add_argument("--dest", default=None, help="Destination backup file path")
+
     args = parser.parse_args()
 
     if args.command == "init":
         return init_project(args)
     if args.command == "verify-license":
         return verify_license(args)
+    if args.command == "backup":
+        return backup_database(args)
 
     parser.print_help()
     return 0
