@@ -9,6 +9,12 @@ Production-grade FastAPI micro-SaaS and AI API starter kit with turnkey Polar.sh
 [![Billing](https://img.shields.io/badge/billing-Polar.sh%20MoR-6366f1.svg)](https://polar.sh/)
 [![Licence](https://img.shields.io/badge/licence-Commercial%20Developer-emerald.svg)](distribution/LICENSE)
 
+<br/>
+
+<p align="center">
+  <img src="docs/preview.png" alt="PyLaunchpad Pro - Dark Mode UI & Architecture" width="100%" />
+</p>
+
 ---
 
 ## Purpose
