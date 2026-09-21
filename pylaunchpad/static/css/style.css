@@ -245,16 +245,46 @@ header.navbar {
 }
 
 /* Code Snippet Box */
-.code-box {
+pre,
+pre.code-box,
+pre.code-window,
+.code-box,
+.code-window {
   background-color: #0d1117;
   border: 1px solid var(--border-color);
   border-radius: 0.5rem;
   padding: 1.25rem;
   font-family: var(--font-mono);
-  font-size: 0.9rem;
+  font-size: 0.88rem;
+  line-height: 1.65;
   overflow-x: auto;
   color: #e6edf3;
   margin: 1.5rem 0;
+  white-space: pre;
+  word-spacing: normal;
+  word-break: normal;
+  tab-size: 4;
+}
+
+pre code,
+.code-box code,
+.code-window code {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+  background: transparent;
+  padding: 0;
+  border: none;
+  white-space: pre;
+}
+
+p code, li code {
+  background-color: rgba(255, 255, 255, 0.08);
+  padding: 0.15rem 0.4rem;
+  border-radius: 0.25rem;
+  font-size: 0.88em;
+  color: #93c5fd;
+  border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 /* Pricing Section */

@@ -53,7 +53,7 @@ pylaunchpad/
 │   ├── static/             # Dark-mode stylesheets and client controllers
 │   └── templates/          # Jinja2 dashboard and landing views
 ├── docs/                   # Static showcase and documentation (GitHub Pages)
-├── tests/                  # Automated test suite (13 unit and integration tests)
+├── tests/                  # Automated test suite (17 unit and integration tests)
 ├── distribution/           # Release builder and commercial license
 ├── Dockerfile              # Minimal multi-stage production image
 ├── docker-compose.yml      # Complete stack with Caddy automatic TLS

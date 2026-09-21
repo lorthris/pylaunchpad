@@ -111,8 +111,7 @@
       <section id="quickstart">
         <h2>Quickstart</h2>
         <p>PyLaunchpad requires Python 3.10 or higher. Set up your environment in four commands:</p>
-        <div class="code-window">
-# 1. Clone repository
+        <pre class="code-window"><code># 1. Clone repository
 git clone https://github.com/lorthris/pylaunchpad.git
 cd pylaunchpad
 
@@ -127,16 +126,14 @@ source venv/bin/activate
 pip install -e .
 
 # 4. Start local development server
-uvicorn pylaunchpad.app:app --reload --port 8000
-        </div>
+uvicorn pylaunchpad.app:app --reload --port 8000</code></pre>
         <p>Open <a href="http://localhost:8000" target="_blank" style="color: var(--blue);">http://localhost:8000</a> to view the landing page and <a href="http://localhost:8000/api/docs" target="_blank" style="color: var(--blue);">http://localhost:8000/api/docs</a> for the Swagger API documentation.</p>
       </section>
 
       <section id="configuration">
         <h2>Configuration (.env)</h2>
         <p>All settings use Pydantic v2 Settings. Copy <code>.env.example</code> to <code>.env</code>:</p>
-        <div class="code-window">
-APP_NAME=PyLaunchpad
+        <pre class="code-window"><code>APP_NAME=PyLaunchpad
 ENVIRONMENT=development
 DEBUG=true
 PORT=8000
@@ -151,8 +148,7 @@ DATABASE_URL=sqlite:///./pylaunchpad.db
 POLAR_ACCESS_TOKEN=polar_at_...
 POLAR_ORGANIZATION_ID=org_...
 POLAR_WEBHOOK_SECRET=whsec_...
-POLAR_ENVIRONMENT=sandbox
-        </div>
+POLAR_ENVIRONMENT=sandbox</code></pre>
       </section>
 
       <section id="polar">
@@ -172,8 +168,7 @@ POLAR_ENVIRONMENT=sandbox
         <p>
           PyLaunchpad includes turnkey Polar License Key validation out of the box. Validate customer license keys programmatically or via REST:
         </p>
-        <div class="code-window">
-<span style="color: #7ee787;"># Direct Python validation</span>
+        <pre class="code-window"><code><span style="color: #7ee787;"># Direct Python validation</span>
 from pylaunchpad.billing.polar import polar_client
 
 result = await polar_client.validate_license_key("PYLP-XXXX-XXXX-XXXX")
@@ -182,8 +177,7 @@ if result["valid"]:
 
 <span style="color: #7ee787;"># Or via REST API: POST /api/v1/billing/license/validate</span>
 # Request: {"key": "PYLP-XXXX-XXXX-XXXX"}
-# Response: {"valid": true, "status": "granted", "message": "License key is valid and active"}
-        </div>
+# Response: {"valid": true, "status": "granted", "message": "License key is valid and active"}</code></pre>
       </section>
 
       <section id="auth">
@@ -200,9 +194,7 @@ if result["valid"]:
         <p>
           Powered by SQLAlchemy 2.0. By default, PyLaunchpad runs on local SQLite with zero setup. To switch to PostgreSQL in production, update your connection string:
         </p>
-        <div class="code-window">
-DATABASE_URL=postgresql://postgres:password@localhost:5432/pylaunchpad
-        </div>
+        <pre class="code-window"><code>DATABASE_URL=postgresql://postgres:password@localhost:5432/pylaunchpad</code></pre>
       </section>
 
       <section id="worker">
@@ -210,25 +202,38 @@ DATABASE_URL=postgresql://postgres:password@localhost:5432/pylaunchpad
         <p>
           Avoid heavy infrastructure like Celery or Redis for simple micro-SaaS workloads. PyLaunchpad includes an in-process async worker queue:
         </p>
-        <div class="code-window">
-from pylaunchpad.tasks.worker import task_worker
+        <pre class="code-window"><code>from pylaunchpad.tasks.worker import task_worker
 
 async def send_welcome_email(email: str):
     # Asynchronous email or AI job logic
     pass
 
 # Enqueue without blocking the HTTP request
-await task_worker.enqueue(send_welcome_email, user.email)
-        </div>
+await task_worker.enqueue(send_welcome_email, user.email)</code></pre>
       </section>
 
       <section id="docker">
         <h2>Docker &amp; Caddy HTTPS Deployment</h2>
         <p>PyLaunchpad includes a hardened multi-stage Dockerfile and turnkey Compose configuration with Caddy:</p>
-        <div class="code-window">
-# Start application and Caddy with automatic TLS
-docker compose up -d --build
-        </div>
+        <pre class="code-window"><code># Start application and Caddy with automatic TLS
+docker compose up -d --build</code></pre>
+      </section>
+
+      <!-- Bottom CTA -->
+      <section style="background: rgba(59, 130, 246, 0.08); border: 1px solid rgba(59, 130, 246, 0.25); border-radius: 0.75rem; padding: 2.25rem; text-align: center; margin-top: 3rem;">
+        <h3 style="font-size: 1.5rem; font-weight: 700; margin-bottom: 0.5rem;">Start Building Your Micro-SaaS Today</h3>
+        <p style="color: var(--text-dim); max-width: 600px; margin: 0 auto 1.5rem; font-size: 0.95rem;">
+          Get the complete, tested codebase, turnkey Polar.sh Merchant of Record billing engine, and perpetual developer licence.
+        </p>
+        <a
+          href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk"
+          target="_blank"
+          rel="noopener"
+          class="btn btn-primary"
+          style="display: inline-block; padding: 0.75rem 1.75rem; font-size: 1rem;"
+        >
+          Purchase PyLaunchpad Pro &mdash; $29 USD &rarr;
+        </a>
       </section>
     </article>
   </main>
