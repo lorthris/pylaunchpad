@@ -67,6 +67,7 @@ This document contains the step-by-step human action checklist for James to link
 | **AUD Price** | $45.00 AUD (`3c229542-ebc0-427b-b71b-5b8cb9465eb8`) | Active |
 | **USD Price** | $29.00 USD (`6fd15771-cd90-4bf1-b242-d8789a46e395`) | Active |
 | **Delivery Benefit** | `3632e7b9-b522-4366-8694-53ae1fa56ba0` (`pylaunchpad-pro-v1.0.0.zip`) | Linked |
+| **License Key Benefit** | `7d553971-8b42-4a2e-b76a-5e0f4af0d4fd` (`PyLaunchpad Pro License Key`, prefix `PYLP`) | Linked |
 | **Discount Code** | `LAUNCH20` (20% off, ID `db8a4c67-7416-48d2-8a64-145b1f76b113`) | Active |
 | **Live Checkout Link** | [https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk](https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk) | Verified (HTTP 200) |
 
