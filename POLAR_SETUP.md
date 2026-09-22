@@ -42,7 +42,7 @@ This document contains the step-by-step human action checklist for James to link
    - **Price:** `$29.00 USD`
 3. Under **Product Benefits**:
    - Select **Add Benefit** -> **File Download**.
-   - Upload the distribution file: `C:\Drive\New\pylaunchpad\dist\pylaunchpad-pro-v1.0.0.zip`.
+   - Upload the distribution file: `C:\Drive\Projects\mylaunchpad\dist\pylaunchpad-pro-v1.0.0.zip`.
    - Description: `PyLaunchpad Pro Complete Source Code & Starter Kit`.
 4. Click **Create & Publish**.
 
