@@ -75,20 +75,20 @@ header.top-nav {
   font-size: 0.85rem;
 }
 
-.links-group {
+.links-group, .nav-menu {
   display: flex;
   align-items: center;
   gap: 1.5rem;
 }
 
-.links-group a {
+.links-group a, .nav-menu a, .nav-item {
   color: var(--text-dim);
   text-decoration: none;
   font-size: 0.95rem;
   transition: color 0.15s ease;
 }
 
-.links-group a:hover {
+.links-group a:hover, .nav-menu a:hover, .nav-item:hover {
   color: var(--text-main);
 }
 
@@ -108,13 +108,55 @@ header.top-nav {
   transition: all 0.15s ease;
 }
 
-.btn-primary {
+.btn-primary, .button-primary, .nav-btn-primary {
   background-color: var(--blue);
   color: #fff;
 }
 
-.btn-primary:hover {
+.btn-primary:hover, .button-primary:hover, .nav-btn-primary:hover {
   background-color: var(--blue-hover);
+}
+
+.nav-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.45rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.button-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.5rem;
+  font-weight: 600;
+  text-decoration: none;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: all 0.15s ease;
+}
+
+.button-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.375rem;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  background-color: var(--bg-card-hover);
+  color: var(--text-main);
+  border: 1px solid var(--border);
+}
+
+.button-secondary:hover {
+  background-color: #374151;
 }
 
 .btn-secondary {
@@ -311,11 +353,36 @@ p code, li code {
 }
 
 /* Footer */
-footer.page-footer {
+footer.page-footer, footer.footer {
   margin-top: auto;
   border-top: 1px solid var(--border);
   padding: 2.5rem 0;
   text-align: center;
   color: var(--text-muted);
   font-size: 0.85rem;
+}
+
+.footer-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-links {
+  display: flex;
+  gap: 1.25rem;
+  font-size: 0.9rem;
+  flex-wrap: wrap;
+}
+
+.footer-links a, footer.page-footer a, footer.footer a {
+  color: var(--text-dim);
+  text-decoration: none;
+  transition: color 0.15s ease;
+}
+
+.footer-links a:hover, footer.page-footer a:hover, footer.footer a:hover {
+  color: var(--text-main);
 }

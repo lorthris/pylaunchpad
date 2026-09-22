@@ -9,7 +9,7 @@ from pathlib import Path
 
 ROOT_DIR = Path(__file__).resolve().parent.parent
 DIST_DIR = ROOT_DIR / "dist"
-VERSION = "1.0.3"
+VERSION = "1.0.4"
 PACKAGE_NAME = f"pylaunchpad-pro-v{VERSION}"
 ZIP_FILENAME = f"{PACKAGE_NAME}.zip"
 

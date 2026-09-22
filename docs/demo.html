@@ -185,16 +185,17 @@
   <header class="top-nav">
     <div class="container nav-wrapper">
       <a href="index.html" class="brand-link">
-        <span class="logo-icon">&#x26A1;</span>
-        <span class="brand-name">PyLaunchpad</span>
+        <span class="brand-badge">PyLP</span>
+        <span>PyLaunchpad</span>
       </a>
-      <nav class="nav-menu">
-        <a href="index.html#features" class="nav-item">Features</a>
-        <a href="docs.html" class="nav-item">Docs</a>
-        <a href="demo.html" class="nav-item active">Demo</a>
-        <a href="vs-nextjs.html" class="nav-item">vs Next.js</a>
-        <a href="https://github.com/lorthris/pylaunchpad" class="nav-item" target="_blank" rel="noopener">GitHub</a>
-        <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="nav-btn-primary" target="_blank" rel="noopener">Buy Licence &rarr;</a>
+      <nav class="links-group">
+        <a href="index.html">Overview</a>
+        <a href="docs.html">Docs</a>
+        <a href="demo.html" style="color: var(--blue); font-weight: 600;">Demo</a>
+        <a href="vs-nextjs.html">vs Next.js</a>
+        <a href="fastapi-polar-guide.html">Polar Guide</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="btn btn-primary" style="padding: 0.45rem 1rem; font-size: 0.85rem;" target="_blank" rel="noopener">Get Pro ($29)</a>
       </nav>
     </div>
   </header>
@@ -306,8 +307,8 @@
           </div>
 
           <div style="display: flex; gap: 0.5rem; margin-bottom: 1rem;">
-            <button class="button-secondary" onclick="setLicenseKey('PYLP-9981-4412-8821', true)" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">Preset Valid Key</button>
-            <button class="button-secondary" onclick="setLicenseKey('PYLP-REVOKED-EXPIRED', false)" style="font-size: 0.8rem; padding: 0.3rem 0.75rem;">Preset Revoked Key</button>
+            <button class="btn btn-secondary" onclick="setLicenseKey('PYLP-9981-4412-8821', true)" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;">Preset Valid Key</button>
+            <button class="btn btn-secondary" onclick="setLicenseKey('PYLP-REVOKED-EXPIRED', false)" style="font-size: 0.8rem; padding: 0.35rem 0.75rem;">Preset Revoked Key</button>
           </div>
 
           <div class="api-output" id="out-custom-license">// Result will appear here...</div>
@@ -319,7 +320,7 @@
           <p style="color: var(--text-dim); font-size: 0.92rem; margin-bottom: 1.25rem; max-width: 600px; margin-left: auto; margin-right: auto;">
             Get the full source code, pre-configured Polar.sh billing engine, JWT auth, SQLite/Postgres schemas, Docker stack, and automated pytest suite.
           </p>
-          <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="button-primary" style="display: inline-block; padding: 0.75rem 1.75rem; font-size: 1rem;" target="_blank" rel="noopener">
+          <a href="https://buy.polar.sh/polar_cl_QR5Aikj1Q8exnjbQZfG2X4BdV7fqIgyeJEmxj1E2Wxk" class="btn btn-primary" style="display: inline-flex; padding: 0.75rem 1.75rem; font-size: 1rem;" target="_blank" rel="noopener">
             Get PyLaunchpad Pro &mdash; $29 USD &rarr;
           </a>
         </div>
@@ -327,18 +328,18 @@
     </div>
   </main>
 
-  <footer class="footer">
-    <div class="container footer-content">
-      <p>&copy; 2026 PyLaunchpad. Built for Python micro-SaaS and AI developers.</p>
-      <div class="footer-links">
-        <a href="index.html">Showcase</a>
-        <a href="docs.html">Docs</a>
-        <a href="demo.html">Demo</a>
-        <a href="vs-nextjs.html">vs Next.js</a>
-        <a href="fastapi-polar-guide.html">Polar Guide</a>
-        <a href="ai-micro-saas-guide.html">AI SaaS Guide</a>
-        <a href="terms.html">Terms & Privacy</a>
-        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener">GitHub</a>
+  <footer class="page-footer">
+    <div class="container" style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 1rem;">
+      <p>&copy; 2026 PyLaunchpad. All rights reserved. Commercial developer licence.</p>
+      <div style="display: flex; gap: 1.25rem; font-size: 0.9rem; flex-wrap: wrap;">
+        <a href="index.html" style="color: var(--text-dim); text-decoration: none;">Showcase</a>
+        <a href="docs.html" style="color: var(--text-dim); text-decoration: none;">Docs</a>
+        <a href="demo.html" style="color: var(--blue); text-decoration: none;">Demo</a>
+        <a href="vs-nextjs.html" style="color: var(--text-dim); text-decoration: none;">vs Next.js</a>
+        <a href="fastapi-polar-guide.html" style="color: var(--text-dim); text-decoration: none;">Polar Guide</a>
+        <a href="ai-micro-saas-guide.html" style="color: var(--text-dim); text-decoration: none;">AI SaaS Guide</a>
+        <a href="terms.html" style="color: var(--text-dim); text-decoration: none;">Terms & Privacy</a>
+        <a href="https://github.com/lorthris/pylaunchpad" target="_blank" rel="noopener" style="color: var(--text-dim); text-decoration: none;">GitHub</a>
       </div>
     </div>
   </footer>
@@ -363,7 +364,7 @@
         el.textContent = JSON.stringify({
           status: "healthy",
           timestamp: new Date().toISOString(),
-          version: "1.0.3",
+          version: "1.0.4",
           environment: "production",
           database: { connected: true, driver: "sqlite+aiosqlite" },
           system: { memory_mb: 48.2, uptime_seconds: 142820 }

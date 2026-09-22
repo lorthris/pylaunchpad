@@ -87,7 +87,7 @@ I put together PyLaunchpad to give Python developers a clean, production-ready f
 2. Dual authentication: Bearer tokens for user sessions + hashed API keys for developers calling your API.
 3. Lightweight background task queue: Non-blocking async queue for sending transactional emails or handling AI API calls without needing Redis.
 4. Docker Compose with Caddy: Automatic Let's Encrypt / Cloudflare HTTPS reverse proxy.
-5. Automated test suite: 25 tests covering auth, webhooks, license key validation, SEO auditing, and CLI commands with pytest.
+5. Automated test suite: 31 tests covering auth, webhooks, license key validation, SEO auditing, IndexNow, and CLI commands with pytest.
 
 The showcase, docs, and interactive live demo are at https://lorthris.github.io/pylaunchpad/?utm_source=reddit_fastapi
 

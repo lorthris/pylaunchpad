@@ -47,7 +47,7 @@ def init_project(args: argparse.Namespace) -> int:
 ENVIRONMENT=development
 DEBUG=True
 APP_NAME="{app_name}"
-APP_VERSION="1.0.3"
+APP_VERSION="1.0.4"
 HOST="0.0.0.0"
 PORT=8000
 
@@ -176,6 +176,43 @@ def generate_utm(args: argparse.Namespace) -> int:
     return 0
 
 
+def run_indexnow(args: argparse.Namespace) -> int:
+    """Submit URLs to search engines via IndexNow protocol."""
+    from pylaunchpad.marketing import submit_indexnow
+
+    print(f"Submitting URLs for {args.host} via IndexNow...")
+    results = submit_indexnow(host=args.host, key=args.key)
+    success = True
+    for ep, res in results.items():
+        if res.get("success"):
+            print(f"[+] {ep}: Submitted successfully (HTTP {res.get('status_code')})")
+        else:
+            print(f"[-] {ep}: Submission status {res.get('status_code')} (detail: {res.get('error', 'none')})")
+            # IndexNow returns 200 or 202 on success; other codes might be due to offline or rate limits
+    return 0 if success else 1
+
+
+def run_link_check(args: argparse.Namespace) -> int:
+    """Audit internal hyperlinks and assets in documentation directory."""
+    from pylaunchpad.marketing import audit_internal_links
+
+    docs_dir = Path(args.dir)
+    if not docs_dir.exists():
+        print(f"[-] Directory not found: {docs_dir}")
+        return 1
+
+    res = audit_internal_links(docs_dir)
+    print(f"Link Audit for {docs_dir}: Checked {res['checked']} internal links and asset references.")
+    if res["all_valid"]:
+        print("[+] All internal links and assets resolve successfully.")
+        return 0
+
+    print(f"[-] Found {len(res['broken'])} broken links:")
+    for b in res["broken"]:
+        print(f"  - {b['source']} -> {b['target']}")
+    return 1
+
+
 def main() -> int:
     """CLI entry point for PyLaunchpad command-line runner."""
     parser = argparse.ArgumentParser(description="PyLaunchpad Starter Kit CLI")
@@ -200,6 +237,15 @@ def main() -> int:
     seo_parser = subparsers.add_parser("seo-audit", help="Audit documentation pages for SEO compliance")
     seo_parser.add_argument("--dir", default="docs", help="Directory containing HTML files (default: docs)")
 
+    # link-check subcommand
+    link_parser = subparsers.add_parser("link-check", help="Audit internal links and asset references")
+    link_parser.add_argument("--dir", default="docs", help="Directory containing HTML files (default: docs)")
+
+    # indexnow subcommand
+    indexnow_parser = subparsers.add_parser("indexnow", help="Submit documentation URLs to IndexNow search engine protocol")
+    indexnow_parser.add_argument("--host", default="lorthris.github.io", help="Host domain")
+    indexnow_parser.add_argument("--key", default="d4e5f61a7b8c9d0e1f2a3b4c5d6e7f80", help="IndexNow API key")
+
     # utm subcommand
     utm_parser = subparsers.add_parser("utm", help="Generate trackable UTM marketing link")
     utm_parser.add_argument("--url", default="https://lorthris.github.io/pylaunchpad/", help="Base URL")
@@ -217,6 +263,10 @@ def main() -> int:
         return backup_database(args)
     if args.command == "seo-audit":
         return audit_seo(args)
+    if args.command == "link-check":
+        return run_link_check(args)
+    if args.command == "indexnow":
+        return run_indexnow(args)
     if args.command == "utm":
         return generate_utm(args)
 
@@ -226,4 +276,5 @@ def main() -> int:
 
 if __name__ == "__main__":
     sys.exit(main())
+
 

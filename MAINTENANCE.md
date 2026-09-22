@@ -46,5 +46,5 @@ PyLaunchpad follows **Semantic Versioning (SemVer 2.0)**:
 
 ## 4. Disaster Recovery & Rollback
 
-- **Code Rollback:** Every customer release is tracked in git tags (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`). If an upstream library regression occurs, revert to the previous release tag in git.
+- **Code Rollback:** Every customer release is tracked in git tags (`v1.0.0`, `v1.0.1`, `v1.0.2`, `v1.0.3`, `v1.0.4`). If an upstream library regression occurs, revert to the previous release tag in git.
 - **Customer Deliverable Backups:** Release archives are saved in `dist/` with accompanying `.sha256` checksums and manifest files.
