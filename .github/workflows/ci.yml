@@ -1,14 +1,26 @@
 name: PyLaunchpad CI
 
+# CI runs on LankySV01, on the self-hosted runner gh-runner-mylaunchpad. The four matrix
+# jobs share that one runner, so they run one after the other.
+
 on:
   push:
     branches: [ main ]
   pull_request:
     branches: [ main ]
 
+# One runner serves this repo. Cancel a superseded run, so that the runner checks only
+# the last push to each ref.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   test:
-    runs-on: ubuntu-latest
+    # A pull request from a fork never runs on the self-hosted runner.
+    if: github.event_name != 'pull_request' || github.event.pull_request.head.repo.full_name == github.repository
+    runs-on: [self-hosted, lankysv01, pylaunchpad-ci]
+    timeout-minutes: 15
     strategy:
       fail-fast: false
       matrix:
@@ -23,10 +35,14 @@ jobs:
         python-version: ${{ matrix.python-version }}
 
     - name: Install dependencies
+      # The packages go into a venv under RUNNER_TEMP. The self-hosted runner keeps one
+      # shared interpreter per version for all jobs, and a job must not change it.
       run: |
-        python -m pip install --upgrade pip
-        pip install -e .
-        pip install pytest pytest-asyncio
+        python -m venv --clear "$RUNNER_TEMP/venv"
+        echo "$RUNNER_TEMP/venv/bin" >> "$GITHUB_PATH"
+        "$RUNNER_TEMP/venv/bin/python" -m pip install --upgrade pip
+        "$RUNNER_TEMP/venv/bin/python" -m pip install -e .
+        "$RUNNER_TEMP/venv/bin/python" -m pip install pytest pytest-asyncio
 
     - name: Run automated test suite
       run: |
