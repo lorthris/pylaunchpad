@@ -43,6 +43,7 @@ ENV/
 # Unit test / coverage reports
 .coverage
 .pytest_cache/
+.pytest_tmp/
 htmlcov/
 
 # Editor directories

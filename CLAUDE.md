@@ -18,12 +18,13 @@ Guidelines for AI coding assistants working in this repository.
 
 - Use Python 3.10+ type hints for all function signatures.
 - Prefer explicit error handling over generic exceptions.
-- Never write credentials or hardcoded secret keys in code.
+- Never write credentials or hardcoded secret keys in code or `.env`.
+- Keep credentials in Vaultwarden collection `mylaunchpad`.
 - Write pure logic where practical; keep side effects isolated to route handlers and task workers.
-- Run `pytest -v tests/` before committing code changes.
+- Run `python -m pytest -v tests/` before committing code changes.
 
 ## Commands
 
-- Start development server: `uvicorn pylaunchpad.app:app --reload --port 8000`
-- Run automated tests: `pytest -v tests/`
+- Start development server with Vaultwarden secrets: `pwsh scripts/pylaunchpad_vault.ps1 uvicorn pylaunchpad.app:app --reload --port 8000`
+- Run automated tests: `python -m pytest -v tests/`
 - Build distribution package: `python distribution/build_release.py`
