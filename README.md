@@ -80,9 +80,9 @@ source venv/bin/activate  # On Windows: .\venv\Scripts\Activate.ps1
 pip install -e .
 ```
 
-### 2. Configuration & Initialization
+### 2. Configuration & Initialisation
 
-Initialize your environment with a single command:
+Initialise your environment with a single command:
 
 ```bash
 # Automated setup (generates cryptographic secrets & defaults)
@@ -93,6 +93,14 @@ cp .env.example .env
 ```
 
 ### 3. Run Development Server
+
+Run with secrets injected from Vaultwarden (zero plaintext on disk):
+
+```powershell
+pwsh scripts/pylaunchpad_vault.ps1 uvicorn pylaunchpad.app:app --reload --port 8000
+```
+
+Or run directly with environment variables:
 
 ```bash
 uvicorn pylaunchpad.app:app --reload --port 8000
@@ -109,7 +117,7 @@ uvicorn pylaunchpad.app:app --reload --port 8000
 Run the automated test suite:
 
 ```bash
-pytest -v tests/
+python -m pytest -v tests/
 ```
 
 Test coverage includes:
@@ -119,8 +127,8 @@ Test coverage includes:
 - Webhook replay attack prevention (timestamp drift verification).
 - Order provisioning and subscription lifecycle events.
 - Developer API key creation, hashed validation, and revocation.
-- Polar.sh License Key automated validation and entitlement verification.
-- Search engine optimization compliance auditing and UTM tracking.
+- Polar.sh Licence Key automated validation and entitlement verification.
+- Search engine optimisation compliance auditing and UTM tracking.
 - IndexNow instant search engine protocol submission and internal link auditing.
 - Asynchronous task worker job execution.
 

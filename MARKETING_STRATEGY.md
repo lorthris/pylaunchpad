@@ -81,7 +81,7 @@ Submit PyLaunchpad to these free developer directories for high-authority backli
 
 ---
 
-## 5. Conversion Optimization & Metrics Tracking
+## 5. Conversion Optimisation & Metrics Tracking
 
 - **Pricing Strategy**: $29 USD ($45 AUD) one-time developer license. Low enough for impulsive developer purchases; high enough to reward quality.
 - **Launch Discount**: Promo code `LAUNCH20` provides 20% off ($23.20 USD).

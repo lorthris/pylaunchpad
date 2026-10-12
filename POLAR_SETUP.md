@@ -22,7 +22,7 @@ This document contains the step-by-step human action checklist for James to link
 ---
 
 ### Step 2: Connect Australian Bank Account for Payouts
-1. From your Polar organization dashboard, navigate to **Settings** -> **Payouts**.
+1. From your Polar organisation dashboard, navigate to **Settings** -> **Payouts**.
 2. Click **Connect Stripe Payout Account**.
 3. In the Stripe Connect Express onboarding form:
    - Country: Select **Australia**.
@@ -42,7 +42,7 @@ This document contains the step-by-step human action checklist for James to link
    - **Price:** `$29.00 USD`
 3. Under **Product Benefits**:
    - Select **Add Benefit** -> **File Download**.
-   - Upload the distribution file: `C:\Drive\Projects\mylaunchpad\dist\pylaunchpad-pro-v1.0.0.zip`.
+   - Upload the distribution file: `dist/pylaunchpad-pro-v1.0.0.zip`.
    - Description: `PyLaunchpad Pro Complete Source Code & Starter Kit`.
 4. Click **Create & Publish**.
 
