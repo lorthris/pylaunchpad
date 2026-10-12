@@ -88,7 +88,7 @@ def test_order_created_webhook_endpoint(client, db_session):
     body_bytes = json.dumps(order_data).encode("utf-8")
     headers = _generate_valid_webhook_headers(body_bytes, settings.POLAR_WEBHOOK_SECRET)
 
-    response = client.post("/api/v1/webhooks/polar", data=body_bytes, headers=headers)
+    response = client.post("/api/v1/webhooks/polar", content=body_bytes, headers=headers)
     assert response.status_code == 200
     res_data = response.json()
     assert res_data["status"] == "received"
@@ -124,7 +124,7 @@ def test_subscription_lifecycle_webhook(client, db_session):
     body_bytes = json.dumps(sub_data).encode("utf-8")
     headers = _generate_valid_webhook_headers(body_bytes, settings.POLAR_WEBHOOK_SECRET)
 
-    res = client.post("/api/v1/webhooks/polar", data=body_bytes, headers=headers)
+    res = client.post("/api/v1/webhooks/polar", content=body_bytes, headers=headers)
     assert res.status_code == 200
 
     sub = db_session.query(Subscription).filter(Subscription.polar_subscription_id == "sub_polar_abc123").first()
@@ -142,7 +142,7 @@ def test_subscription_lifecycle_webhook(client, db_session):
     body_bytes_cancel = json.dumps(cancel_data).encode("utf-8")
     headers_cancel = _generate_valid_webhook_headers(body_bytes_cancel, settings.POLAR_WEBHOOK_SECRET)
 
-    res_cancel = client.post("/api/v1/webhooks/polar", data=body_bytes_cancel, headers=headers_cancel)
+    res_cancel = client.post("/api/v1/webhooks/polar", content=body_bytes_cancel, headers=headers_cancel)
     assert res_cancel.status_code == 200
 
     db_session.refresh(sub)
