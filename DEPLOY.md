@@ -8,12 +8,15 @@ Instructions for deploying PyLaunchpad into production, configuring Merchant of 
 
 The maximum permitted out-of-pocket setup budget is $20 USD ($40 AUD).
 
-### Zero Out-of-Pocket Strategy (Current State)
+### Setup budget plan
+
+These amounts are setup-budget targets. They do not verify current account charges or payouts.
+
 - **Showcase Hosting:** GitHub Pages (`$0.00`).
-- **Billing Infrastructure:** Polar.sh Merchant of Record (`$0.00` setup fee; 5% + $0.50 transaction fee only upon completed sale).
+- **Billing Infrastructure:** Polar.sh Merchant of Record. Its Starter plan has no monthly fee; transaction and provider payout fees can apply. Check the [current fee schedule](https://polar.sh/docs/merchant-of-record/fees) and [account evidence limits](POLAR_SETUP.md#recorded-configuration).
 - **Automated Delivery:** Polar.sh digital download benefit (`$0.00`).
-- **Initial Out-of-Pocket Spend:** `$0.00 USD`.
-- **Remaining Capital Balance:** `$20.00 USD / $40.00 AUD` (100% intact).
+- **Planned Initial Out-of-Pocket Spend:** `$0.00 USD`.
+- **Planned Remaining Setup Budget:** `$20.00 USD / $40.00 AUD`.
 
 ---
 
