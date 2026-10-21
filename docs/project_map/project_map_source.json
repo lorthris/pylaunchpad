@@ -1,0 +1,1127 @@
+{
+  "schema_version": 1,
+  "project": {
+    "id": "mylaunchpad",
+    "name": "mylaunchpad",
+    "tagline": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution.",
+    "purpose": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution.",
+    "source_of_truth": "docs/project_map/project_map_source.json and tracked repository files.",
+    "generation_command": "python scripts/project_map.py build"
+  },
+  "entry_points": [
+    {
+      "path": "README.md",
+      "label": "Project contract",
+      "purpose": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution."
+    },
+    {
+      "path": "AGENTS.md",
+      "label": "Agent instructions",
+      "purpose": "Read project rules and map commands."
+    },
+    {
+      "path": "scripts/project_map.py",
+      "label": "Shared map launcher",
+      "purpose": "Build, check and query repository navigation."
+    }
+  ],
+  "domains": [
+    {
+      "id": "domain.project",
+      "name": "Project",
+      "purpose": "Project components.",
+      "order": 0
+    },
+    {
+      "id": "domain.application",
+      "name": "Application",
+      "purpose": "Application components.",
+      "order": 1
+    },
+    {
+      "id": "domain.operations",
+      "name": "Operations",
+      "purpose": "Operations components.",
+      "order": 2
+    },
+    {
+      "id": "domain.delivery",
+      "name": "Delivery",
+      "purpose": "Delivery components.",
+      "order": 3
+    }
+  ],
+  "phases": [
+    {
+      "id": "phase.maintenance",
+      "label": "P0",
+      "name": "Maintain the current project",
+      "status": "in_progress",
+      "order": 0,
+      "summary": "Maintain repository components and validate changes. This phase does not claim production approval.",
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for project contract and configuration."
+        }
+      ]
+    }
+  ],
+  "nodes": [
+    {
+      "id": "project.boundary",
+      "name": "Project contract and configuration",
+      "purpose": "Project contract and configuration.",
+      "type": "component",
+      "domain": "domain.project",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        ".cursorrules",
+        ".env.example",
+        ".gitignore",
+        "AGENTS.md",
+        "CLAUDE.md",
+        "Caddyfile",
+        "Dockerfile",
+        "LICENSE",
+        "docker-compose.yml",
+        "pyproject.toml"
+      ],
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for project contract and configuration."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": [
+        "Keep all credentials in the mylaunchpad vault collection. Do not copy credentials into .env files.",
+        "The pylaunchpad Brain scope owns durable external context.",
+        "Polar is also used by YieldEngine, but the products have separate credentials and source."
+      ]
+    },
+    {
+      "id": "governance.map",
+      "name": "Authored map and generated navigation",
+      "purpose": "Authored map and generated navigation.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "docs/project_map"
+      ],
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "## Project navigation",
+          "claim": "Repository evidence for authored map and generated navigation."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "governance.ci",
+      "name": "CI workflows",
+      "purpose": "CI workflows.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        ".github"
+      ],
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for ci workflows."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "project.docs",
+      "name": "Product guides and deployment documentation",
+      "purpose": "Product guides and deployment documentation.",
+      "type": "component",
+      "domain": "domain.project",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "DEPLOY.md",
+        "LAUNCH_KIT.md",
+        "LEGAL.md",
+        "MAINTENANCE.md",
+        "MARKETING_STRATEGY.md",
+        "POLAR_SETUP.md",
+        "README.md",
+        "SUPPORT.md",
+        "docs/ai-micro-saas-guide.html",
+        "docs/d4e5f61a7b8c9d0e1f2a3b4c5d6e7f80.txt",
+        "docs/demo.html",
+        "docs/docs.html",
+        "docs/fastapi-polar-guide.html",
+        "docs/index.html",
+        "docs/preview.png",
+        "docs/robots.txt",
+        "docs/sitemap.xml",
+        "docs/style.css",
+        "docs/terms.html",
+        "docs/vs-nextjs.html"
+      ],
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for product guides and deployment documentation."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "quality.tests",
+      "name": "Automated verification",
+      "purpose": "Automated verification.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "tests"
+      ],
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for automated verification."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "app.bootstrap",
+      "name": "Application startup and configuration",
+      "purpose": "Application startup and configuration.",
+      "type": "component",
+      "domain": "domain.application",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/__init__.py",
+        "pylaunchpad/app.py",
+        "pylaunchpad/cli.py",
+        "pylaunchpad/config.py",
+        "pylaunchpad/marketing.py"
+      ],
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "def create_app()",
+          "claim": "Repository evidence for application startup and configuration."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "app.api",
+      "name": "Versioned API routes",
+      "purpose": "Versioned API routes.",
+      "type": "component",
+      "domain": "domain.application",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/api"
+      ],
+      "evidence": [
+        {
+          "path": "CLAUDE.md",
+          "locator": "Versioned REST API endpoints.",
+          "claim": "Repository evidence for versioned api routes."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "app.auth",
+      "name": "Authentication and password security",
+      "purpose": "Authentication and password security.",
+      "type": "component",
+      "domain": "domain.application",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/auth"
+      ],
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "All password hashes use",
+          "claim": "Repository evidence for authentication and password security."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "data.models",
+      "name": "Database and ORM models",
+      "purpose": "Database and ORM models.",
+      "type": "component",
+      "domain": "domain.application",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/models",
+        "pylaunchpad/database.py"
+      ],
+      "evidence": [
+        {
+          "path": "CLAUDE.md",
+          "locator": "SQLAlchemy session generator.",
+          "claim": "Repository evidence for database and orm models."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "app.schemas",
+      "name": "Request and response schemas",
+      "purpose": "Request and response schemas.",
+      "type": "component",
+      "domain": "domain.application",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/schemas"
+      ],
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "use explicit response models",
+          "claim": "Repository evidence for request and response schemas."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "app.billing",
+      "name": "Polar billing and webhook verification",
+      "purpose": "Polar billing and webhook verification.",
+      "type": "component",
+      "domain": "domain.application",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/billing"
+      ],
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Polar.sh webhooks verify Standard Webhooks",
+          "claim": "Repository evidence for polar billing and webhook verification."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "runtime.tasks",
+      "name": "In-process background tasks",
+      "purpose": "In-process background tasks.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/tasks"
+      ],
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "await task_worker.start()",
+          "claim": "Repository evidence for in-process background tasks."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "web.application",
+      "name": "Application templates and static assets",
+      "purpose": "Application templates and static assets.",
+      "type": "component",
+      "domain": "domain.delivery",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "pylaunchpad/templates",
+        "pylaunchpad/static"
+      ],
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "TEMPLATES_DIR = BASE_DIR / \"templates\"",
+          "claim": "Repository evidence for application templates and static assets."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "delivery.release",
+      "name": "Customer release package",
+      "purpose": "Customer release package.",
+      "type": "component",
+      "domain": "domain.delivery",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "distribution"
+      ],
+      "evidence": [
+        {
+          "path": "distribution/build_release.py",
+          "locator": "PACKAGE_NAME = f\"pylaunchpad-pro-v{VERSION}\"",
+          "claim": "Repository evidence for customer release package."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    },
+    {
+      "id": "ops.secrets",
+      "name": "Vault-injected development startup",
+      "purpose": "Vault-injected development startup.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "scripts"
+      ],
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Inject secrets into child processes using",
+          "claim": "Repository evidence for vault-injected development startup."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": []
+    }
+  ],
+  "relationships": [
+    {
+      "id": "relation.1",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "governance.map",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "## Project navigation",
+          "claim": "Repository evidence for authored map and generated navigation."
+        }
+      ]
+    },
+    {
+      "id": "relation.2",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "governance.ci",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for ci workflows."
+        }
+      ]
+    },
+    {
+      "id": "relation.3",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "project.docs",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for product guides and deployment documentation."
+        }
+      ]
+    },
+    {
+      "id": "relation.4",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "quality.tests",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "README.md",
+          "locator": "# PyLaunchpad",
+          "claim": "Repository evidence for automated verification."
+        }
+      ]
+    },
+    {
+      "id": "relation.5",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "def create_app()",
+          "claim": "Repository evidence for application startup and configuration."
+        }
+      ]
+    },
+    {
+      "id": "relation.6",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "app.api",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "CLAUDE.md",
+          "locator": "Versioned REST API endpoints.",
+          "claim": "Repository evidence for versioned api routes."
+        }
+      ]
+    },
+    {
+      "id": "relation.7",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "app.auth",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "All password hashes use",
+          "claim": "Repository evidence for authentication and password security."
+        }
+      ]
+    },
+    {
+      "id": "relation.8",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "data.models",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "CLAUDE.md",
+          "locator": "SQLAlchemy session generator.",
+          "claim": "Repository evidence for database and orm models."
+        }
+      ]
+    },
+    {
+      "id": "relation.9",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "app.schemas",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "use explicit response models",
+          "claim": "Repository evidence for request and response schemas."
+        }
+      ]
+    },
+    {
+      "id": "relation.10",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "app.billing",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Polar.sh webhooks verify Standard Webhooks",
+          "claim": "Repository evidence for polar billing and webhook verification."
+        }
+      ]
+    },
+    {
+      "id": "relation.11",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "runtime.tasks",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "await task_worker.start()",
+          "claim": "Repository evidence for in-process background tasks."
+        }
+      ]
+    },
+    {
+      "id": "relation.12",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "web.application",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "TEMPLATES_DIR = BASE_DIR / \"templates\"",
+          "claim": "Repository evidence for application templates and static assets."
+        }
+      ]
+    },
+    {
+      "id": "relation.13",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "delivery.release",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "distribution/build_release.py",
+          "locator": "PACKAGE_NAME = f\"pylaunchpad-pro-v{VERSION}\"",
+          "claim": "Repository evidence for customer release package."
+        }
+      ]
+    },
+    {
+      "id": "relation.14",
+      "type": "contains",
+      "source": "project.boundary",
+      "target": "ops.secrets",
+      "classification": "current",
+      "label": "Repository component",
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Inject secrets into child processes using",
+          "claim": "Repository evidence for vault-injected development startup."
+        }
+      ]
+    }
+  ],
+  "workflows": [
+    {
+      "id": "workflow.primary",
+      "name": "Run and package the SaaS starter",
+      "purpose": "Follow component ownership through the main project workflow. These steps do not authorise external operations.",
+      "classification": "current",
+      "steps": [
+        {
+          "node": "ops.secrets",
+          "label": "Vault-injected development startup"
+        },
+        {
+          "node": "app.bootstrap",
+          "label": "Application startup and configuration"
+        },
+        {
+          "node": "app.auth",
+          "label": "Authentication and password security"
+        },
+        {
+          "node": "app.api",
+          "label": "Versioned API routes"
+        },
+        {
+          "node": "app.billing",
+          "label": "Polar billing and webhook verification"
+        },
+        {
+          "node": "quality.tests",
+          "label": "Automated verification"
+        },
+        {
+          "node": "delivery.release",
+          "label": "Customer release package"
+        }
+      ],
+      "evidence": [
+        {
+          "path": "AGENTS.md",
+          "locator": "Inject secrets into child processes using",
+          "claim": "Repository evidence for vault-injected development startup."
+        }
+      ]
+    }
+  ],
+  "inventory_rules": [
+    {
+      "id": "inventory.1",
+      "owner": "governance.map",
+      "kind": "prefix",
+      "pattern": "docs/project_map",
+      "priority": 10
+    },
+    {
+      "id": "inventory.2",
+      "owner": "governance.ci",
+      "kind": "prefix",
+      "pattern": ".github",
+      "priority": 10
+    },
+    {
+      "id": "inventory.3",
+      "owner": "quality.tests",
+      "kind": "prefix",
+      "pattern": "tests",
+      "priority": 10
+    },
+    {
+      "id": "inventory.4",
+      "owner": "app.api",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/api",
+      "priority": 10
+    },
+    {
+      "id": "inventory.5",
+      "owner": "app.auth",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/auth",
+      "priority": 10
+    },
+    {
+      "id": "inventory.6",
+      "owner": "data.models",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/models",
+      "priority": 10
+    },
+    {
+      "id": "inventory.7",
+      "owner": "app.schemas",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/schemas",
+      "priority": 10
+    },
+    {
+      "id": "inventory.8",
+      "owner": "app.billing",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/billing",
+      "priority": 10
+    },
+    {
+      "id": "inventory.9",
+      "owner": "runtime.tasks",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/tasks",
+      "priority": 10
+    },
+    {
+      "id": "inventory.10",
+      "owner": "web.application",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/templates",
+      "priority": 10
+    },
+    {
+      "id": "inventory.11",
+      "owner": "web.application",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/static",
+      "priority": 10
+    },
+    {
+      "id": "inventory.12",
+      "owner": "delivery.release",
+      "kind": "prefix",
+      "pattern": "distribution",
+      "priority": 10
+    },
+    {
+      "id": "inventory.13",
+      "owner": "ops.secrets",
+      "kind": "prefix",
+      "pattern": "scripts",
+      "priority": 10
+    },
+    {
+      "id": "inventory.14",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": ".cursorrules",
+      "priority": 10
+    },
+    {
+      "id": "inventory.15",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": ".env.example",
+      "priority": 10
+    },
+    {
+      "id": "inventory.16",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": ".gitignore",
+      "priority": 10
+    },
+    {
+      "id": "inventory.17",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "AGENTS.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.18",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "CLAUDE.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.19",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "Caddyfile",
+      "priority": 10
+    },
+    {
+      "id": "inventory.20",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "DEPLOY.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.21",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "Dockerfile",
+      "priority": 10
+    },
+    {
+      "id": "inventory.22",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "LAUNCH_KIT.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.23",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "LEGAL.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.24",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "LICENSE",
+      "priority": 10
+    },
+    {
+      "id": "inventory.25",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "MAINTENANCE.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.26",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "MARKETING_STRATEGY.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.27",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "POLAR_SETUP.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.28",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "README.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.29",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "SUPPORT.md",
+      "priority": 10
+    },
+    {
+      "id": "inventory.30",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "docker-compose.yml",
+      "priority": 10
+    },
+    {
+      "id": "inventory.31",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/ai-micro-saas-guide.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.32",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/d4e5f61a7b8c9d0e1f2a3b4c5d6e7f80.txt",
+      "priority": 10
+    },
+    {
+      "id": "inventory.33",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/demo.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.34",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/docs.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.35",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/fastapi-polar-guide.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.36",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/index.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.37",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/preview.png",
+      "priority": 10
+    },
+    {
+      "id": "inventory.38",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/robots.txt",
+      "priority": 10
+    },
+    {
+      "id": "inventory.39",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/sitemap.xml",
+      "priority": 10
+    },
+    {
+      "id": "inventory.40",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/style.css",
+      "priority": 10
+    },
+    {
+      "id": "inventory.41",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/terms.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.42",
+      "owner": "project.docs",
+      "kind": "exact",
+      "pattern": "docs/vs-nextjs.html",
+      "priority": 10
+    },
+    {
+      "id": "inventory.43",
+      "owner": "app.bootstrap",
+      "kind": "exact",
+      "pattern": "pylaunchpad/__init__.py",
+      "priority": 10
+    },
+    {
+      "id": "inventory.44",
+      "owner": "app.bootstrap",
+      "kind": "exact",
+      "pattern": "pylaunchpad/app.py",
+      "priority": 10
+    },
+    {
+      "id": "inventory.45",
+      "owner": "app.bootstrap",
+      "kind": "exact",
+      "pattern": "pylaunchpad/cli.py",
+      "priority": 10
+    },
+    {
+      "id": "inventory.46",
+      "owner": "app.bootstrap",
+      "kind": "exact",
+      "pattern": "pylaunchpad/config.py",
+      "priority": 10
+    },
+    {
+      "id": "inventory.47",
+      "owner": "data.models",
+      "kind": "exact",
+      "pattern": "pylaunchpad/database.py",
+      "priority": 10
+    },
+    {
+      "id": "inventory.48",
+      "owner": "app.bootstrap",
+      "kind": "exact",
+      "pattern": "pylaunchpad/marketing.py",
+      "priority": 10
+    },
+    {
+      "id": "inventory.49",
+      "owner": "project.boundary",
+      "kind": "exact",
+      "pattern": "pyproject.toml",
+      "priority": 10
+    }
+  ],
+  "intended_tracked_paths": [
+    "docs/project_map/project_map_source.json",
+    "docs/project_map/project_map.json",
+    "docs/project_map/INDEX.md",
+    "docs/project_map/index.html"
+  ],
+  "conditional_artifacts": [],
+  "catalogues": [],
+  "sibling_sets": [],
+  "inventory_exclusions": [
+    ".cache/project_map/*",
+    "*.db",
+    "*.sqlite*",
+    "dist/*",
+    "dist_output/*",
+    "node_modules/*",
+    "__pycache__/*",
+    "*/__pycache__/*",
+    ".pytest_cache/*",
+    ".ruff_cache/*",
+    ".venv/*",
+    "*.egg-info/*"
+  ],
+  "index_exclusions": []
+}

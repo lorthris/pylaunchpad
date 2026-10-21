@@ -56,3 +56,6 @@ htmlcov/
 .DS_Store
 Thumbs.db
 desktop.ini
+
+# Local project map query cache
+.cache/project_map/
