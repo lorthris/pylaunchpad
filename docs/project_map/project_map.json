@@ -3,7 +3,9 @@
     {
       "allow_empty": false,
       "count": 7,
+      "exclude": [],
       "id": "catalogue.api",
+      "include": [],
       "kind": "prefix",
       "name": "API routes",
       "paths": [
@@ -21,7 +23,9 @@
     {
       "allow_empty": false,
       "count": 5,
+      "exclude": [],
       "id": "catalogue.models",
+      "include": [],
       "kind": "prefix",
       "name": "Persistence models",
       "paths": [
@@ -37,7 +41,9 @@
     {
       "allow_empty": false,
       "count": 4,
+      "exclude": [],
       "id": "catalogue.schemas",
+      "include": [],
       "kind": "prefix",
       "name": "Request and response contracts",
       "paths": [
@@ -52,7 +58,9 @@
     {
       "allow_empty": false,
       "count": 5,
+      "exclude": [],
       "id": "catalogue.templates",
+      "include": [],
       "kind": "prefix",
       "name": "Application templates",
       "paths": [
@@ -68,7 +76,9 @@
     {
       "allow_empty": false,
       "count": 2,
+      "exclude": [],
       "id": "catalogue.tasks",
+      "include": [],
       "kind": "prefix",
       "name": "Background task runtime",
       "paths": [
@@ -81,7 +91,9 @@
     {
       "allow_empty": false,
       "count": 7,
+      "exclude": [],
       "id": "catalogue.tests",
+      "include": [],
       "kind": "prefix",
       "name": "Application tests",
       "paths": [
@@ -99,7 +111,9 @@
     {
       "allow_empty": false,
       "count": 2,
+      "exclude": [],
       "id": "catalogue.release",
+      "include": [],
       "kind": "prefix",
       "name": "Release packaging",
       "paths": [
@@ -112,7 +126,9 @@
     {
       "allow_empty": false,
       "count": 2,
+      "exclude": [],
       "id": "catalogue.startup",
+      "include": [],
       "kind": "prefix",
       "name": "Startup and map tooling",
       "paths": [
@@ -124,6 +140,20 @@
     }
   ],
   "conditional_artifacts": [],
+  "coverage": {
+    "access_counts": {
+      "content": 84,
+      "metadata": 1
+    },
+    "path_count": 85,
+    "provenance": "derived from inventory.manifest; no test execution claim",
+    "role_counts": {
+      "documentation": 12,
+      "generated": 4,
+      "source": 64,
+      "test": 6
+    }
+  },
   "domain_relationships": [
     {
       "count": 13,
@@ -244,6 +274,1284 @@
       "represented_as_stub": true,
       "tracked_path_count": 0
     },
+    "manifest": {
+      ".cursorrules": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.14"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      ".env.example": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.15"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      ".github/copilot-instructions.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.ci",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.2"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      ".github/workflows/ci.yml": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.ci",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.2"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      ".gitignore": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.16"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "AGENTS.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.17"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "CLAUDE.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.18"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "Caddyfile": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.19"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "DEPLOY.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.20"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "Dockerfile": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.21"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "LAUNCH_KIT.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.22"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "LEGAL.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.23"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "LICENSE": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.24"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "MAINTENANCE.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.25"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "MARKETING_STRATEGY.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.26"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "POLAR_SETUP.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.27"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "README.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.28"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "SUPPORT.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.29"
+        },
+        "roles": [
+          "documentation"
+        ],
+        "tracking": "tracked"
+      },
+      "distribution/LICENSE": {
+        "access": "content",
+        "kind": "file",
+        "owner": "delivery.release",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.12"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "distribution/build_release.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "delivery.release",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.12"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docker-compose.yml": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.30"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/ai-micro-saas-guide.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.31"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/d4e5f61a7b8c9d0e1f2a3b4c5d6e7f80.txt": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.32"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/demo.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.33"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/docs.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.34"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/fastapi-polar-guide.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.35"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/index.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.36"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/preview.png": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.37"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/project_map/INDEX.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.1"
+        },
+        "roles": [
+          "documentation",
+          "generated"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/project_map/index.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.1"
+        },
+        "roles": [
+          "generated"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/project_map/project_map.json": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.1"
+        },
+        "roles": [
+          "generated"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/project_map/project_map_source.json": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.1"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/project_map/workspace.html": {
+        "access": "metadata",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": true,
+          "inventory_excluded": false,
+          "rule": "inventory.1"
+        },
+        "roles": [
+          "generated"
+        ],
+        "tracking": "intended"
+      },
+      "docs/robots.txt": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.38"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/sitemap.xml": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.39"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/style.css": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.40"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/terms.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.41"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/vs-nextjs.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.docs",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.42"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.43"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/v1/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/v1/apikeys.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/v1/auth.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/v1/billing.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/v1/health.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/api/v1/webhook.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.api",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.4"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/app.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.44"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/auth/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.auth",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.5"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/auth/dependencies.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.auth",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.5"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/auth/security.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.auth",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.5"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/billing/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.billing",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.8"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/billing/polar.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.billing",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.8"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/billing/webhooks.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.billing",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.8"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/cli.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.45"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/config.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.46"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/database.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "data.models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.47"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/marketing.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.48"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/models/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "data.models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.6"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/models/apikey.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "data.models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.6"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/models/base.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "data.models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.6"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/models/billing.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "data.models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.6"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/models/user.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "data.models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.6"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/schemas/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.schemas",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.7"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/schemas/apikey.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.schemas",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.7"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/schemas/billing.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.schemas",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.7"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/schemas/user.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "app.schemas",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.7"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/static/css/style.css": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.11"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/static/js/app.js": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.11"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/tasks/__init__.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "runtime.tasks",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.9"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/tasks/worker.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "runtime.tasks",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.9"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/templates/base.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.10"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/templates/dashboard.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.10"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/templates/index.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.10"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/templates/login.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.10"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pylaunchpad/templates/register.html": {
+        "access": "content",
+        "kind": "file",
+        "owner": "web.application",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.10"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "pyproject.toml": {
+        "access": "content",
+        "kind": "file",
+        "owner": "project.boundary",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.49"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "scripts/project_map.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.governance.map.49"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "scripts/pylaunchpad_vault.ps1": {
+        "access": "content",
+        "kind": "file",
+        "owner": "ops.secrets",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.ops.secrets.50"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/conftest.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.3"
+        },
+        "roles": [
+          "source"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/test_api.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests.app_auth-data_models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.quality.tests.app_auth-data_models.53"
+        },
+        "roles": [
+          "test"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/test_auth.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests.app_auth",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.quality.tests.app_auth.52"
+        },
+        "roles": [
+          "test"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/test_billing.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.quality.tests.app_api-app_billing-app_bootstrap-data_models.51"
+        },
+        "roles": [
+          "test"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/test_cli.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests.app_bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.quality.tests.app_bootstrap.54"
+        },
+        "roles": [
+          "test"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/test_seo.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests.app_bootstrap",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.quality.tests.app_bootstrap.55"
+        },
+        "roles": [
+          "test"
+        ],
+        "tracking": "tracked"
+      },
+      "tests/test_tasks.py": {
+        "access": "content",
+        "kind": "file",
+        "owner": "quality.tests.runtime_tasks",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "owner.quality.tests.runtime_tasks.56"
+        },
+        "roles": [
+          "test"
+        ],
+        "tracking": "tracked"
+      }
+    },
     "path_index": {
       ".cursorrules": "project.boundary",
       ".env.example": "project.boundary",
@@ -335,12 +1643,24 @@
     "generated_by": "scripts/project_map.py",
     "generation_command": "python scripts/project_map.py build",
     "inventory_path_sha256": "cf62f62e7b81be84d1f0a1e7cc021e3ffb5bfe2258d46f8e1cddc32bbff8ae3a",
-    "source_sha256": "4c36d152bc41dfa18eccc804a19633285fe86b05b4c941b43fbff0c322dc8982"
+    "source_sha256": "5e58d3c33196e40017eca5db256bf151e8625aeb651e754c2e52b2e854268fbc"
   },
   "nodes": [
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 7
+        },
+        "path_count": 7,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 7
+        }
+      },
       "domain": "domain.application",
       "evidence": [
         {
@@ -374,13 +1694,28 @@
         "pylaunchpad/api"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Versioned API routes.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 3
+        },
+        "path_count": 3,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 3
+        }
+      },
       "domain": "domain.application",
       "evidence": [
         {
@@ -412,13 +1747,28 @@
         "pylaunchpad/auth"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Authentication and password security.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 3
+        },
+        "path_count": 3,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 3
+        }
+      },
       "domain": "domain.application",
       "evidence": [
         {
@@ -449,13 +1799,28 @@
         "pylaunchpad/billing"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Polar billing and webhook verification.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 5
+        },
+        "path_count": 5,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 5
+        }
+      },
       "domain": "domain.application",
       "evidence": [
         {
@@ -495,13 +1860,28 @@
         "pylaunchpad/marketing.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Application startup and configuration.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 4
+        },
+        "path_count": 4,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 4
+        }
+      },
       "domain": "domain.application",
       "evidence": [
         {
@@ -527,13 +1907,28 @@
         "pylaunchpad/schemas"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Request and response schemas.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 6
+        },
+        "path_count": 6,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 6
+        }
+      },
       "domain": "domain.application",
       "evidence": [
         {
@@ -568,13 +1963,28 @@
         "pylaunchpad/database.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Database and ORM models.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 2
+        },
+        "path_count": 2,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 2
+        }
+      },
       "domain": "domain.delivery",
       "evidence": [
         {
@@ -599,13 +2009,29 @@
         "distribution"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Customer release package.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 2
+        },
+        "path_count": 2,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "documentation": 1,
+          "source": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -630,13 +2056,31 @@
         ".github"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "CI workflows.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 5,
+          "metadata": 1
+        },
+        "path_count": 6,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "documentation": 1,
+          "generated": 4,
+          "source": 2
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -662,13 +2106,28 @@
         "scripts/project_map.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Authored map and generated navigation.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 1
+        },
+        "path_count": 1,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -693,7 +2152,10 @@
         "scripts/pylaunchpad_vault.ps1"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Vault-injected development startup.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
@@ -703,7 +2165,20 @@
         "The pylaunchpad Brain scope owns durable external context.",
         "Polar is also used by YieldEngine, but the products have separate credentials and source."
       ],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 10
+        },
+        "path_count": 10,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "documentation": 2,
+          "source": 8
+        }
+      },
       "domain": "domain.project",
       "evidence": [
         {
@@ -750,13 +2225,29 @@
         "pyproject.toml"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Project contract and configuration.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 20
+        },
+        "path_count": 20,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "documentation": 8,
+          "source": 12
+        }
+      },
       "domain": "domain.project",
       "evidence": [
         {
@@ -800,13 +2291,28 @@
         "docs/vs-nextjs.html"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Product guides and deployment documentation.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 1
+        },
+        "path_count": 1,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -834,7 +2340,10 @@
         "tests"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Own shared test fixtures and tests whose component targets have no authored association.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
@@ -842,7 +2351,19 @@
       "cautions": [
         "These are source associations. They do not prove runtime test coverage."
       ],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 1
+        },
+        "path_count": 1,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "test": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -885,7 +2406,10 @@
         "tests/test_billing.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
@@ -893,7 +2417,19 @@
       "cautions": [
         "These are source associations. They do not prove runtime test coverage."
       ],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 1
+        },
+        "path_count": 1,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "test": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -918,7 +2454,10 @@
         "tests/test_auth.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
@@ -926,7 +2465,19 @@
       "cautions": [
         "These are source associations. They do not prove runtime test coverage."
       ],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 1
+        },
+        "path_count": 1,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "test": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -968,7 +2519,10 @@
         "tests/test_api.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
@@ -976,7 +2530,19 @@
       "cautions": [
         "These are source associations. They do not prove runtime test coverage."
       ],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 2
+        },
+        "path_count": 2,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "test": 2
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -1007,7 +2573,10 @@
         "tests/test_seo.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
@@ -1015,7 +2584,19 @@
       "cautions": [
         "These are source associations. They do not prove runtime test coverage."
       ],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 1
+        },
+        "path_count": 1,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "test": 1
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -1040,13 +2621,28 @@
         "tests/test_tasks.py"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 2
+        },
+        "path_count": 2,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 2
+        }
+      },
       "domain": "domain.operations",
       "evidence": [
         {
@@ -1073,13 +2669,28 @@
         "pylaunchpad/tasks"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "In-process background tasks.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     },
     {
       "cautions": [],
+      "choices": [],
       "classification": "current",
+      "confidence": null,
+      "coverage": {
+        "access_counts": {
+          "content": 7
+        },
+        "path_count": 7,
+        "provenance": "derived from inventory.manifest; no test execution claim",
+        "role_counts": {
+          "source": 7
+        }
+      },
       "domain": "domain.delivery",
       "evidence": [
         {
@@ -1105,7 +2716,10 @@
         "pylaunchpad/static"
       ],
       "phases": [],
+      "plans": [],
+      "prerequisites": [],
       "purpose": "Application templates and static assets.",
+      "rationale": null,
       "tags": [],
       "type": "component"
     }

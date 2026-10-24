@@ -39,9 +39,10 @@ Read in this order. Every link resolves from a repository checkout.
 
 - Components: 20
 - Directed relationships: 40
-- Inventory paths: 84 (Git tracked plus intended map deliverables)
-- Mapped live inventory paths: 84
-- Legacy paths represented by one stub: 0
+- Complete manifest paths: 85 (all Git tracked paths and intended map outputs)
+- Content ownership projection paths: 84
+- Non-legacy content ownership projection paths: 84
+- Legacy paths with one semantic owner and exact metadata records: 0
 - Roadmap: P0 in progress
 - Rebuild: `python scripts/project_map.py build`
 
@@ -53,7 +54,7 @@ Read in this order. Every link resolves from a repository checkout.
 | `planned` | Explicitly specified by an authoritative roadmap, plan, or contract. |
 | `inferred` | Strongly implied by at least two sources and labelled with confidence. |
 | `proposed` | An unresolved choice that must remain visible. |
-| `legacy` | Retired historical material represented only as a stub. |
+| `legacy` | Retired historical material with one semantic owner and per-path metadata. |
 
 Implementation, operation, and governance are separate lifecycle axes. An authored
 component can therefore be implemented while dormant or still under governance review.
@@ -158,11 +159,12 @@ namesakes the live index finds. Evidence for every set is in the JSON.
 ## Operational surfaces
 
 Each catalogue is resolved mechanically from the tracked inventory at build
-time, so a listed path exists and an absent path is not tracked.
+time. Listed paths match the complete selector; omitted paths can be excluded.
 
 ### API routes (7)
 
-Find versioned routes and router assembly. Pattern: `pylaunchpad/api/`.
+Find versioned routes and router assembly. Primary pattern: `pylaunchpad/api/`.
+Include: none. Exclude: none.
 
 - [pylaunchpad/api/__init__.py](../../pylaunchpad/api/__init__.py)
 - [pylaunchpad/api/v1/__init__.py](../../pylaunchpad/api/v1/__init__.py)
@@ -174,7 +176,8 @@ Find versioned routes and router assembly. Pattern: `pylaunchpad/api/`.
 
 ### Persistence models (5)
 
-Find database models and their shared base. Pattern: `pylaunchpad/models/`.
+Find database models and their shared base. Primary pattern: `pylaunchpad/models/`.
+Include: none. Exclude: none.
 
 - [pylaunchpad/models/__init__.py](../../pylaunchpad/models/__init__.py)
 - [pylaunchpad/models/apikey.py](../../pylaunchpad/models/apikey.py)
@@ -184,7 +187,8 @@ Find database models and their shared base. Pattern: `pylaunchpad/models/`.
 
 ### Request and response contracts (4)
 
-Find schema definitions used by the API. Pattern: `pylaunchpad/schemas/`.
+Find schema definitions used by the API. Primary pattern: `pylaunchpad/schemas/`.
+Include: none. Exclude: none.
 
 - [pylaunchpad/schemas/__init__.py](../../pylaunchpad/schemas/__init__.py)
 - [pylaunchpad/schemas/apikey.py](../../pylaunchpad/schemas/apikey.py)
@@ -193,7 +197,8 @@ Find schema definitions used by the API. Pattern: `pylaunchpad/schemas/`.
 
 ### Application templates (5)
 
-Find the browser templates. Pattern: `pylaunchpad/templates/`.
+Find the browser templates. Primary pattern: `pylaunchpad/templates/`.
+Include: none. Exclude: none.
 
 - [pylaunchpad/templates/base.html](../../pylaunchpad/templates/base.html)
 - [pylaunchpad/templates/dashboard.html](../../pylaunchpad/templates/dashboard.html)
@@ -203,14 +208,16 @@ Find the browser templates. Pattern: `pylaunchpad/templates/`.
 
 ### Background task runtime (2)
 
-Find task definitions, queue and worker lifecycle. Pattern: `pylaunchpad/tasks/`.
+Find task definitions, queue and worker lifecycle. Primary pattern: `pylaunchpad/tasks/`.
+Include: none. Exclude: none.
 
 - [pylaunchpad/tasks/__init__.py](../../pylaunchpad/tasks/__init__.py)
 - [pylaunchpad/tasks/worker.py](../../pylaunchpad/tasks/worker.py)
 
 ### Application tests (7)
 
-Find API, authentication, billing and task tests. Pattern: `tests/`.
+Find API, authentication, billing and task tests. Primary pattern: `tests/`.
+Include: none. Exclude: none.
 
 - [tests/conftest.py](../../tests/conftest.py)
 - [tests/test_api.py](../../tests/test_api.py)
@@ -222,14 +229,16 @@ Find API, authentication, billing and task tests. Pattern: `tests/`.
 
 ### Release packaging (2)
 
-Find the customer distribution package. Pattern: `distribution/`.
+Find the customer distribution package. Primary pattern: `distribution/`.
+Include: none. Exclude: none.
 
 - [distribution/LICENSE](../../distribution/LICENSE)
 - [distribution/build_release.py](../../distribution/build_release.py)
 
 ### Startup and map tooling (2)
 
-Find the Vault startup wrapper and the map launcher. Pattern: `scripts/`.
+Find the Vault startup wrapper and the map launcher. Primary pattern: `scripts/`.
+Include: none. Exclude: none.
 
 - [scripts/project_map.py](../../scripts/project_map.py)
 - [scripts/pylaunchpad_vault.ps1](../../scripts/pylaunchpad_vault.ps1)
@@ -387,8 +396,8 @@ component identifier finds what it depends on and what depends on it.
 
 ## Ownership summary
 
-Primary inventory ownership per component, collapsed to the first two
-directory levels. Exact file ownership is `inventory.path_index` in the JSON.
+Complete manifest ownership per component, collapsed to the first two
+directory levels. Exact file metadata and ownership are in `inventory.manifest`.
 
 - `app.api` (7): pylaunchpad/api/ (7)
 - `app.auth` (3): pylaunchpad/auth/ (3)
@@ -398,7 +407,7 @@ directory levels. Exact file ownership is `inventory.path_index` in the JSON.
 - `data.models` (6): pylaunchpad/ (1), pylaunchpad/models/ (5)
 - `delivery.release` (2): distribution/ (2)
 - `governance.ci` (2): .github/ (1), .github/workflows/ (1)
-- `governance.map` (5): docs/project_map/ (4), scripts/ (1)
+- `governance.map` (6): docs/project_map/ (5), scripts/ (1)
 - `ops.secrets` (1): scripts/ (1)
 - `project.boundary` (10): (repository root) (10)
 - `project.docs` (20): (repository root) (8), docs/ (12)
@@ -434,8 +443,12 @@ filterable lifecycle data. Treat the `classification` field as the fact and futu
 boundary. Never promote `planned`, `inferred`, or `proposed` content to current fact.
 Treat `nodes[].paths` as associations: exact current files assert an eligible owner,
 while wildcards and directories group related material. Resolve unique primary
-ownership through `inventory.path_index`; `nodes[].inventory_count` counts it.
-`legacy/` intentionally has no file-level path index and is represented by
-`inventory.legacy_stub`.
+ownership and read policy through `inventory.manifest`. Node and graph coverage
+counts derive from this manifest and do not claim test success. The backwards-compatible
+`inventory.path_index` and `nodes[].inventory_count` describe content ownership only.
+Legacy retains its semantic stub and has exact metadata records in the manifest.
+The Files view pages through every manifest record. The separate local `workspace.html`
+adds ignored and untracked names, dependencies, VCS metadata and link boundaries.
+Refresh local metadata with `workspace --write`; deterministic checks exclude it.
 `catalogues[]` and `entry_points[]` are resolved against the same inventory, so a
 path they name is tracked at the recorded source digest.
