@@ -121,7 +121,8 @@
         "governance": "not_applicable"
       },
       "paths": [
-        "docs/project_map"
+        "docs/project_map",
+        "scripts/project_map.py"
       ],
       "evidence": [
         {
@@ -208,7 +209,7 @@
     {
       "id": "quality.tests",
       "name": "Automated verification",
-      "purpose": "Automated verification.",
+      "purpose": "Own shared test fixtures and tests whose component targets have no authored association.",
       "type": "component",
       "domain": "domain.operations",
       "classification": "current",
@@ -484,7 +485,7 @@
         "governance": "not_applicable"
       },
       "paths": [
-        "scripts"
+        "scripts/pylaunchpad_vault.ps1"
       ],
       "evidence": [
         {
@@ -496,6 +497,182 @@
       "phases": [],
       "tags": [],
       "cautions": []
+    },
+    {
+      "id": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+      "name": "Tests for Versioned API routes, Polar billing and webhook verification, Application startup and configuration, Database and ORM models",
+      "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "tests/test_billing.py"
+      ],
+      "evidence": [
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.api.v1.billing import polar_client",
+          "claim": "Imports pylaunchpad/api/v1/billing.py for test assertions."
+        },
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.billing.webhooks import verify_webhook_signature",
+          "claim": "Imports pylaunchpad/billing/webhooks.py for test assertions."
+        },
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for test assertions."
+        },
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for test assertions."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": [
+        "These are source associations. They do not prove runtime test coverage."
+      ]
+    },
+    {
+      "id": "quality.tests.app_auth",
+      "name": "Tests for Authentication and password security",
+      "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "tests/test_auth.py"
+      ],
+      "evidence": [
+        {
+          "path": "tests/test_auth.py",
+          "locator": "from pylaunchpad.auth.security import (",
+          "claim": "Imports pylaunchpad/auth/security.py for test assertions."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": [
+        "These are source associations. They do not prove runtime test coverage."
+      ]
+    },
+    {
+      "id": "quality.tests.app_auth-data_models",
+      "name": "Tests for API routes, authentication and database models",
+      "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "tests/test_api.py"
+      ],
+      "evidence": [
+        {
+          "path": "tests/test_api.py",
+          "locator": "from pylaunchpad.auth.security import hash_password, create_access_token",
+          "claim": "Imports pylaunchpad/auth/security.py for test assertions."
+        },
+        {
+          "path": "tests/test_api.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for test assertions."
+        },
+        {
+          "path": "tests/test_api.py",
+          "locator": "response = client.get(\"/api/v1/health\")",
+          "claim": "Checks API responses through the client fixture."
+        },
+        {
+          "path": "tests/conftest.py",
+          "locator": "with TestClient(app) as test_client:",
+          "claim": "Supplies a client for the application routes."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": [
+        "These are source associations. They do not prove runtime test coverage."
+      ]
+    },
+    {
+      "id": "quality.tests.app_bootstrap",
+      "name": "Tests for Application startup and configuration",
+      "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "tests/test_cli.py",
+        "tests/test_seo.py"
+      ],
+      "evidence": [
+        {
+          "path": "tests/test_cli.py",
+          "locator": "from pylaunchpad.cli import backup_database, generate_secret_key, init_project, verify_license",
+          "claim": "Imports pylaunchpad/cli.py for test assertions."
+        },
+        {
+          "path": "tests/test_seo.py",
+          "locator": "from pylaunchpad.cli import audit_seo, generate_utm, run_indexnow, run_link_check",
+          "claim": "Imports pylaunchpad/cli.py for test assertions."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": [
+        "These are source associations. They do not prove runtime test coverage."
+      ]
+    },
+    {
+      "id": "quality.tests.runtime_tasks",
+      "name": "Tests for In-process background tasks",
+      "purpose": "Test only the component contracts named by the source imports and assertions.",
+      "type": "component",
+      "domain": "domain.operations",
+      "classification": "current",
+      "lifecycle": {
+        "implementation": "implemented",
+        "operation": "conditional",
+        "governance": "not_applicable"
+      },
+      "paths": [
+        "tests/test_tasks.py"
+      ],
+      "evidence": [
+        {
+          "path": "tests/test_tasks.py",
+          "locator": "from pylaunchpad.tasks.worker import TaskWorker",
+          "claim": "Imports pylaunchpad/tasks/worker.py for test assertions."
+        }
+      ],
+      "phases": [],
+      "tags": [],
+      "cautions": [
+        "These are source associations. They do not prove runtime test coverage."
+      ]
     }
   ],
   "relationships": [
@@ -706,6 +883,490 @@
           "path": "AGENTS.md",
           "locator": "Inject secrets into child processes using",
           "claim": "Repository evidence for vault-injected development startup."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.api.app.auth",
+      "type": "depends_on",
+      "source": "app.api",
+      "target": "app.auth",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/api/v1/apikeys.py",
+          "locator": "from pylaunchpad.auth.security import generate_api_key",
+          "claim": "Imports pylaunchpad/auth/security.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/apikeys.py",
+          "locator": "from pylaunchpad.auth.dependencies import get_current_active_user",
+          "claim": "Imports pylaunchpad/auth/dependencies.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/auth.py",
+          "locator": "from pylaunchpad.auth.security import hash_password, verify_password, create_access_token",
+          "claim": "Imports pylaunchpad/auth/security.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/auth.py",
+          "locator": "from pylaunchpad.auth.dependencies import get_current_active_user",
+          "claim": "Imports pylaunchpad/auth/dependencies.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/billing.py",
+          "locator": "from pylaunchpad.auth.dependencies import get_current_active_user, get_current_user",
+          "claim": "Imports pylaunchpad/auth/dependencies.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.api.app.billing",
+      "type": "depends_on",
+      "source": "app.api",
+      "target": "app.billing",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/api/v1/billing.py",
+          "locator": "from pylaunchpad.billing.polar import polar_client",
+          "claim": "Imports pylaunchpad/billing/polar.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/webhook.py",
+          "locator": "from pylaunchpad.billing.webhooks import verify_webhook_signature, process_webhook_event",
+          "claim": "Imports pylaunchpad/billing/webhooks.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.api.app.bootstrap",
+      "type": "depends_on",
+      "source": "app.api",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/api/v1/health.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.api.app.schemas",
+      "type": "depends_on",
+      "source": "app.api",
+      "target": "app.schemas",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/api/v1/apikeys.py",
+          "locator": "from pylaunchpad.schemas.apikey import (",
+          "claim": "Imports pylaunchpad/schemas/apikey.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/auth.py",
+          "locator": "from pylaunchpad.schemas.user import (",
+          "claim": "Imports pylaunchpad/schemas/user.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/billing.py",
+          "locator": "from pylaunchpad.schemas.billing import (",
+          "claim": "Imports pylaunchpad/schemas/billing.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.api.data.models",
+      "type": "depends_on",
+      "source": "app.api",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/api/v1/apikeys.py",
+          "locator": "from pylaunchpad.database import get_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/apikeys.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/apikeys.py",
+          "locator": "from pylaunchpad.models.apikey import APIKey",
+          "claim": "Imports pylaunchpad/models/apikey.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/auth.py",
+          "locator": "from pylaunchpad.database import get_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/auth.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/billing.py",
+          "locator": "from pylaunchpad.database import get_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/billing.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/billing.py",
+          "locator": "from pylaunchpad.models.billing import Order, Subscription",
+          "claim": "Imports pylaunchpad/models/billing.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/health.py",
+          "locator": "from pylaunchpad.database import get_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        },
+        {
+          "path": "pylaunchpad/api/v1/webhook.py",
+          "locator": "from pylaunchpad.database import get_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.auth.app.bootstrap",
+      "type": "depends_on",
+      "source": "app.auth",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/auth/security.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.auth.data.models",
+      "type": "depends_on",
+      "source": "app.auth",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/auth/dependencies.py",
+          "locator": "from pylaunchpad.database import get_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        },
+        {
+          "path": "pylaunchpad/auth/dependencies.py",
+          "locator": "from pylaunchpad.models.base import utc_now",
+          "claim": "Imports pylaunchpad/models/base.py for this component."
+        },
+        {
+          "path": "pylaunchpad/auth/dependencies.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for this component."
+        },
+        {
+          "path": "pylaunchpad/auth/dependencies.py",
+          "locator": "from pylaunchpad.models.apikey import APIKey",
+          "claim": "Imports pylaunchpad/models/apikey.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.billing.app.auth",
+      "type": "depends_on",
+      "source": "app.billing",
+      "target": "app.auth",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/billing/webhooks.py",
+          "locator": "from pylaunchpad.auth.security import hash_password",
+          "claim": "Imports pylaunchpad/auth/security.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.billing.app.bootstrap",
+      "type": "depends_on",
+      "source": "app.billing",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/billing/polar.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for this component."
+        },
+        {
+          "path": "pylaunchpad/billing/webhooks.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.billing.data.models",
+      "type": "depends_on",
+      "source": "app.billing",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/billing/webhooks.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for this component."
+        },
+        {
+          "path": "pylaunchpad/billing/webhooks.py",
+          "locator": "from pylaunchpad.models.billing import Order, Subscription",
+          "claim": "Imports pylaunchpad/models/billing.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.bootstrap.app.api",
+      "type": "depends_on",
+      "source": "app.bootstrap",
+      "target": "app.api",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "from pylaunchpad.api import api_v1_router",
+          "claim": "Imports pylaunchpad/api/__init__.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.bootstrap.data.models",
+      "type": "depends_on",
+      "source": "app.bootstrap",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "from pylaunchpad.database import init_db",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.app.bootstrap.runtime.tasks",
+      "type": "depends_on",
+      "source": "app.bootstrap",
+      "target": "runtime.tasks",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/app.py",
+          "locator": "from pylaunchpad.tasks.worker import task_worker",
+          "claim": "Imports pylaunchpad/tasks/worker.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.data.models.app.bootstrap",
+      "type": "depends_on",
+      "source": "data.models",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "pylaunchpad/database.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.quality.tests.app.bootstrap",
+      "type": "depends_on",
+      "source": "quality.tests",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/conftest.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for this component."
+        },
+        {
+          "path": "tests/conftest.py",
+          "locator": "from pylaunchpad.app import app  # noqa: E402",
+          "claim": "Imports pylaunchpad/app.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.depends_on.quality.tests.data.models",
+      "type": "depends_on",
+      "source": "quality.tests",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/conftest.py",
+          "locator": "from pylaunchpad.database import Base, get_db  # noqa: E402",
+          "claim": "Imports pylaunchpad/database.py for this component."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_api-app_billing-app_bootstrap-data_models.app.api",
+      "type": "tests",
+      "source": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+      "target": "app.api",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.api.v1.billing import polar_client",
+          "claim": "Imports pylaunchpad/api/v1/billing.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_api-app_billing-app_bootstrap-data_models.app.billing",
+      "type": "tests",
+      "source": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+      "target": "app.billing",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.billing.webhooks import verify_webhook_signature",
+          "claim": "Imports pylaunchpad/billing/webhooks.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_api-app_billing-app_bootstrap-data_models.app.bootstrap",
+      "type": "tests",
+      "source": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.config import settings",
+          "claim": "Imports pylaunchpad/config.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_api-app_billing-app_bootstrap-data_models.data.models",
+      "type": "tests",
+      "source": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_billing.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_auth.app.auth",
+      "type": "tests",
+      "source": "quality.tests.app_auth",
+      "target": "app.auth",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_auth.py",
+          "locator": "from pylaunchpad.auth.security import (",
+          "claim": "Imports pylaunchpad/auth/security.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_auth-data_models.app.auth",
+      "type": "tests",
+      "source": "quality.tests.app_auth-data_models",
+      "target": "app.auth",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_api.py",
+          "locator": "from pylaunchpad.auth.security import hash_password, create_access_token",
+          "claim": "Imports pylaunchpad/auth/security.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_auth-data_models.data.models",
+      "type": "tests",
+      "source": "quality.tests.app_auth-data_models",
+      "target": "data.models",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_api.py",
+          "locator": "from pylaunchpad.models.user import User",
+          "claim": "Imports pylaunchpad/models/user.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_auth-data_models.app.api",
+      "type": "tests",
+      "source": "quality.tests.app_auth-data_models",
+      "target": "app.api",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_api.py",
+          "locator": "\"/api/v1/apikeys\",",
+          "claim": "Exercises API-key routes through the client fixture."
+        },
+        {
+          "path": "tests/conftest.py",
+          "locator": "with TestClient(app) as test_client:",
+          "claim": "Supplies a client for the application routes."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.app_bootstrap.app.bootstrap",
+      "type": "tests",
+      "source": "quality.tests.app_bootstrap",
+      "target": "app.bootstrap",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_cli.py",
+          "locator": "from pylaunchpad.cli import backup_database, generate_secret_key, init_project, verify_license",
+          "claim": "Imports pylaunchpad/cli.py for test assertions."
+        },
+        {
+          "path": "tests/test_seo.py",
+          "locator": "from pylaunchpad.cli import audit_seo, generate_utm, run_indexnow, run_link_check",
+          "claim": "Imports pylaunchpad/cli.py for test assertions."
+        }
+      ]
+    },
+    {
+      "id": "relation.tests.quality.tests.runtime_tasks.runtime.tasks",
+      "type": "tests",
+      "source": "quality.tests.runtime_tasks",
+      "target": "runtime.tasks",
+      "classification": "current",
+      "evidence": [
+        {
+          "path": "tests/test_tasks.py",
+          "locator": "from pylaunchpad.tasks.worker import TaskWorker",
+          "claim": "Imports pylaunchpad/tasks/worker.py for test assertions."
         }
       ]
     }
@@ -1098,6 +1759,62 @@
       "kind": "exact",
       "pattern": "pyproject.toml",
       "priority": 10
+    },
+    {
+      "id": "owner.governance.map.49",
+      "owner": "governance.map",
+      "kind": "exact",
+      "pattern": "scripts/project_map.py",
+      "priority": 30
+    },
+    {
+      "id": "owner.ops.secrets.50",
+      "owner": "ops.secrets",
+      "kind": "exact",
+      "pattern": "scripts/pylaunchpad_vault.ps1",
+      "priority": 30
+    },
+    {
+      "id": "owner.quality.tests.app_api-app_billing-app_bootstrap-data_models.51",
+      "owner": "quality.tests.app_api-app_billing-app_bootstrap-data_models",
+      "kind": "exact",
+      "pattern": "tests/test_billing.py",
+      "priority": 30
+    },
+    {
+      "id": "owner.quality.tests.app_auth.52",
+      "owner": "quality.tests.app_auth",
+      "kind": "exact",
+      "pattern": "tests/test_auth.py",
+      "priority": 30
+    },
+    {
+      "id": "owner.quality.tests.app_auth-data_models.53",
+      "owner": "quality.tests.app_auth-data_models",
+      "kind": "exact",
+      "pattern": "tests/test_api.py",
+      "priority": 30
+    },
+    {
+      "id": "owner.quality.tests.app_bootstrap.54",
+      "owner": "quality.tests.app_bootstrap",
+      "kind": "exact",
+      "pattern": "tests/test_cli.py",
+      "priority": 30
+    },
+    {
+      "id": "owner.quality.tests.app_bootstrap.55",
+      "owner": "quality.tests.app_bootstrap",
+      "kind": "exact",
+      "pattern": "tests/test_seo.py",
+      "priority": 30
+    },
+    {
+      "id": "owner.quality.tests.runtime_tasks.56",
+      "owner": "quality.tests.runtime_tasks",
+      "kind": "exact",
+      "pattern": "tests/test_tasks.py",
+      "priority": 30
     }
   ],
   "intended_tracked_paths": [
@@ -1107,7 +1824,64 @@
     "docs/project_map/index.html"
   ],
   "conditional_artifacts": [],
-  "catalogues": [],
+  "catalogues": [
+    {
+      "id": "catalogue.api",
+      "name": "API routes",
+      "purpose": "Find versioned routes and router assembly.",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/api/"
+    },
+    {
+      "id": "catalogue.models",
+      "name": "Persistence models",
+      "purpose": "Find database models and their shared base.",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/models/"
+    },
+    {
+      "id": "catalogue.schemas",
+      "name": "Request and response contracts",
+      "purpose": "Find schema definitions used by the API.",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/schemas/"
+    },
+    {
+      "id": "catalogue.templates",
+      "name": "Application templates",
+      "purpose": "Find the browser templates.",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/templates/"
+    },
+    {
+      "id": "catalogue.tasks",
+      "name": "Background task runtime",
+      "purpose": "Find task definitions, queue and worker lifecycle.",
+      "kind": "prefix",
+      "pattern": "pylaunchpad/tasks/"
+    },
+    {
+      "id": "catalogue.tests",
+      "name": "Application tests",
+      "purpose": "Find API, authentication, billing and task tests.",
+      "kind": "prefix",
+      "pattern": "tests/"
+    },
+    {
+      "id": "catalogue.release",
+      "name": "Release packaging",
+      "purpose": "Find the customer distribution package.",
+      "kind": "prefix",
+      "pattern": "distribution/"
+    },
+    {
+      "id": "catalogue.startup",
+      "name": "Startup and map tooling",
+      "purpose": "Find the Vault startup wrapper and the map launcher.",
+      "kind": "prefix",
+      "pattern": "scripts/"
+    }
+  ],
   "sibling_sets": [],
   "inventory_exclusions": [
     ".cache/project_map/*",

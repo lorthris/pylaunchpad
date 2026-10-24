@@ -5,6 +5,7 @@
 FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution.
 
 - Interactive offline map: [index.html](index.html)
+- Shared project directory: [All projects](file:///C:/Drive/Brain/docs/knowledge/index.html)
 - Canonical graph: [project_map.json](project_map.json)
 - Authored source: [project_map_source.json](project_map_source.json)
 
@@ -36,8 +37,8 @@ Read in this order. Every link resolves from a repository checkout.
 
 ## Verification summary
 
-- Components: 15
-- Directed relationships: 14
+- Components: 20
+- Directed relationships: 40
 - Inventory paths: 84 (Git tracked plus intended map deliverables)
 - Mapped live inventory paths: 84
 - Legacy paths represented by one stub: 0
@@ -88,9 +89,14 @@ Operations components.
 | Component | Type | Class | Lifecycle | Phase | Purpose |
 | --- | --- | --- | --- | --- | --- |
 | `governance.map` Authored map and generated navigation | component | `current` | `implemented/conditional/not_applicable` | none | Authored map and generated navigation. |
-| `quality.tests` Automated verification | component | `current` | `implemented/conditional/not_applicable` | none | Automated verification. |
+| `quality.tests` Automated verification | component | `current` | `implemented/conditional/not_applicable` | none | Own shared test fixtures and tests whose component targets have no authored association. |
 | `governance.ci` CI workflows | component | `current` | `implemented/conditional/not_applicable` | none | CI workflows. |
 | `runtime.tasks` In-process background tasks | component | `current` | `implemented/conditional/not_applicable` | none | In-process background tasks. |
+| `quality.tests.app_auth-data_models` Tests for API routes, authentication and database models | component | `current` | `implemented/conditional/not_applicable` | none | Test only the component contracts named by the source imports and assertions. |
+| `quality.tests.app_bootstrap` Tests for Application startup and configuration | component | `current` | `implemented/conditional/not_applicable` | none | Test only the component contracts named by the source imports and assertions. |
+| `quality.tests.app_auth` Tests for Authentication and password security | component | `current` | `implemented/conditional/not_applicable` | none | Test only the component contracts named by the source imports and assertions. |
+| `quality.tests.runtime_tasks` Tests for In-process background tasks | component | `current` | `implemented/conditional/not_applicable` | none | Test only the component contracts named by the source imports and assertions. |
+| `quality.tests.app_api-app_billing-app_bootstrap-data_models` Tests for Versioned API routes, Polar billing and webhook verification, Application startup and configuration, Database and ORM models | component | `current` | `implemented/conditional/not_applicable` | none | Test only the component contracts named by the source imports and assertions. |
 | `ops.secrets` Vault-injected development startup | component | `current` | `implemented/conditional/not_applicable` | none | Vault-injected development startup. |
 
 ### Delivery
@@ -109,6 +115,10 @@ relationships inside one domain.
 
 | Source domain | Target domain | Count | Types |
 | --- | --- | --- | --- |
+| Application | Application | 13 | depends_on 13 |
+| Application | Operations | 1 | depends_on 1 |
+| Operations | Application | 11 | depends_on 2, tests 9 |
+| Operations | Operations | 1 | tests 1 |
 | Project | Application | 6 | contains 6 |
 | Project | Delivery | 2 | contains 2 |
 | Project | Operations | 5 | contains 5 |
@@ -150,9 +160,85 @@ namesakes the live index finds. Evidence for every set is in the JSON.
 Each catalogue is resolved mechanically from the tracked inventory at build
 time, so a listed path exists and an absent path is not tracked.
 
+### API routes (7)
+
+Find versioned routes and router assembly. Pattern: `pylaunchpad/api/`.
+
+- [pylaunchpad/api/__init__.py](../../pylaunchpad/api/__init__.py)
+- [pylaunchpad/api/v1/__init__.py](../../pylaunchpad/api/v1/__init__.py)
+- [pylaunchpad/api/v1/apikeys.py](../../pylaunchpad/api/v1/apikeys.py)
+- [pylaunchpad/api/v1/auth.py](../../pylaunchpad/api/v1/auth.py)
+- [pylaunchpad/api/v1/billing.py](../../pylaunchpad/api/v1/billing.py)
+- [pylaunchpad/api/v1/health.py](../../pylaunchpad/api/v1/health.py)
+- [pylaunchpad/api/v1/webhook.py](../../pylaunchpad/api/v1/webhook.py)
+
+### Persistence models (5)
+
+Find database models and their shared base. Pattern: `pylaunchpad/models/`.
+
+- [pylaunchpad/models/__init__.py](../../pylaunchpad/models/__init__.py)
+- [pylaunchpad/models/apikey.py](../../pylaunchpad/models/apikey.py)
+- [pylaunchpad/models/base.py](../../pylaunchpad/models/base.py)
+- [pylaunchpad/models/billing.py](../../pylaunchpad/models/billing.py)
+- [pylaunchpad/models/user.py](../../pylaunchpad/models/user.py)
+
+### Request and response contracts (4)
+
+Find schema definitions used by the API. Pattern: `pylaunchpad/schemas/`.
+
+- [pylaunchpad/schemas/__init__.py](../../pylaunchpad/schemas/__init__.py)
+- [pylaunchpad/schemas/apikey.py](../../pylaunchpad/schemas/apikey.py)
+- [pylaunchpad/schemas/billing.py](../../pylaunchpad/schemas/billing.py)
+- [pylaunchpad/schemas/user.py](../../pylaunchpad/schemas/user.py)
+
+### Application templates (5)
+
+Find the browser templates. Pattern: `pylaunchpad/templates/`.
+
+- [pylaunchpad/templates/base.html](../../pylaunchpad/templates/base.html)
+- [pylaunchpad/templates/dashboard.html](../../pylaunchpad/templates/dashboard.html)
+- [pylaunchpad/templates/index.html](../../pylaunchpad/templates/index.html)
+- [pylaunchpad/templates/login.html](../../pylaunchpad/templates/login.html)
+- [pylaunchpad/templates/register.html](../../pylaunchpad/templates/register.html)
+
+### Background task runtime (2)
+
+Find task definitions, queue and worker lifecycle. Pattern: `pylaunchpad/tasks/`.
+
+- [pylaunchpad/tasks/__init__.py](../../pylaunchpad/tasks/__init__.py)
+- [pylaunchpad/tasks/worker.py](../../pylaunchpad/tasks/worker.py)
+
+### Application tests (7)
+
+Find API, authentication, billing and task tests. Pattern: `tests/`.
+
+- [tests/conftest.py](../../tests/conftest.py)
+- [tests/test_api.py](../../tests/test_api.py)
+- [tests/test_auth.py](../../tests/test_auth.py)
+- [tests/test_billing.py](../../tests/test_billing.py)
+- [tests/test_cli.py](../../tests/test_cli.py)
+- [tests/test_seo.py](../../tests/test_seo.py)
+- [tests/test_tasks.py](../../tests/test_tasks.py)
+
+### Release packaging (2)
+
+Find the customer distribution package. Pattern: `distribution/`.
+
+- [distribution/LICENSE](../../distribution/LICENSE)
+- [distribution/build_release.py](../../distribution/build_release.py)
+
+### Startup and map tooling (2)
+
+Find the Vault startup wrapper and the map launcher. Pattern: `scripts/`.
+
+- [scripts/project_map.py](../../scripts/project_map.py)
+- [scripts/pylaunchpad_vault.ps1](../../scripts/pylaunchpad_vault.ps1)
+
 ## Directed relationship vocabulary
 
 - `contains`: 14
+- `depends_on`: 16
+- `tests`: 10
 
 ## Component relationships
 
@@ -161,27 +247,65 @@ component identifier finds what it depends on and what depends on it.
 
 ### `app.api` Versioned API routes
 
+- depends_on `app.auth` (current): depends_on
+- depends_on `app.billing` (current): depends_on
+- depends_on `app.bootstrap` (current): depends_on
+- depends_on `app.schemas` (current): depends_on
+- depends_on `data.models` (current): depends_on
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.bootstrap` (current): depends_on
+- tests from `quality.tests.app_api-app_billing-app_bootstrap-data_models` (current): tests
+- tests from `quality.tests.app_auth-data_models` (current): tests
 
 ### `app.auth` Authentication and password security
 
+- depends_on `app.bootstrap` (current): depends_on
+- depends_on `data.models` (current): depends_on
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.api` (current): depends_on
+- depends_on from `app.billing` (current): depends_on
+- tests from `quality.tests.app_auth-data_models` (current): tests
+- tests from `quality.tests.app_auth` (current): tests
 
 ### `app.billing` Polar billing and webhook verification
 
+- depends_on `app.auth` (current): depends_on
+- depends_on `app.bootstrap` (current): depends_on
+- depends_on `data.models` (current): depends_on
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.api` (current): depends_on
+- tests from `quality.tests.app_api-app_billing-app_bootstrap-data_models` (current): tests
 
 ### `app.bootstrap` Application startup and configuration
 
+- depends_on `app.api` (current): depends_on
+- depends_on `data.models` (current): depends_on
+- depends_on `runtime.tasks` (current): depends_on
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.api` (current): depends_on
+- depends_on from `app.auth` (current): depends_on
+- depends_on from `app.billing` (current): depends_on
+- depends_on from `data.models` (current): depends_on
+- depends_on from `quality.tests` (current): depends_on
+- tests from `quality.tests.app_api-app_billing-app_bootstrap-data_models` (current): tests
+- tests from `quality.tests.app_bootstrap` (current): tests
 
 ### `app.schemas` Request and response schemas
 
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.api` (current): depends_on
 
 ### `data.models` Database and ORM models
 
+- depends_on `app.bootstrap` (current): depends_on
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.api` (current): depends_on
+- depends_on from `app.auth` (current): depends_on
+- depends_on from `app.billing` (current): depends_on
+- depends_on from `app.bootstrap` (current): depends_on
+- depends_on from `quality.tests` (current): depends_on
+- tests from `quality.tests.app_api-app_billing-app_bootstrap-data_models` (current): tests
+- tests from `quality.tests.app_auth-data_models` (current): tests
 
 ### `delivery.release` Customer release package
 
@@ -222,11 +346,40 @@ component identifier finds what it depends on and what depends on it.
 
 ### `quality.tests` Automated verification
 
+- depends_on `app.bootstrap` (current): depends_on
+- depends_on `data.models` (current): depends_on
 - contains from `project.boundary` (current): Repository component
+
+### `quality.tests.app_api-app_billing-app_bootstrap-data_models` Tests for Versioned API routes, Polar billing and webhook verification, Application startup and configuration, Database and ORM models
+
+- tests `app.api` (current): tests
+- tests `app.billing` (current): tests
+- tests `app.bootstrap` (current): tests
+- tests `data.models` (current): tests
+
+### `quality.tests.app_auth` Tests for Authentication and password security
+
+- tests `app.auth` (current): tests
+
+### `quality.tests.app_auth-data_models` Tests for API routes, authentication and database models
+
+- tests `app.api` (current): tests
+- tests `app.auth` (current): tests
+- tests `data.models` (current): tests
+
+### `quality.tests.app_bootstrap` Tests for Application startup and configuration
+
+- tests `app.bootstrap` (current): tests
+
+### `quality.tests.runtime_tasks` Tests for In-process background tasks
+
+- tests `runtime.tasks` (current): tests
 
 ### `runtime.tasks` In-process background tasks
 
 - contains from `project.boundary` (current): Repository component
+- depends_on from `app.bootstrap` (current): depends_on
+- tests from `quality.tests.runtime_tasks` (current): tests
 
 ### `web.application` Application templates and static assets
 
@@ -245,11 +398,16 @@ directory levels. Exact file ownership is `inventory.path_index` in the JSON.
 - `data.models` (6): pylaunchpad/ (1), pylaunchpad/models/ (5)
 - `delivery.release` (2): distribution/ (2)
 - `governance.ci` (2): .github/ (1), .github/workflows/ (1)
-- `governance.map` (4): docs/project_map/ (4)
-- `ops.secrets` (2): scripts/ (2)
+- `governance.map` (5): docs/project_map/ (4), scripts/ (1)
+- `ops.secrets` (1): scripts/ (1)
 - `project.boundary` (10): (repository root) (10)
 - `project.docs` (20): (repository root) (8), docs/ (12)
-- `quality.tests` (7): tests/ (7)
+- `quality.tests` (1): tests/ (1)
+- `quality.tests.app_api-app_billing-app_bootstrap-data_models` (1): tests/ (1)
+- `quality.tests.app_auth` (1): tests/ (1)
+- `quality.tests.app_auth-data_models` (1): tests/ (1)
+- `quality.tests.app_bootstrap` (2): tests/ (2)
+- `quality.tests.runtime_tasks` (1): tests/ (1)
 - `runtime.tasks` (2): pylaunchpad/tasks/ (2)
 - `web.application` (7): pylaunchpad/static/ (2), pylaunchpad/templates/ (5)
 
@@ -258,6 +416,11 @@ directory levels. Exact file ownership is `inventory.path_index` in the JSON.
 - `project.boundary`: Keep all credentials in the mylaunchpad vault collection. Do not copy credentials into .env files.
 - `project.boundary`: Polar is also used by YieldEngine, but the products have separate credentials and source.
 - `project.boundary`: The pylaunchpad Brain scope owns durable external context.
+- `quality.tests.app_api-app_billing-app_bootstrap-data_models`: These are source associations. They do not prove runtime test coverage.
+- `quality.tests.app_auth`: These are source associations. They do not prove runtime test coverage.
+- `quality.tests.app_auth-data_models`: These are source associations. They do not prove runtime test coverage.
+- `quality.tests.app_bootstrap`: These are source associations. They do not prove runtime test coverage.
+- `quality.tests.runtime_tasks`: These are source associations. They do not prove runtime test coverage.
 
 ## Conditional and non-canonical artefacts
 
