@@ -6,7 +6,11 @@
     "tagline": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution.",
     "purpose": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution.",
     "source_of_truth": "docs/project_map/project_map_source.json and tracked repository files.",
-    "generation_command": "python scripts/project_map.py build"
+    "generation_command": "python scripts/project_map.py build",
+    "orientation": [
+      "AGENTS.md",
+      "README.md"
+    ]
   },
   "entry_points": [
     {
@@ -1821,7 +1825,8 @@
     "docs/project_map/project_map_source.json",
     "docs/project_map/project_map.json",
     "docs/project_map/INDEX.md",
-    "docs/project_map/index.html"
+    "docs/project_map/index.html",
+    "docs/project_map/CATALOGUE.md"
   ],
   "conditional_artifacts": [],
   "catalogues": [

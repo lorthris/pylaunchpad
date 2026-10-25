@@ -142,16 +142,20 @@
   "conditional_artifacts": [],
   "coverage": {
     "access_counts": {
-      "content": 84,
+      "content": 85,
       "metadata": 1
     },
-    "path_count": 85,
+    "path_count": 86,
     "provenance": "derived from inventory.manifest; no test execution claim",
     "role_counts": {
-      "documentation": 12,
-      "generated": 4,
+      "documentation": 13,
+      "generated": 5,
       "source": 64,
       "test": 6
+    },
+    "tracking_counts": {
+      "intended": 1,
+      "tracked": 85
     }
   },
   "domain_relationships": [
@@ -692,6 +696,22 @@
         },
         "roles": [
           "source"
+        ],
+        "tracking": "tracked"
+      },
+      "docs/project_map/CATALOGUE.md": {
+        "access": "content",
+        "kind": "file",
+        "owner": "governance.map",
+        "policy": {
+          "basis": "authored inventory rule",
+          "index_excluded": false,
+          "inventory_excluded": false,
+          "rule": "inventory.1"
+        },
+        "roles": [
+          "documentation",
+          "generated"
         ],
         "tracking": "tracked"
       },
@@ -1581,6 +1601,7 @@
       "docs/fastapi-polar-guide.html": "project.docs",
       "docs/index.html": "project.docs",
       "docs/preview.png": "project.docs",
+      "docs/project_map/CATALOGUE.md": "governance.map",
       "docs/project_map/INDEX.md": "governance.map",
       "docs/project_map/index.html": "governance.map",
       "docs/project_map/project_map.json": "governance.map",
@@ -1642,8 +1663,8 @@
   "metadata": {
     "generated_by": "scripts/project_map.py",
     "generation_command": "python scripts/project_map.py build",
-    "inventory_path_sha256": "cf62f62e7b81be84d1f0a1e7cc021e3ffb5bfe2258d46f8e1cddc32bbff8ae3a",
-    "source_sha256": "5e58d3c33196e40017eca5db256bf151e8625aeb651e754c2e52b2e854268fbc"
+    "inventory_path_sha256": "38f9bf4b2a1a4e76b009b3173e528942987f479ddf089ea82b62fe92c4dbe113",
+    "source_sha256": "6c5cc006d6357571009ee05b2cb8a86f2a27dc4b5594ad1d099d825e1be8615c"
   },
   "nodes": [
     {
@@ -1659,6 +1680,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 7
+        },
+        "tracking_counts": {
+          "tracked": 7
         }
       },
       "domain": "domain.application",
@@ -1714,6 +1738,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 3
+        },
+        "tracking_counts": {
+          "tracked": 3
         }
       },
       "domain": "domain.application",
@@ -1767,6 +1794,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 3
+        },
+        "tracking_counts": {
+          "tracked": 3
         }
       },
       "domain": "domain.application",
@@ -1819,6 +1849,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 5
+        },
+        "tracking_counts": {
+          "tracked": 5
         }
       },
       "domain": "domain.application",
@@ -1880,6 +1913,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 4
+        },
+        "tracking_counts": {
+          "tracked": 4
         }
       },
       "domain": "domain.application",
@@ -1927,6 +1963,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 6
+        },
+        "tracking_counts": {
+          "tracked": 6
         }
       },
       "domain": "domain.application",
@@ -1983,6 +2022,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 2
+        },
+        "tracking_counts": {
+          "tracked": 2
         }
       },
       "domain": "domain.delivery",
@@ -2030,6 +2072,9 @@
         "role_counts": {
           "documentation": 1,
           "source": 1
+        },
+        "tracking_counts": {
+          "tracked": 2
         }
       },
       "domain": "domain.operations",
@@ -2070,15 +2115,19 @@
       "confidence": null,
       "coverage": {
         "access_counts": {
-          "content": 5,
+          "content": 6,
           "metadata": 1
         },
-        "path_count": 6,
+        "path_count": 7,
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
-          "documentation": 1,
-          "generated": 4,
+          "documentation": 2,
+          "generated": 5,
           "source": 2
+        },
+        "tracking_counts": {
+          "intended": 1,
+          "tracked": 6
         }
       },
       "domain": "domain.operations",
@@ -2093,7 +2142,7 @@
       "incoming_relationships": [
         "relation.1"
       ],
-      "inventory_count": 5,
+      "inventory_count": 6,
       "lifecycle": {
         "governance": "not_applicable",
         "implementation": "implemented",
@@ -2126,6 +2175,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 1
+        },
+        "tracking_counts": {
+          "tracked": 1
         }
       },
       "domain": "domain.operations",
@@ -2177,6 +2229,9 @@
         "role_counts": {
           "documentation": 2,
           "source": 8
+        },
+        "tracking_counts": {
+          "tracked": 10
         }
       },
       "domain": "domain.project",
@@ -2246,6 +2301,9 @@
         "role_counts": {
           "documentation": 8,
           "source": 12
+        },
+        "tracking_counts": {
+          "tracked": 20
         }
       },
       "domain": "domain.project",
@@ -2311,6 +2369,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 1
+        },
+        "tracking_counts": {
+          "tracked": 1
         }
       },
       "domain": "domain.operations",
@@ -2362,6 +2423,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "test": 1
+        },
+        "tracking_counts": {
+          "tracked": 1
         }
       },
       "domain": "domain.operations",
@@ -2428,6 +2492,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "test": 1
+        },
+        "tracking_counts": {
+          "tracked": 1
         }
       },
       "domain": "domain.operations",
@@ -2476,6 +2543,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "test": 1
+        },
+        "tracking_counts": {
+          "tracked": 1
         }
       },
       "domain": "domain.operations",
@@ -2541,6 +2611,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "test": 2
+        },
+        "tracking_counts": {
+          "tracked": 2
         }
       },
       "domain": "domain.operations",
@@ -2595,6 +2668,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "test": 1
+        },
+        "tracking_counts": {
+          "tracked": 1
         }
       },
       "domain": "domain.operations",
@@ -2641,6 +2717,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 2
+        },
+        "tracking_counts": {
+          "tracked": 2
         }
       },
       "domain": "domain.operations",
@@ -2689,6 +2768,9 @@
         "provenance": "derived from inventory.manifest; no test execution claim",
         "role_counts": {
           "source": 7
+        },
+        "tracking_counts": {
+          "tracked": 7
         }
       },
       "domain": "domain.delivery",
@@ -2745,6 +2827,10 @@
     "generation_command": "python scripts/project_map.py build",
     "id": "mylaunchpad",
     "name": "mylaunchpad",
+    "orientation": [
+      "AGENTS.md",
+      "README.md"
+    ],
     "purpose": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution.",
     "source_of_truth": "docs/project_map/project_map_source.json and tracked repository files.",
     "tagline": "FastAPI SaaS starter with authentication, database models, Polar billing, background tasks and customer source distribution."
@@ -3460,9 +3546,9 @@
     "by_type": {
       "component": 20
     },
-    "inventory_paths": 84,
+    "inventory_paths": 85,
     "legacy_paths": 0,
-    "mapped_nonlegacy_paths": 84,
+    "mapped_nonlegacy_paths": 85,
     "nodes": 20,
     "relationships": 40
   },
