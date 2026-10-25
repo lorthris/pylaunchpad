@@ -112,6 +112,21 @@ uvicorn pylaunchpad.app:app --reload --port 8000
 
 ---
 
+## Repository project map
+
+Open `docs/project_map/index.html` from a repository checkout.
+The [map directory](https://github.com/lorthris/pylaunchpad/tree/main/docs/project_map)
+contains the offline map, [compact command reference](https://github.com/lorthris/pylaunchpad/blob/main/docs/project_map/INDEX.md)
+and [complete text catalogue](https://github.com/lorthris/pylaunchpad/blob/main/docs/project_map/CATALOGUE.md).
+Run `python scripts/project_map.py q <path-or-words>` from the repository root.
+Use the same launcher with `tests <path>` and `impact <path>` before a change.
+Use `brief` for the command card.
+The manifest records metadata for tracked and intended paths.
+Use `python scripts/project_map.py workspace --write` to refresh the separate
+local metadata view, including ignored and untracked paths, without reading file contents.
+
+---
+
 ## Automated Testing
 
 Run the automated test suite:
